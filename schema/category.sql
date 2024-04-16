@@ -1,0 +1,60 @@
+CREATE TABLE `category` (
+    `id` BINARY(16) NOT NULL,
+    `version_id` BINARY(16) NOT NULL,
+    `parent_id` BINARY(16) NULL,
+    `parent_version_id` BINARY(16) NOT NULL,
+    `after_category_id` BINARY(16) NULL,
+    `after_category_version_id` BINARY(16) NOT NULL,
+    `media_id` BINARY(16) NULL,
+    `display_nested_products` TINYINT(1) NOT NULL DEFAULT '0',
+    `level` INT(11) NULL,
+    `path` LONGTEXT NULL,
+    `child_count` INT(11) NULL,
+    `type` VARCHAR(255) NOT NULL,
+    `visible` TINYINT(1) NULL DEFAULT '0',
+    `active` TINYINT(1) NULL DEFAULT '0',
+    `cms_page_id` BINARY(16) NULL,
+    `created_at` DATETIME(3) NOT NULL,
+    `updated_at` DATETIME(3) NOT NULL,
+    PRIMARY KEY (`id`,`version_id`),
+    CONSTRAINT `json.category.translated` CHECK (JSON_VALID(`translated`)),
+    KEY `fk.category.parent_id` (`parent_id`,`version_id`),
+    KEY `fk.category.media_id` (`media_id`),
+    KEY `fk.category.cms_page_id` (`cms_page_id`),
+    CONSTRAINT `fk.category.parent_id` FOREIGN KEY (`parent_id`,`version_id`) REFERENCES `category` (`id`,`version_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk.category.media_id` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk.category.cms_page_id` FOREIGN KEY (`cms_page_id`) REFERENCES `cms_page` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `category_translation` (
+    `name` VARCHAR(255) NOT NULL,
+    `breadcrumb` JSON NULL,
+    `slot_config` JSON NULL,
+    `external_link` VARCHAR(255) NULL,
+    `description` LONGTEXT NULL,
+    `custom_fields` JSON NULL,
+    `created_at` DATETIME(3) NOT NULL,
+    `updated_at` DATETIME(3) NOT NULL,
+    `category_id` BINARY(16) NOT NULL,
+    `language_id` BINARY(16) NOT NULL,
+    `category_version_id` BINARY(16) NOT NULL,
+    PRIMARY KEY (`category_id`,`language_id`,`category_version_id`),
+    CONSTRAINT `json.category_translation.breadcrumb` CHECK (JSON_VALID(`breadcrumb`)),
+    CONSTRAINT `json.category_translation.slot_config` CHECK (JSON_VALID(`slot_config`)),
+    CONSTRAINT `json.category_translation.custom_fields` CHECK (JSON_VALID(`custom_fields`)),
+    KEY `fk.category_translation.category_id` (`category_id`,`category_version_id`),
+    KEY `fk.category_translation.language_id` (`language_id`),
+    CONSTRAINT `fk.category_translation.category_id` FOREIGN KEY (`category_id`,`category_version_id`) REFERENCES `category` (`id`,`version_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk.category_translation.language_id` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `category_tag` (
+    `category_id` BINARY(16) NOT NULL,
+    `category_version_id` BINARY(16) NOT NULL,
+    `tag_id` BINARY(16) NOT NULL,
+    PRIMARY KEY (`category_id`,`category_version_id`,`tag_id`),
+    KEY `fk.category_tag.category_id` (`category_id`,`category_version_id`),
+    KEY `fk.category_tag.tag_id` (`tag_id`),
+    CONSTRAINT `fk.category_tag.category_id` FOREIGN KEY (`category_id`,`category_version_id`) REFERENCES `category` (`id`,`version_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk.category_tag.tag_id` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
