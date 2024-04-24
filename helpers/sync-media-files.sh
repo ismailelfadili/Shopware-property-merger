@@ -1,1 +1,1 @@
-rsync -avzP weka:public_html/production/public/media /Users/bonhagen/Sites/weka-holzbau/public/media
+rsync -avzP weka:public_html/production/public/media/ public/media/
