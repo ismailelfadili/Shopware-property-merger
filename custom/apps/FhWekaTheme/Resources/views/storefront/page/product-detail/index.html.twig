@@ -150,41 +150,38 @@
 
                                     {# New line left #}
                                     <div class="product-detail-container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {% block page_product_delivery_informations %}
+                                                    <div class="product-detail-delivery-information">
+                                                        <div class="row">
+                                                            <div class="col-12 col-lg-6 ms-auto">
+                                                                {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endblock %}
+
+                                                {% block page_product_detail_buy_form %}
+                                                    {% if page.product.active %}
+                                                        <div class="product-detail-form-container pb-4">
+                                                            <div class="row">
+                                                                <div class="col-12 col-lg-6 ms-auto">
+                                                                    {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endblock %}
+                                            </div>
+                                        </div>
+
                                         {# If variants are available, show variant configurator #}
                                         {% block page_product_detail_configurator_include %}
                                             <div class="product-detail-configurator-container">
                                                 {% sw_include '@Storefront/storefront/page/product-detail/configurator.html.twig' %}
                                             </div>
                                         {% endblock %}
-
-                                        <div class="row">
-                                            <div class="col-12">
-                                                {# Add buy button if in offer #}
-                                                {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
-                                                    {% block page_product_delivery_informations %}
-                                                        <div class="product-detail-delivery-information">
-                                                            <div class="row">
-                                                                <div class="col-12 col-lg-6 ms-auto">
-                                                                    {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endblock %}
-
-                                                    {% block page_product_detail_buy_form %}
-                                                        {% if page.product.active %}
-                                                            <div class="product-detail-form-container pb-4">
-                                                                <div class="row">
-                                                                    <div class="col-12 col-lg-6 ms-auto">
-                                                                        {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endblock %}
-                                                {% endif %}
-                                            </div>
-                                        </div>
 
                                         {# Add some datasheets #}
                                         <div class="product-detail-sheets pt-3 mb-4">

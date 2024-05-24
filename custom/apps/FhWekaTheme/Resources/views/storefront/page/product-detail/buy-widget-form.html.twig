@@ -1,13 +1,116 @@
 {% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
 
-{% block page_product_detail_buy_button_container %}
-    <div class="col-8 d-grid">
-        {% block page_product_detail_buy_button %}
-            <button class="btn btn-buy btn-primary">
-                {% sw_icon 'cart' style { 'size': 'sm' } %}&nbsp;{{ "detail.addProduct"|trans }}
-            </button>
-        {% endblock %}
-    </div>
+
+{% block page_product_detail_buy_container %}
+    {% if product.available %}
+        <div class="row g-2 buy-widget-container">
+            {% block page_product_detail_buy_quantity_container %}
+                {% if showQuantitySelect %}
+                    <div class="col-4 d-flex justify-content-end">
+                        {% set selectQuantityThreshold = 100 %}
+                        {% block page_product_detail_buy_quantity %}
+                            {% block page_product_detail_buy_quantity_input_group %}
+                                <div class="input-group product-detail-quantity-group quantity-selector-group" data-quantity-selector="true">
+                                    {% block page_product_detail_buy_quantity_input %}
+                                        <button type="button" class="btn btn-outline-light btn-minus js-btn-minus">
+                                            {% sw_icon 'minus' style {'size': 'xs'} %}
+                                        </button>
+                                        <input
+                                            type="number"
+                                            name="lineItems[{{ product.id }}][quantity]"
+                                            class="form-control js-quantity-selector quantity-selector-group-input product-detail-quantity-input"
+                                            min="{{ product.minPurchase }}"
+                                            max="{{ product.calculatedMaxPurchase }}"
+                                            step="{{ product.purchaseSteps }}"
+                                            value="{{ product.minPurchase }}"
+                                        />
+                                        <button type="button" class="btn btn-outline-light btn-plus js-btn-plus">
+                                            {% sw_icon 'plus' style {'size': 'xs'} %}
+                                        </button>
+                                    {% endblock %}
+                                    {% block page_product_detail_buy_quantity_input_unit %}
+                                        {% if product.translated.packUnit %}
+                                            <span class="input-group-text">
+                                                        {% if product.minPurchase > 1 and product.translated.packUnitPlural %}
+                                                            {{ product.translated.packUnitPlural }}
+                                                        {% elseif product.translated.packUnit %}
+                                                            {{ product.translated.packUnit }}
+                                                        {% endif %}
+                                                    </span>
+                                        {% endif %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block page_product_detail_buy_redirect_input %}
+                {# fallback redirect back to detail page is deactivated via js #}
+                <input type="hidden"
+                       name="redirectTo"
+                       value="frontend.detail.page">
+
+                <input type="hidden"
+                       name="redirectParameters"
+                       data-redirect-parameters="true"
+                       value='{"productId": "{{ product.id }}"}'>
+            {% endblock %}
+
+            {% block page_product_detail_buy_product_buy_info %}
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][id]"
+                       value="{{ product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][type]"
+                       value="product">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][referencedId]"
+                       value="{{ product.id }}">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][stackable]"
+                       value="1">
+                <input type="hidden"
+                       name="lineItems[{{ product.id }}][removable]"
+                       value="1">
+            {% endblock %}
+
+            {% block page_product_detail_product_buy_meta %}
+                <input type="hidden"
+                       name="product-name"
+                       value="{{ product.translated.name }}">
+                <input type="hidden"
+                       name="brand-name"
+                       value="{{ product.manufacturer.getName() }}">
+            {% endblock %}
+
+            {% block page_product_detail_buy_button_container %}
+                <div class="col-8 d-grid">
+                    {% block page_product_detail_buy_button %}
+                        <button class="btn btn-buy btn-primary">
+                            {% sw_icon 'cart' style { 'size': 'sm' } %}&nbsp;{{ "detail.addProduct"|trans }}
+                        </button>
+                    {% endblock %}
+                </div>
+                {# if not "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree #}
+                    <div class="col-12 d-grid">
+                        {% block page_product_detail_offre_button %}
+                            {% set formID = config('core.basicInformation.contactPage') %}
+                            {% if formID %}
+                                <a class="btn btn btn-secondary"
+                                   data-ajax-modal="true"
+                                   data-url="/widgets/cms/{{ formID }}"
+                                   href="/widgets/cms/{{ formID }}"
+                                   title="{{ "detail.inquiry.label"|trans }}">{{ "detail.inquiry.label"|trans }}{% sw_icon 'help' %}
+                                </a>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                {# endif #}
+            {% endblock %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 
