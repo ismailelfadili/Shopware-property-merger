@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
+
+{% block layout_search_suggest_result_total_link %}
+    <div class="col">
+        <div class="search-suggest-total-count">
+            {{ "header.searchResults"|trans({
+                '%count%': page.searchResult.total,
+            })|sw_sanitize }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block layout_search_suggest_result_name %}
+    <div class="col">
+        <div class="search-suggest-product-name">
+            <strong>{{ product.translated.name }}</strong>
+        </div>
+        <div class="search-suggest-product-description">
+            {{ product.translated.description|u.truncate(60, '...', false)|raw }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block layout_search_suggest_result_price %}
+    <div class="col-auto search-suggest-product-price">
+        {# show nothing #}
+    </div>
+{% endblock %}
+
+{% block layout_search_suggest_result_total_count %}
+    <a href="{{ path('frontend.search.page') }}?search={{ page.searchTerm }}"
+       title="{{ "header.searchAllResults"|trans|striptags }}"
+       class="search-suggest-total-link btn btn-outline-primary">
+        {{ "header.searchAllResults"|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+

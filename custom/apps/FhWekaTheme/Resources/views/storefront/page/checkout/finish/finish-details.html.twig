@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/finish-details.html.twig' %}
+
+{# Rearrange #}
+
+{% block page_checkout_finish_details_inner %}
+    {% block page_checkout_finish_data %}
+        {% block page_checkout_finish_header %}
+            <h1 class="finish-header">
+                {% if page.changedPayment == true %}
+                    {{ "checkout.finishUpdateHeader"|trans|sw_sanitize }}
+                {% else %}
+                    {{ "checkout.finishHeader"|trans({
+                        '%shop%': config('core.basicInformation.shopName')
+                    })|sw_sanitize }}
+                {% endif %}
+            </h1>
+        {% endblock %}
+
+        {% block page_checkout_finish_ordernumber %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_checkout_finish_hidden_information_line_items %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_checkout_finish_subtitle %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_checkout_finish_content %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block page_checkout_finish_order %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

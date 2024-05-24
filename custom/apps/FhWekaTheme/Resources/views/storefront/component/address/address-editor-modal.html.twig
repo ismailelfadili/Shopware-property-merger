@@ -1,0 +1,89 @@
+{% sw_extends '@Storefront/storefront/component/address/address-editor-modal.html.twig' %}
+
+{# Rearranged, fixed SW6 layout, icons set, modifed buttons #}
+
+{% block component_address_address_editor_modal_accordion_overview_billing %}
+    {% if changeBilling %}
+        {% block component_address_address_editor_modal_accordion_overview_billing_card %}
+            <div class="card mb-3">
+                {% block component_address_address_editor_modal_accordion_overview_billing_card_body %}
+                    <div class="card-body">
+                        {% block component_address_address_editor_modal_accordion_overview_billing_card_title %}
+                            <h3 class="card-title">
+                                {% block component_address_address_editor_modal_accordion_overview_billing_card_title_text %}
+                                    <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ parent() }}
+                                {% endblock %}
+                            </h3>
+                        {% endblock %}
+
+                        {% block component_address_address_editor_modal_accordion_overview_billing_card_address %}
+                            {{ parent() }}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{% block component_address_address_editor_modal_accordion_overview_shipping %}
+    {% if changeShipping %}
+        {% block component_address_address_editor_modal_accordion_overview_shipping_card %}
+            <div class="card mb-3">
+                {% block component_address_address_editor_modal_accordion_overview_shipping_card_body %}
+                    <div class="card-body">
+                        {% block component_address_address_editor_modal_accordion_overview_shipping_card_title %}
+                            <h3 class="card-title">
+                                {% block component_address_address_editor_modal_accordion_overview_shipping_card_title_text %}
+                                    <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressesTitleCurrentShippingAddress"|trans|sw_sanitize }}
+                                {% endblock %}
+                            </h3>
+                        {% endblock %}
+
+                        {% block component_address_address_editor_modal_accordion_overview_shipping_card_warning %}
+                            {{ parent() }}
+                        {% endblock %}
+
+                        {% block component_address_address_editor_modal_accordion_overview_shipping_card_address %}
+                            {{ parent() }}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{% block component_address_address_editor_modal_accordion_action_edit %}
+    <div class="col-12 col-md-4 d-grid mb-3">
+        <div class="btn btn-outline-primary address-editor-edit create collapsed"
+             data-bs-toggle="collapse"
+             data-bs-target="#{{ typePrefix }}address-create-edit">
+            {{ "account.addressEditBtn"|trans|sw_sanitize }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block component_address_address_editor_modal_accordion_action_list %}
+    {% if AvailableAddressCount > 0 %}
+        <div class="col-12 col-md-4 d-grid mb-3">
+            <div class="btn btn-outline-primary address-editor-select"
+                 data-bs-toggle="collapse"
+                 data-bs-target="#{{ typePrefix }}address-list">
+                <i class="bi bi-list-check bi-xxs"></i>&nbsp;&nbsp;
+                {{ "account.selectAddress"|trans|sw_sanitize }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block component_address_address_editor_modal_accordion_action_create %}
+    <div class="col-12 col-md-4 d-grid mb-3">
+        <div class="btn btn-outline-primary address-editor-create collapsed"
+             data-bs-toggle="collapse"
+             data-bs-target="#{{ typePrefix }}address-create-new">
+            <i class="bi bi-plus-circle bi-xxs"></i>&nbsp;&nbsp;
+            {{ "account.addressCreateBtn"|trans|sw_sanitize }}
+        </div>
+    </div>
+{% endblock %}

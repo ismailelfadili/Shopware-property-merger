@@ -1,0 +1,32 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block component_offcanvas_cart_header %}
+    <div class="row">
+        <div class="col">
+            <span class="h4">{{ "checkout.cartHeader"|trans|sw_sanitize }}</span>
+        </div>
+
+        {% set checkoutItemCounter = page.cart.lineItems|length %}
+
+        {% block component_offcanvas_cart_header_item_counter %}
+            {% if isCartNotEmpty %}
+                <div class="col-auto">
+                    <small class="offcanvas-cart-header-count">
+                        {{ "checkout.itemCounter"|trans({'%count%': checkoutItemCounter})|sw_sanitize }}
+                    </small>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block component_offcanvas_cart_flashbags %}
+    {% for type, messages in app.flashes %}
+        {% if messages is not empty %}
+            <div class="flashbags">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with { type: type, list: messages } %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+

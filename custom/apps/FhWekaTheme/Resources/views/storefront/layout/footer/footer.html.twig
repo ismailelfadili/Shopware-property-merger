@@ -1,0 +1,344 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+    {% block layout_footer_navigation %}
+        <div class="footerPageBenefits">
+            <div class="container">
+                <div class="row">
+                    <div class="col-7 col-md-7 col-xl-9">
+                        <div class="d-flex h-100 align-items-center">
+                            <img src="{{ asset('/assets/payment/swag_paypal_paypal.svg', 'theme') }}" alt="Zahlungsmethode PayPal" class="payment-method-footer">
+                            <img src="{{ asset('/assets/payment/swag_paypal_card.svg', 'theme') }}" alt="Zahlungsmethode Kreditkarte" class="payment-method-footer">
+                            <img src="{{ asset('/assets/payment/swag_paypal_apm_giropay.svg', 'theme') }}" alt="Zahlungsmethode Giropay" class="payment-method-footer">
+                            <img src="{{ asset('/assets/payment/vorkasse.svg', 'theme') }}" alt="Zahlungsmethode Vorkasse" class="payment-method-footer">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-3 website-tls-info">
+                        <div class="pt-2 pt-md-0">
+                            <div class="row g-0 d-flex h-100 align-items-center">
+                                <div class="col-auto">
+                                    <i class="bi bi-lock-fill bi-xs text-primary"></i>
+                                </div>
+                                <div class="col-auto ps-2">
+                                    <span class="website-tls-headline">TLS-Verschlüsselung</span>
+                                    <br />
+                                    <small class="website-tls-subline">Gesicherte Verbindung</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footerColumns" class="footer-columns" data-collapse-footer="true">
+            <div class="container">
+                <div class="row">
+                    {% block layout_footer_navigation_hotline %}
+                        <div class="col-md-4 footer-column js-footer-column">
+                            {% block layout_footer_navigation_hotline_headline %}
+                                <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                     data-target="#collapseFooterHotline"
+                                     aria-expanded="true"
+                                     aria-controls="collapseFooterHotline">
+                                    {{ 'footer.serviceHotlineHeadline'|trans }}
+                                    {% block layout_footer_navigation_hotline_icons %}
+                                        <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                            <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+
+                            {% block layout_footer_navigation_hotline_content %}
+                                <div id="collapseFooterHotline"
+                                     class="footer-column-content collapse js-footer-column-content footer-contact"
+                                     aria-labelledby="headingOne">
+
+                                    <div class="pb-4">
+                                        {% if "Angebote" in page.header.navigation.active.breadcrumb.1
+                                            or page.header.navigation.active.id == "4a00af73076d4e76b0bb43dd1e2ee68a"
+                                            or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.navigation.active.path
+                                            or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.categoryTree
+                                            or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+
+                                            <p class="h2 footer-contact-phone">
+                                                <i class="bi bi-phone-vibrate text-primary"></i>&nbsp;<a href="tel:{{ 'footer.servicePhoneOffer'|trans }}">{{ 'footer.servicePhoneOffer'|trans }}</a>
+                                            </p>
+                                            <p class="footer-contact-phonetext">
+                                                {{ 'footer.servicePhoneOfferText'|trans }}
+                                            </p>
+                                            <table class="table-responsive text-white">
+                                                <tr>
+                                                    <td>{{ 'service.businessDaysOfferWd'|trans }} </td>
+                                                    <td>{{ 'service.businessHoursOfferWd'|trans }}</td>
+                                                </tr>
+                                            </table>
+                                            <div class="footer-contact-form">
+                                                {{ 'footer.serviceOfferContactLink'|trans|raw }}
+                                            </div>
+
+                                        {% else %}
+
+                                            <p class="h2 footer-contact-phone">
+                                                <i class="bi bi-phone-vibrate text-primary"></i>&nbsp;<a href="tel:{{ 'footer.servicePhone'|trans }}"> {{ 'footer.servicePhone'|trans }}</a>
+                                            </p>
+                                            <p class="footer-contact-phonetext">
+                                                {{ 'footer.servicePhoneText'|trans }}
+                                            </p>
+                                            <table class="table-responsive text-white">
+                                                <tr>
+                                                    <td>{{ 'service.businessDaysWd'|trans }} </td>
+                                                    <td>{{ 'service.businessHoursWd'|trans }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ 'service.businessDaysWe'|trans }} </td>
+                                                    <td>{{ 'service.businessHoursWe'|trans }}</td>
+                                                </tr>
+                                            </table>
+                                            <div class="footer-contact-form">
+                                                {{ 'footer.serviceContactLink'|trans|raw }}
+                                            </div>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
+
+                    {% endblock %}
+
+                    {% block layout_footer_navigation_columns %}
+                        {# Menu rendering #}
+                        {% for root in page.footer.navigation.tree %}
+                            {% block layout_footer_navigation_column %}
+                                <div class="{% if loop.first %}col-md-3{% else %}col-md-2{% endif %} footer-column js-footer-column">
+                                    {% block layout_footer_navigation_information_headline %}
+                                        <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger"
+                                             data-target="#collapseFooterTitle{{ loop.index }}"
+                                             aria-expanded="true"
+                                             aria-controls="collapseFooter{{ loop.index }}">
+
+                                            {{ root.category.translated.name }}
+                                            {% block layout_footer_navigation_information_icons %}
+                                                <div class="footer-column-toggle">
+                                                <span class="footer-plus-icon">
+                                                    {% sw_icon 'plus' %}
+                                                </span>
+                                                    <span class="footer-minus-icon">
+                                                    {% sw_icon 'minus' %}
+                                                </span>
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+
+                                    {% block layout_footer_navigation_information_content %}
+                                        <div id="collapseFooter{{ loop.index }}"
+                                             class="footer-column-content collapse js-footer-column-content"
+                                             aria-labelledby="collapseFooterTitle{{ loop.index }}">
+                                            <div class="footer-column-content-inner">
+                                                {% block layout_footer_navigation_information_links %}
+                                                    <ul class="list-unstyled">
+                                                        {% for treeItem in root.children %}
+                                                            {% set category = treeItem.category %}
+                                                            {% set name = category.translated.name %}
+
+                                                            {# @deprecated tag:v6.5.0 - Use "category.translated.externalLink" directly or category_url function instead. #}
+                                                            {% set externalLink = category.translated.externalLink %}
+
+                                                            {% block layout_footer_navigation_information_link_item %}
+                                                                <li class="footer-link-item">
+                                                                    {% block layout_footer_navigation_information_link %}
+                                                                        {% if category.type == 'folder' %}
+                                                                            <div>{{ name }}</div>
+                                                                        {% else %}
+                                                                            <a class="footer-link"
+                                                                               href="{{ category_url(category) }}"
+                                                                               {% if category_linknewtab(category) %}target="_blank"{% endif %}
+                                                                               title="{{ name }}">
+                                                                                {{ name }}
+                                                                            </a>
+                                                                        {% endif %}
+                                                                    {% endblock %}
+                                                                </li>
+                                                            {% endblock %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endblock %}
+                                            </div>
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block layout_footer_content %}
+        <div id="footerColumns" class="footer-columns" data-collapse-footer="true">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-column js-footer-column">
+                        {% block layout_footer_newsletter_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 data-target="#collapseFooterNewsletter"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterNewsletter">
+                                {{ 'footer.serviceNewsletter'|trans|raw }}
+                                {% block layout_footer_newsletter_icons %}
+                                    <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                        <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                        {% block layout_footer_newsletter_content %}
+                            <div id="collapseFooterNewsletter"
+                                 class="footer-column-content collapse js-footer-column-content footer-newsletter"
+                                 aria-labelledby="headingOne">
+                                <p class="footer-newsletter-newslettertext">
+                                    Bleiben Sie up-to-date und freuen Sie sich über tolle Neuigkeiten direkt vom Hersteller exklusiver Garten und Freizeitartikel aus Holz.
+                                </p>
+                                <a href="/ueber-weka/newsletter" class="btn btn-primary mb-3">Newsletter anfordern</a>
+                            </div>
+                        {% endblock %}
+
+                    </div>
+                    <div class="col-md-4 footer-column js-footer-column">
+                        {% block layout_footer_quality_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 data-target="#collapseFooterQuality"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterQuality">
+                                {{ 'footer.serviceQuality'|trans|raw }}
+                                {% block layout_footer_quality_icons %}
+                                    <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                        <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                        {% block layout_footer_quality_content %}
+                            <div id="collapseFooterQuality"
+                                 class="footer-column-content collapse js-footer-column-content footer-quality"
+                                 aria-labelledby="headingOne">
+                                <div class="pb-3">
+                                    <div class="row">
+                                        <div class="col-3 pb-3">
+                                            <a href="https://www.fsc-deutschland.de" target="_blank"><img src="{{ asset('/assets/icon/weka-fsc.png', 'theme') }}" class="img-fluid" alt="fsc"></a>
+                                        </div>
+                                        <div class="col-3 pb-3">
+                                            <a href="https://pefc.de" target="_blank"><img src="{{ asset('/assets/icon/weka-pefc.png', 'theme') }}" class="img-fluid" alt="pefc"></a>
+                                        </div>
+                                        <div class="col-3 pb-3">
+                                            <a href="https://www.tuvsud.com/de-de" target="_blank"><img src="{{ asset('/assets/icon/weka-tuev-sued.png', 'theme') }}" class="img-fluid" alt="TÜV Süd"></a>
+                                        </div>
+                                    </div>
+                                    {#
+                                    <div class="row pb-2">
+                                        <div class="col-9 pb-3">
+                                            <a href="https://climatepartner.com/18237-2211-1001" target="_blank"><img src="{{ asset('/assets/icon/weka-klimaneutral.png', 'theme') }}" style="padding-left: 5px" class="img-fluid" alt="Klimaneutral"></a>
+                                        </div>
+                                    </div>
+                                    #}
+                                </div>
+                            </div>
+                        {% endblock %}
+
+                    </div>
+                    <div class="col-md-4 footer-column js-footer-column">
+                        {% block layout_footer_inspiration_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 data-target="#collapseFooterInspiration"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterInspiration">
+                                {{ 'footer.serviceInspiration'|trans|raw }}
+                                {% block layout_footer_inspiration_icons %}
+                                    <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                        <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                        {% block layout_footer_inspiration_content %}
+                            <div id="collapseFooterInspiration"
+                                 class="footer-column-content collapse js-footer-column-content footer-inspiration"
+                                 aria-labelledby="headingOne">
+                                <div class="pb-4">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <a href="https://www.instagram.com/weka_holzbau/" target="_blank"><i class="bi bi-instagram bi-md"></i></a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="https://www.facebook.com/WEKAHolzbauGmbH" target="_blank"><i class="bi bi-facebook bi-md"></i></a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="https://www.pinterest.de/wekaHolzbau/" target="_blank"><i class="bi bi-pinterest bi-md"></i></a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="https://www.youtube.com/user/WEKAHolzbau" target="_blank"><i class="bi bi-youtube bi-md"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block layout_footer_bottom %}
+        <div class="footer-bottom">
+            {% block layout_footer_vat %}
+                <div class="footer-vat">
+                    {% if context.taxState == "gross" %}
+                        <p>{{ "footer.includeVat"|trans|sw_sanitize }}</p>
+                    {% else %}
+                        <p>{{ "footer.excludeVat"|trans|sw_sanitize }}</p>
+                    {% endif %}
+                </div>
+            {% endblock %}
+
+            {% block layout_footer_service_menu %}{% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block layout_footer_copyright %}
+        <div class="footer-copyright">
+            &copy; {{ 'now' | date('Y') }}
+            <picture>
+                {% block layout_header_logo_image_mobile %}
+                    <img src="{{ theme_config('sw-logo-desktop') |sw_encode_url }}"
+                         alt="{{ "header.logoLink"|trans|striptags }}"
+                         width="20" height="20" class="wk-copyright-logo" />
+                {% endblock %}
+            </picture>
+            {{ "meta.author"|trans|striptags }}. Alle Rechte vorbehalten.
+        </div>
+    {% endblock %}
+
+{% endblock %}

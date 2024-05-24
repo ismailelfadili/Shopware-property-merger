@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+
+{% block layout_header_actions_cart_widget %}
+    <div class="align-self-center">
+        <span class="header-cart-icon">{% sw_icon 'cart' style { 'size': 'lg' } %}</span>
+        {% if page.cart.lineItems|length > 0 %}
+            <span class="badge header-cart-badge rounded-pill bg-primary">{{ page.cart.lineItems|length }}</span>
+        {% endif %}
+        <span class="header-cart-total">{{ page.cart.price.positionPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+    </div>
+{% endblock %}

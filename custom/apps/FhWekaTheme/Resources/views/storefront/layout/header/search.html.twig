@@ -1,0 +1,55 @@
+{% sw_extends '@Storefront/storefront/layout/header/search.html.twig' %}
+
+{% block layout_header_search %}
+    <div class="collapse w-100 bg-white border-top" id="searchCollapse">
+        <div class="py-2 container">
+            <div class="header-search-close-box d-flex">
+                <button class="btn btn-outline-dark js-search-toggle-btn header-search-btn-close ms-auto"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#searchCollapse"
+                        aria-expanded="false"
+                        aria-controls="searchCollapse"
+                        aria-label="{{ "header.searchButton"|trans|striptags }}">
+                    {% sw_icon 'x' %}
+                </button>
+            </div>
+
+            <div class="header-search py-3">
+                <h4 class="pt-0">{{ "header.searchHeadline"|trans }}</h4>
+                <form action="{{ path('frontend.search.page') }}"
+                      method="get"
+                      data-search-form="true"
+                      data-url="{{ path('frontend.search.suggest') }}?search="
+                      class="header-search-form">
+                    {% block layout_header_search_input_group %}
+                        <div class="input-group">
+                            {% block layout_header_search_input %}
+                                <input type="search"
+                                       name="search"
+                                       class="form-control header-search-input"
+                                       autocomplete="off"
+                                       autocapitalize="off"
+                                       placeholder="{{ "header.searchPlaceholder"|trans }}"
+                                       maxlength="30"
+                                       value="{{ page.searchTerm }}"
+                                >
+                            {% endblock %}
+
+                            {% block layout_header_search_button %}
+                                <div class="input-group-append">
+                                    <button type="submit"
+                                            class="btn btn-dark header-search-btn">
+                                    <span class="header-search-icon">
+                                        {% sw_icon 'search' style { 'size': 'lg' } %}
+                                    </span>
+                                    </button>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

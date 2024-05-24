@@ -1,0 +1,150 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_inner %}
+    {% set metaInformation = page.metaInformation %}
+    {% set basicConfig = config('core.basicInformation') %}
+    {% set maxLength = config('seo.descriptionMaxLength') %}
+    {% set metaDescription = metaInformation.metaDescription|striptags|trim|u.truncate(maxLength ?? 160, '…') %}
+    {% set metaTitle = metaInformation.metaTitle|striptags|trim %}
+    {% set metaKeywords = metaInformation.metaKeywords|striptags|trim %}
+
+    <head>
+        {% block layout_head_meta_tags %}
+            {% block layout_head_meta_tags_charset %}
+                {{ parent() }}
+            {% endblock %}
+
+            <!--
+                01000110 01010101 01001100 01001100 01001000 01000001 01010101 01010011
+                Made with ❤ by FULLHAUS GmbH | www.fullhaus.de
+                01000110 01010101 01001100 01001100 01001000 01000001 01010101 01010011
+                (S) Realised with Shopware 6.
+            -->
+
+            {% block layout_head_meta_tags_viewport %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block layout_head_meta_tags_general %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block layout_head_meta_tags_opengraph %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block layout_head_meta_tags_schema_webpage %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block layout_head_meta_tags_hreflangs %}
+                {{ parent() }}
+            {% endblock %}
+        {% endblock %}
+
+        {% block layout_head_favicon %}
+            <meta name="theme-color" content="{{ theme_config('sw-color-brand-primary') }}" />
+            <meta name="msapplication-TileColor" content="#ffffff">
+            <meta name="msapplication-TileImage" content="{{ asset('/assets/icon/favicon/mx-icon-144x144.png', 'theme') }}">
+            <link rel="manifest" href="{{ asset('/assets/icon/favicon/manifest.json', 'theme') }}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/icon/favicon/favicon-32x32.png', 'theme') }}">
+            <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/assets/icon/favicon/favicon-96x96.png', 'theme') }}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/icon/favicon/favicon-16x16.png', 'theme') }}">
+        {% endblock %}
+
+        {% block layout_head_apple %}
+            <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/assets/icon/favicon/apple-icon-57x57.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/assets/icon/favicon/apple-icon-60x60.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/assets/icon/favicon/apple-icon-72x72.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets/icon/favicon/apple-icon-76x76.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/assets/icon/favicon/apple-icon-114x114.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/assets/icon/favicon/apple-icon-120x120.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/assets/icon/favicon/apple-icon-144x144.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/assets/icon/favicon/apple-icon-152x152.png', 'theme') }}">
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/icon/favicon/apple-icon-180x180.png', 'theme') }}">
+        {% endblock %}
+
+        {% block layout_head_android %}
+            <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/assets/icon/favicon/android-icon-192x192.png', 'theme') }}">
+        {% endblock %}
+
+        {% block layout_head_canonical %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_title %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_stylesheet %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_javascript_feature %}
+            {{ parent() }}
+        {% endblock %}
+
+        {# Block for tracking scripts which are required to include in the `head` section of the document #}
+        {% block layout_head_javascript_tracking %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_javascript_recaptcha %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_javascript_token %}
+            {# missing #}
+        {% endblock %}
+
+        {% if config('core.basicInformation.useDefaultCookieConsent') %}
+            {% block layout_head_javascript_cookie_state %}
+                <script>
+                    window.useDefaultCookieConsent = true;
+                </script>
+            {% endblock %}
+        {% endif %}
+
+        {% block layout_head_javascript_router %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_head_javascript_breakpoints %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% if config('core.cart.wishlistEnabled') %}
+            {% block layout_head_javascript_wishlist_state %}
+                <script>
+                    window.customerLoggedInState = {{ context.customer is not null and not context.customer.guest ? 1 : 0 }};
+                    window.wishlistEnabled       = {{ config('core.cart.wishlistEnabled') }};
+                </script>
+            {% endblock %}
+        {% endif %}
+
+        {# jQuery is removed from the default Storefront since tag:v6.5.0 - This block should be used to add jQuery as a `<script>` if needed. #}
+        {% block layout_head_javascript_jquery %}
+            <script src="{{ asset('/assets/jquery/jquery-3.7.0.min.js', 'theme') }}"></script>
+        {% endblock %}
+
+        {% block layout_head_javascript_hmr_mode %}
+            {{ parent() }}
+        {% endblock %}
+
+        <!-- Google Tag Manager -->
+        <script data-cmp-vendor="s905" type="text/plain" class="cmplazyload">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start' : new Date().getTime(), event : 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5FCNTNV');
+        </script>
+        <!-- End Google Tag Manager -->
+
+    </head>
+{% endblock %}
+
+

@@ -1,0 +1,149 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_buy_inner %}
+    <div class="product-detail-price-wrapper js-magnifier-zoom-image-container">
+
+        <div class="row">
+            <div class="col-12 col-xl-10 ms-auto">
+                {% block page_product_detail_rich_snippets %}
+                    {% block page_product_detail_rich_snippets_brand %}
+                        {% if page.product.manufacturer %}
+                            <meta itemprop="brand"
+                                  content="{{ page.product.manufacturer.translated.name }}" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_gtin13 %}
+                        {% if page.product.ean %}
+                            <meta itemprop="gtin13"
+                                  content="{{ page.product.ean }}" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_mpn %}
+                        <meta itemprop="mpn"
+                              content="{{ page.product.productNumber }}" />
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_weight %}
+                        {% if page.product.weight %}
+                            <meta itemprop="weight"
+                                  content="{{ page.product.weight }} kg" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_height %}
+                        {% if page.product.height %}
+                            <meta itemprop="height"
+                                  content="{{ page.product.height }} mm" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_width %}
+                        {% if page.product.width %}
+                            <meta itemprop="width"
+                                  content="{{ page.product.width }} mm" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_depth %}
+                        {% if page.product.length %}
+                            <meta itemprop="depth"
+                                  content="{{ page.product.length }} mm" />
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block page_product_detail_rich_snippets_release_date %}
+                        <meta itemprop="releaseDate"
+                              content="{{ page.product.releaseDate|format_date('short', locale=app.request.locale) }}" />
+                    {% endblock %}
+                {% endblock %}
+
+                {% block page_product_detail_not_available %}
+                    {# TODO: NEXT-2784 - product not available message #}
+                {% endblock %}
+
+                {% block page_product_detail_buy_container %}
+                    <div itemprop="offers"
+                         itemscope
+                         itemtype="{% if page.product.calculatedPrices|length > 1 %}https://schema.org/AggregateOffer{% else %}https://schema.org/Offer{% endif %}">
+                        {% block page_product_detail_data %}
+                            <meta itemprop="priceCurrency"
+                                  content="{{ context.currency.translated.shortName }}" />
+
+                            {% block page_product_detail_price %}
+
+                                {% if "Angebote" in page.header.navigation.active.breadcrumb.1
+                                    or page.header.navigation.active.id == "4a00af73076d4e76b0bb43dd1e2ee68a"
+                                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.navigation.active.path
+                                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.categoryTree
+                                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+                                    {% set opticsClass = "bg-offer" %}
+                                {% else %}
+                                    {% set opticsClass = "bg-primary" %}
+                                {% endif %}
+                                <div class="product-detail-price-container {{ opticsClass }} text-white text-right">
+                                    {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-price.html.twig' %}
+                                </div>
+                            {% endblock %}
+
+                            {% block page_product_detail_reviews %}
+                                {% if page.reviews|length > 0 and shopware.config.detail.showReviews %}
+                                    <p class="product-detail-reviews">
+                                        {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                                            points: page.product.ratingAverage,
+                                            style: 'text-primary'
+                                        } %}
+                                        <a data-bs-toggle="tab"
+                                           class="product-detail-reviews-link"
+                                           data-offcanvas-tabs="true"
+                                           data-remote-click="true"
+                                           data-remote-click-options='{
+                                        "selector": "#review-tab",
+                                        "scrollToElement": true
+                                    }'
+                                           href="#review-tab-pane"
+                                           aria-controls="review-tab-pane">
+                                            {{ page.reviews.totalReviews }}
+                                            {{ "detail.reviewLinkText"|trans({'%count%': page.reviews.totalReviews})|sw_sanitize }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            {% endblock %}
+                        {% endblock %}
+
+                    </div>
+                {% endblock %}
+
+                {# Msg product picture example #}
+                <div class="product-detail-image-information-container">
+                    <p class="small mb-1">
+                        {{ "detail.productPictureExample"|trans }}
+                    </p>
+                </div>
+
+                <div class="product-detail-information-container">
+                    {# Msg product additional information #}
+                    {% if page.product.translated.customFields.custom_productinformation_additional %}
+                        <p class="small mb-1">{{ page.product.translated.customFields.custom_productinformation_additional|striptags|replace({'&amp;': "&"}) }}</p>
+                    {% endif %}
+
+                    {# Msg product notice #}
+                    {% if page.product.translated.customFields.custom_productinformation_additionalinformation %}
+                        <p class="small mb-1">{{ "detail.information"|trans }} {{ page.product.translated.customFields.custom_productinformation_additionalinformation|striptags|replace({'&amp;': "&"}) }}</p>
+                    {% endif %}
+
+                    {# Msg product availability #}
+                    {% if page.product.translated.customFields.custom_productinformation_available %}
+                        <p class="small text-danger mb-1">{{ "detail.dataColumnAvailability"|trans }}: {{ page.product.translated.customFields.custom_productinformation_available|striptags|replace({'&amp;': "&"}) }}</p>
+                    {% endif %}
+
+                    {# Msg product is configurable #}
+                    {% if page.product.parentId and page.configuratorSettings|length > 0 and page.product.optionIds > 0 %}
+                        <p class="small mb-1">{{ "detail.productIsConfigurable"|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

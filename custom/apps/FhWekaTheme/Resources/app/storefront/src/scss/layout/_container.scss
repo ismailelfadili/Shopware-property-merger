@@ -1,0 +1,16 @@
+/*
+Container
+==============================================
+Additional styling for bootstrap container layout.
+
+https://getbootstrap.com/docs/4.3/layout/overview/
+*/
+
+.container, .cms-section .boxed {
+    /* Dirty override given from vendor storefront! */
+}
+
+.container-main {
+    padding    : 0;
+    min-height : 200px;
+}

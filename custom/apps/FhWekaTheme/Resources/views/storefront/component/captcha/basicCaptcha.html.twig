@@ -1,0 +1,7 @@
+{% sw_extends '@Storefront/storefront/component/captcha/basicCaptcha.html.twig' %}
+
+{% block component_basic_captcha_refresh_icon %}
+    <a class="btn btn-outline-primary basic-captcha-refresh-icon" id="{{ formId }}-basic-captcha-content-refresh-icon">
+        {% sw_icon 'arrow-switch' %}
+    </a>
+{% endblock %}

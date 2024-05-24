@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/component/payment/payment-method.html.twig' %}
+
+{% block component_payment_method_description %}
+    <div class="payment-method-description">
+        <strong>{{ payment.translated.name }}</strong>
+        {% if payment.translated.description %}
+            {% set paymentDescription = payment.translated.description|raw %}
+            {% set paymentDescriptionTitle = payment.translated.description|striptags|raw %}
+
+            {% block component_payment_method_description_text %}
+                <p title="{{ paymentDescriptionTitle }}">{{ paymentDescription }}</p>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{# {% sw_extends '@Storefront/storefront/layout/header/actions/service-menu-widget.html.twig' %} #}
+
+{% block layout_header_actions_service_menu_widget %}
+    {% if position is empty %}
+        {% set position = 'top-bar' %}
+    {% endif %}
+
+    {% if page.header.serviceMenu|length > 0 %}
+        <div class="service-menu dropdown h-100">
+            {% block layout_header_actions_service_menu_list %}
+                <button class="btn btn-link service-menu-btn h-100 header-actions-btn"
+                        type="button"
+                        id="serviceMenuDropdown-{{ position }}"
+                        data-offcanvas-service-menu="true"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    {% sw_icon 'help' style { 'size': 'lg' } %}
+                </button>
+                {% block layout_header_actions_service_menu_items %}
+                    <div class="dropdown-menu dropdown-menu-right"
+                         aria-labelledby="serviceMenuDropdown-{{ position }}">
+                        {% for category in page.header.serviceMenu %}
+                            <a class="top-bar-list-item dropdown-item"
+                               href="{% if category.externalLink %}{{ category.externalLink }}
+                                         {% elseif category.customFields.custom_frontendlinkpath_value is not null %}{{ category.customFields.custom_frontendlinkpath_value }}
+                                         {% else %}{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}
+                                         {% endif %}" title="{{ category.translated.name }}">
+                                {{ category.translated.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

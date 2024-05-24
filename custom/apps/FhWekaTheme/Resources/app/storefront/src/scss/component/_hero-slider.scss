@@ -1,0 +1,33 @@
+/*
+Hero slider
+==============================================
+Styling for hero slider component.
+Modification for different button colors in different sliders.
+*/
+
+.hero-slider {
+    .btn.hero-slider-cta-btn {
+        color: $white;
+    }
+
+    .hero-slider-cta-offers {
+        .btn.hero-slider-cta-btn {
+            background-color: $wk-offers;
+            border-color: $wk-offers;
+        }
+    }
+
+    .hero-slider-menu {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+
+    @media (min-width: 576px) {
+        .hero-slider-menu-item {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}

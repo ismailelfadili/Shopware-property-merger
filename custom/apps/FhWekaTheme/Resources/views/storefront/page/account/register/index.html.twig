@@ -1,0 +1,64 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_head %}
+    {% sw_include '@Storefront/storefront/page/account/register/meta.html.twig' %}
+{% endblock %}
+
+{% block base_content %}
+    {% block page_account_register %}
+        <div class="account-register">
+            <h1 class="mb-2">{{ "account.registrationTitle"|trans|sw_sanitize }}</h1>
+            {% block page_account_register_inner %}
+                <div class="row">
+                    {% block page_account_register_login_container %}
+                        <div class="col-lg-4">
+                            {% sw_include '@Storefront/storefront/component/account/login.html.twig' with {
+                                'cardTitle': "account.loginHeader"|trans|sw_sanitize
+                            } %}
+
+                            {% block page_account_register_advantages %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        {% block page_account_register_advantages_title %}
+                                            <h3 class="card-title">
+                                                <i class="bi bi-xxs bi-info-circle pe-2"></i>{{ "account.registerAdvantagesHeader"|trans|sw_sanitize }}
+                                            </h3>
+                                        {% endblock %}
+
+                                        {% block page_account_register_advantages_list %}
+                                            <ul>
+                                                {% block page_account_register_advantages_entry1 %}
+                                                    <li>{{ "account.registerAdvantage1"|trans|sw_sanitize }}</li>
+                                                {% endblock %}
+
+                                                {% block page_account_register_advantages_entry2 %}
+                                                    <li>{{ "account.registerAdvantage2"|trans|sw_sanitize }}</li>
+                                                {% endblock %}
+
+                                                {% block page_account_register_advantages_entry3 %}
+                                                    <li>{{ "account.registerAdvantage3"|trans|sw_sanitize }}</li>
+                                                {% endblock %}
+
+                                                {% block page_account_register_advantages_entry4 %}
+                                                    <li>{{ "account.registerAdvantage4"|trans|sw_sanitize }}</li>
+                                                {% endblock %}
+                                            </ul>
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+
+                    {% block page_account_register_container %}
+                        <div class="col-lg-8">
+                            {% sw_include '@Storefront/storefront/component/account/register.html.twig' with {
+                                'cardTitle': "account.registerPersonalHeader"|trans|sw_sanitize
+                            } %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

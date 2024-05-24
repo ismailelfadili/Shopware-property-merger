@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/active-item-link.html.twig' %}
+
+{% block layout_navigation_offcanvas_navigation_category_headline %}
+        {% block layout_navigation_offcanvas_navigation_category_headline_text %}
+            <div class="navigation-offcanvas-headline" itemprop="name">
+                {{ item.translated.name }}
+            </div>
+        {% endblock %}
+{% endblock %}

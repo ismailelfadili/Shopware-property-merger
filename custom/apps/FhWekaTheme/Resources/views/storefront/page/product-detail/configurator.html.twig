@@ -1,0 +1,282 @@
+{# Careful: This template contains the main configuration functionality for WEKA and is merging product options #}
+
+{% block page_product_detail_configurator %}
+
+    {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+        <div class="product-detail-configurator">
+
+            {# Check if the product has variants #}
+            {# properties.html.twig is no longer required! #}
+            {% if page.product.parentId %}
+                {% set config = {
+                    url: url('frontend.detail.switch', { productId: page.product.parentId })
+                } %}
+            {% else %}
+                {% set config = {
+                    url: url('frontend.detail.switch', { productId: page.product.id })
+                } %}
+            {% endif %}
+
+
+            {% block page_product_detail_configurator_form %}
+                <form data-variant-switch="true" data-variant-switch-options="{{ config|json_encode }}">
+
+                    {% block page_product_detail_configurator_groups %}
+                        <div class="row">
+                            {#
+                            TWIG merge functionality for combining configurator properties with product properties
+                            properties.html.twig is no longer required!
+                            #}
+                            {% set mixedProps = [] %}
+                            {% set sortedProps = page.product.sortedProperties %}
+                            {% set configProps = page.configuratorSettings %}
+                            {% set filteredProps = [] %}
+
+                            {# Properties and Config are set #}
+                            {% if page.product.sortedProperties|length > 0 and page.configuratorSettings|length > 0 %}
+
+                                {# Merge function: Configurator first! #}
+                                {% set mixedProps = configProps|merge(sortedProps) %}
+
+                                {#
+                                Option UID-check is required, as we have duplicates:
+                                Product properties and the same properties in the configurator settings, which is fatal
+                                ToDo: Clean up duplicate entries in EVERY Product
+                                #}
+                                {% for group in mixedProps %}
+                                    {% if group.uniqueIdentifier not in filteredProps %}
+                                        {% set filteredProps = filteredProps|merge([group.uniqueIdentifier,group]) %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% set isCombinableCls = 'is-combinable' %}
+                                {% set isCombinableText = 'detail.productIsNotCombinable'|trans|raw %}
+
+                            {% else %}
+
+                                {# Only Properties is set #}
+                                {% if page.product.sortedProperties|length > 0 %}
+                                    {% set filteredProps = sortedProps %}
+                                    {% set isCombinableCls = 'is-static' %}
+                                    {% set isCombinableText = '' %}
+                                {% endif %}
+
+                                {# Only Config is set #}
+                                {% if page.configuratorSettings|length > 0 %}
+                                    {% set filteredProps = configProps %}
+                                    {% set isCombinableCls = 'is-combinable' %}
+                                    {% set isCombinableText = 'detail.productIsNotCombinable'|trans|raw %}
+                                {% endif %}
+
+                            {% endif %}
+
+                            <div class="col-12 col-lg-6 construction-group">
+                                <div class="card bg-white">
+                                    <div class="card-body">
+                                        {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+                                            <h3 class="mb-2 text-secondary">
+                                                <i class="bi bi-bounding-box pe-2"></i>{{ "detail.productDimensions"|trans|raw }}
+                                            </h3>
+                                        {% endif %}
+
+                                        {# Build merged Array #}
+                                        {% set constructionGroup = [] %}
+                                        {% for group in filteredProps %}
+                                            {% if   group.description == 'custom_base_size' or
+                                                group.description == 'custom_socket_measurement' or
+                                                group.description == 'custom_external_measurement' or
+                                                group.description == 'custom_main_door_type' or
+                                                group.description == 'custom_door' or
+                                                group.description == 'custom_window' or
+                                                group.description == 'custom_number_windows' or
+                                                group.description == 'custom_external_dimensions' or
+                                                group.description == 'custom_height' or
+                                                group.description == 'custom_roof_material' or
+                                                group.description == 'custom_min_roomheight' or
+                                                group.description == 'custom_wall_thickness' or
+                                                group.description == 'custom_floor' or
+                                                group.description == 'custom_equipment_room' or
+                                                group.description == 'custom_extension' or
+                                                group.description == 'custom_assembling_option' %}
+                                                {% set constructionGroup = constructionGroup|merge([group]) %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {# Check if Construction Group has a value #}
+                                        {% if constructionGroup is empty %}
+                                            <p>Keine Eigenschaften vorhanden.</p>
+                                        {% endif %}
+
+                                        {# Start iterate Construction Group from merged Array #}
+                                        {% for group in constructionGroup %}
+
+                                            {# Start default SW mechanic #}
+                                            {% block page_product_detail_configurator_group %}
+                                                <div class="product-detail-configurator-group">
+
+                                                    {# Check display type #}
+                                                    {% if group.displayType == 'select' %}
+                                                        {% sw_include '@Storefront/storefront/page/product-detail/configurator/select.html.twig' %}
+                                                    {% else %}
+                                                        {% block page_product_detail_configurator_group_title %}
+                                                            <div class="product-detail-configurator-group-title d-block">
+                                                                {% block page_product_detail_configurator_group_title_text %}
+                                                                    {{ group.translated.name }}
+                                                                {% endblock %}
+                                                            </div>
+                                                        {% endblock %}
+
+                                                        {% block page_product_detail_configurator_options %}
+                                                            <div class="product-detail-configurator-options">
+                                                                {% for option in group.options %}
+
+                                                                    {% set optionIdentifier = [group.id, option.id]|join('-') %}
+                                                                    {% set isActive = false %}
+                                                                    {% set isCombinableCls = 'is-combinable' %}
+
+                                                                    {% if group.options|length == 1 or option.id in page.product.optionIds %}
+                                                                        {% set isActive = true %}
+                                                                    {% endif %}
+
+                                                                    {% if option.configuratorSetting.media %}
+                                                                        {% set displayType = 'media' %}
+                                                                        {% set media = option.configuratorSetting.media %}
+                                                                    {% else %}
+                                                                        {% set displayType = group.displayType %}
+                                                                        {% if option.media %}
+                                                                            {% set media = option.media %}
+                                                                        {% else %}
+                                                                            {% set media = false %}
+                                                                        {% endif %}
+                                                                    {% endif %}
+
+                                                                    {% block page_product_detail_configurator_option %}
+                                                                        <div class="product-detail-configurator-option {% if displayType == 'color' and option.colorHexCode %}d-block w-100{% endif %}">
+
+                                                                            {# Check if length is just 1 value #}
+                                                                            {% if group.options|length == 1 %}
+                                                                                {% if displayType == 'color' and option.colorHexCode %}
+                                                                                    <label class="product-detail-configurator-option-input-label"
+                                                                                           title="{{ option.translated.name }}"
+                                                                                           for="{{ optionIdentifier }}">
+                                                                                        <span class="is-display-static-{{ displayType }}" style="background-color: {{ option.colorHexCode }}" title="{{ option.translated.name }}"></span>
+                                                                                        <span class="product-detail-color-title">{{ option.translated.name }}</span>
+                                                                                    </label>
+                                                                                {% else %}
+                                                                                    <p class="m-0">{{ option.translated.name }}</p>
+                                                                                {% endif %}
+                                                                            {% else %}
+
+                                                                                {% block page_product_detail_configurator_option_radio %}
+                                                                                    <input type="radio"
+                                                                                           name="{{ group.id }}"
+                                                                                           value="{{ option.id }}"
+                                                                                           class="product-detail-configurator-option-input{% if isCombinableCls %} {{ isCombinableCls }}{% endif %}"
+                                                                                           title="{{ optionIdentifier }}"
+                                                                                           id="{{ optionIdentifier }}"
+                                                                                           {% if isActive %}checked="checked"{% endif %}>
+
+                                                                                    {% block page_product_detail_configurator_option_radio_label %}
+                                                                                        <label class="product-detail-configurator-option-input-label{% if isCombinableCls %} {{ isCombinableCls }}{% endif %}"
+                                                                                               title="{{ option.translated.name }}"
+                                                                                               for="{{ optionIdentifier }}">
+
+                                                                                            {% if displayType == 'color' and option.colorHexCode %}
+                                                                                                <span class="is-display-{{ displayType }}" style="background-color: {{ option.colorHexCode }}" title="{{ option.translated.name }}"></span>
+                                                                                                <span class="product-detail-color-title">{{ option.translated.name }}</span>
+                                                                                            {% endif %}
+
+                                                                                            {% if displayType == 'media' and media %}
+                                                                                                {% block page_product_detail_configurator_option_radio_label_media %}
+                                                                                                    {% sw_thumbnails 'configurator-option-img-thumbnails' with {
+                                                                                                        media: media,
+                                                                                                        sizes: {
+                                                                                                            'default': '52px'
+                                                                                                        },
+                                                                                                        attributes: {
+                                                                                                            'class': 'product-detail-configurator-option-image',
+                                                                                                            'alt': option.translated.name,
+                                                                                                            'title': option.translated.name
+                                                                                                        }
+                                                                                                    } %}
+                                                                                                {% endblock %}
+
+                                                                                            {% elseif   displayType == 'text' or
+                                                                                                displayType == 'color' and not option.colorHexCode or
+                                                                                                displayType == 'media' and not media %}
+                                                                                                {% block page_product_detail_configurator_option_radio_label_text %}
+                                                                                                    <span class="is-display-{{ displayType }}">{{ option.translated.name }}</span>
+                                                                                                {% endblock %}
+                                                                                            {% endif %}
+                                                                                        </label>
+                                                                                    {% endblock %}
+                                                                                {% endblock %}
+
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    {% endblock %}
+                                                                {% endfor %}
+
+                                                            </div>
+                                                        {% endblock %}
+                                                    {% endif %}
+                                                </div>
+                                            {% endblock %}
+                                            {# End default SW mechanic #}
+                                        {% endfor %}
+                                        {# End iterate Construction Group from merged Array #}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 design-group">
+                                <div class="card bg-white">
+                                    <div class="card-body">
+                                        {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+                                            <h3 class="mb-2 text-secondary">
+                                                <i class="bi bi-palette2 pe-2"></i>{{ "detail.productLook"|trans|raw }}
+                                            </h3>
+                                        {% endif %}
+
+                                        {# Build merged Array #}
+                                        {% set designGroup  = [] %}
+                                        {% for group in filteredProps %}
+                                            {% if   group.description == 'custom_color' or
+                                                group.description == 'custom_oven_control' or
+                                                group.description == 'custom_voltage_supply' or
+                                                group.description == 'custom_power' or
+                                                group.description == 'custom_oven_type' or
+                                                group.description == 'custom_heater_type' or
+                                                group.description == 'custom_sauna_stones' or
+                                                group.description == 'custom_canopy' or
+                                                group.description == 'custom_lounger' or
+                                                group.description == 'custom_equipment_depthoflounger' or
+                                                group.description == 'custom_cross_lounger' or
+                                                group.description == 'custom_equipment_depthofcrosslounger' or
+                                                group.description == 'custom_shingles'  or
+                                                group.description == 'custom_aroma' %}
+                                                {% set designGroup = designGroup|merge([group]) %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {# Check if Construction Group has a value #}
+                                        {% if designGroup is empty %}
+                                            <p>Keine Eigenschaften vorhanden.</p>
+                                        {% endif %}
+
+                                        {# Start iterate Construction Group from merged Array #}
+                                        {% for group in designGroup %}
+                                            {{ block('page_product_detail_configurator_group') }}
+                                        {% endfor %}
+                                        {# End iterate Construction Group from merged Array #}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </form>
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

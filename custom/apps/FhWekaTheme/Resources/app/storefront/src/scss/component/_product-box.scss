@@ -1,0 +1,197 @@
+/*
+Product box
+==============================================
+Styling for productbox component.
+*/
+
+.cms-element-product-listing {
+    .cms-listing-col {
+        margin-bottom : 0;
+    }
+}
+
+.product-box {
+    height     : 100%;
+    min-height : 450px;
+    transition : $animation;
+    border     : 1px solid $gray-300 !important;
+
+    &:hover {
+        box-shadow : 0 15px 10px -15px rgba(0, 0, 0, 0.35);
+        transform  : scale(1.039);
+        z-index    : 100;
+    }
+
+    .card-body {
+        padding : 1rem;
+    }
+
+    .product-image-wrapper {
+        display          : flex;
+        height           : auto !important;
+        min-height       : auto !important;
+        margin           : 0;
+        background-color : $dark;
+
+        /* important SW6 hack */
+        .is-standard, .is-minimal {
+            object-fit  : cover;
+            font-family : initial;
+        }
+
+        .product-image {
+            display    : inline-block;
+            max-height : none;
+
+            &.is-standard, &.is-minimal {
+                object-fit  : cover;
+                font-family : initial;
+                width       : 100%;
+                height      : 100%;
+            }
+        }
+
+        .product-image-placeholder {
+            margin : auto;
+        }
+    }
+
+    .product-delivery-information {
+        p {
+            font-size : $font-size-small;
+        }
+    }
+
+    .progress-sm {
+        height : .5rem;
+    }
+
+    .product-name {
+        font-family : $font-family-headline;
+        font-size   : $h5-font-size;
+        font-weight : $headings-font-weight;
+        line-height : $line-height-base;
+        height      : 60px;
+        color       : $primary;
+
+        &:hover {
+            color : $link-hover-color;
+        }
+    }
+
+    .product-description {
+        height             : 120px;
+        margin-top         : 0;
+        font-size          : $font-size-base;
+        line-height        : $line-height-base;
+        overflow           : hidden;
+        text-overflow      : ellipsis;
+        display            : -webkit-box;
+        -webkit-line-clamp : none;
+        -webkit-box-orient : vertical;
+    }
+
+    .product-price-unit {
+        height : auto;
+    }
+}
+
+.product-link {
+    &:after {
+        position         : absolute;
+        top              : 0;
+        right            : 0;
+        bottom           : 0;
+        left             : 0;
+        z-index          : 1;
+        pointer-events   : auto;
+        content          : "";
+        background-color : rgba(0, 0, 0, 0);
+    }
+}
+
+.product-image-placeholder {
+    padding : 1.5rem;
+}
+
+.product-image-link {
+    width           : 100%;
+    height          : 100%;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+
+    &.is-cover {
+        align-items : flex-start;
+    }
+}
+
+.badge {
+    color : $white !important;
+}
+
+.product-badges {
+    position : absolute;
+    display  : table;
+    top      : initial;
+    left     : initial;
+    right    : 0;
+    z-index  : 10;
+
+    .badge-container {
+        margin-bottom : 5px;
+    }
+
+    .badge {
+        line-height    : 1.5rem;
+        border-radius  : .5rem 0 .5rem 0;
+        min-width      : 3rem;
+        height         : 2.5rem;
+        display        : block;
+        text-align     : center;
+        padding        : .5rem;
+        margin-right   : -.5rem;
+        margin-top     : .5rem;
+        text-transform : uppercase;
+        font-weight    : $font-weight-bold;
+        font-size      : $font-size-base;
+    }
+
+    .badge-discount {
+        font-size : 1.5rem;
+    }
+}
+
+.product-detail-badges {
+    .product-badges {
+        right : 0;
+    }
+}
+
+.badge-discount {
+    background-color : $wk-offers;
+}
+
+.badge-topseller {
+    background-color : $sw-color-info;
+}
+
+.badge-new {
+    background-color : $wk-offers;
+}
+
+.badge-savings-set {
+    background-color : $sw-color-success;
+}
+
+.badge-price-hit {
+    background-color : $wk-price-hit;
+}
+
+.list-price-badge {
+    background-color : $sw-color-info;
+}
+
+.product-wishlist-btn-remove {
+    left : 25px;
+}

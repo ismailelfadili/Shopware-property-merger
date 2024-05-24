@@ -1,0 +1,74 @@
+{% sw_extends '@Storefront/storefront/page/account/sidebar.html.twig' %}
+
+{% block page_account_sidebar_inner %}
+    <div class="{% if not headerWidget %}account-aside{% else %}header-account-menu{% endif %}{% if not headerWidget %} mb-5{% endif %}">
+        <div class="account-menu-inner">
+            {% block page_account_sidebar_header %}
+                {% if not headerWidget %}
+                    <div class="account-salutation mt-2 mb-4">
+                        <div class="lead">
+                            {# Set DE Hour #}
+                            {% set currentHour = ('now'|date('H')) %}
+
+                            <div class="fw-bold pb-2">
+                                {% if currentHour <= 3 %}
+                                    {{ "account.greetingsEvening"|trans|sw_sanitize }}
+                                {% elseif currentHour <= 11 %}
+                                    {{ "account.greetingsMorning"|trans|sw_sanitize }}
+                                {% elseif currentHour <= 17 %}
+                                    {{ "account.greetingsDay"|trans|sw_sanitize }}
+                                {% endif %}
+
+                                {% if context.customer.title %}
+                                    {{ context.customer.salutation.displayName }} {{ context.customer.title }}
+                                {% else %}
+                                    {{ context.customer.salutation.displayName }}
+                                {% endif %}
+                                {{ context.customer.lastName }}!
+                            </div>
+
+                            {{ "account.greetingsPhrase"|trans|sw_sanitize }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block page_account_sidebar_menu %}
+                {% if not context.customer.guest %}
+                    <div class="list-group list-group-flush account-aside-list-group">
+                        {% block page_account_sidebar_menu_inner %}
+                            {{ parent() }}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block page_account_sidebar_footer %}
+                {% if context.customer %}
+                    {% if not context.customer.guest %}
+                        <div class="account-aside-footer pt-3">
+                            {% block page_account_sidebar_logout %}
+                                <a href="{{ path('frontend.account.logout.page') }}"
+                                   class="btn btn-block account-aside-btn">
+                                    {% sw_icon 'log-out' %}
+                                    {{ "account.logout"|trans|sw_sanitize }}
+                                </a>
+                            {% endblock %}
+                        </div>
+                    {% else %}
+                        <div class="account-aside-footer account-guest-abort pt-5">
+                            {% block page_account_sidebar_guest_abort %}
+                                <a href="{{ path('frontend.account.logout.page') }}"
+                                   data-account-guest-abort-button="true"
+                                   class="btn btn-block account-aside-btn">
+                                    {% sw_icon 'log-out' %}
+                                    {{ "account.guestAbort"|trans|sw_sanitize }}
+                                </a>
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

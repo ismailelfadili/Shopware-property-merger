@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/storefront/page/checkout/_page.html.twig' %}
+
+{% block page_checkout_summary_header %}
+    <img src="{{ theme_config('sw-logo-desktop') |sw_encode_url }}"
+         alt="{{ "header.logoLink"|trans|striptags }}"
+         width="50" height="50" class="wk-copyright-logo pe-2 pb-1" />
+    <span class="h4 checkout-aside-summary-header">
+        {{ "checkout.summaryHeader"|trans|sw_sanitize }}
+    </span>
+{% endblock %}
+
+{% block base_flashbags_checkout %}
+    {% for type, messages in app.flashes %}
+        {% if messages is not empty %}
+            <div class="flashbags pt-0 pb-3">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with { type: type, list: messages } %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

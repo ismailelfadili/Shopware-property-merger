@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/page/account/payment/index.html.twig' %}
+
+{# Icons set, modifed buttons #}
+
+{% block page_account_payment_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-cash-stack pe-2"></i>{{ "account.overviewPaymentHeader"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}
+
+ {% block page_account_payment_actions %}
+     <button class="btn btn-primary"
+             type="submit"
+             title="{{ "account.paymentChangeSubmit"|trans|striptags }}">
+         {{ "account.paymentChangeSubmit"|trans|sw_sanitize }}
+     </button>
+ {% endblock %}
+

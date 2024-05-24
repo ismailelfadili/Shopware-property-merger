@@ -1,0 +1,40 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{# Rearranged, fixed SW6 layout, modifed buttons #}
+
+{% block layout_header %}
+    <header class="header-minimal wk-header">
+        <div class="header-main">
+            {% block layout_header_minimal_inner %}
+                <div class="container h-100">
+                    {% block layout_header_minimal_row %}
+                        <div class="row h-100">
+                            {% block layout_header_minimal_logo %}
+                                <div class="col-3 col-md-2 h-100">
+                                    {% sw_include 'storefront/layout/header/logo.html.twig' %}
+                                </div>
+                            {% endblock %}
+
+                            {% block layout_header_minimal_contact %}
+                                <div class="col-md-5 header-minimal-contact text-light mt-3">
+                                    <span class="lead">Hilfe benötigt? <a href="tel:{{ 'footer.servicePhoneOffer'|trans }}">{{ 'footer.servicePhoneOffer'|trans }}</a></span><br/>
+                                    <span class="small">{{ 'service.businessDaysWd'|trans }} {{ 'service.businessHoursWd'|trans }}, {{ 'service.businessDaysWe'|trans }} {{ 'service.businessHoursWe'|trans }}</span>
+                                </div>
+                            {% endblock %}
+
+                            {% block layout_header_minimal_switch %}
+                                <div class="col-9 col-md-5 header-minimal-home text-right">
+                                    <a class="btn btn-light"
+                                       href="/angebote"
+                                       title="{{ "checkout.continueShopping"|trans }}">
+                                        <i class="bi bi-arrow-left-circle"></i>&nbsp;&nbsp;{{ "checkout.continueShopping"|trans }}
+                                    </a>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </header>
+{% endblock %}

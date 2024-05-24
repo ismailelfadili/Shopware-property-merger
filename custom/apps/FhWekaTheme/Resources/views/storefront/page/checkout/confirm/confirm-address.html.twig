@@ -1,0 +1,35 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-address.html.twig' %}
+
+{# Icons set, modifed buttons #}
+
+{% block page_checkout_confirm_address_shipping_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "checkout.shippingAddressHeader"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}
+
+{% block page_checkout_confirm_address_billing_title %}
+    <div class="card-title">
+        <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "checkout.billingAddressHeader"|trans|sw_sanitize }}
+    </div>
+{% endblock %}
+
+{% block  page_checkout_confirm_address_billing_actions_link %}
+    <a href="{{ path('frontend.account.address.edit.page', {'addressId': billingAddress.id}) }}"
+       title="{{ "account.overviewChangeBilling"|trans|striptags }}"
+       class="btn btn-outline-secondary"
+       data-address-editor="true"
+       data-address-editor-options='{{ addressEditorOptions|json_encode }}'>
+        {{ "account.overviewChangeBilling"|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block  page_checkout_confirm_address_shipping_actions_link %}
+    <a href="{{ path('frontend.account.address.edit.page', {'addressId': shippingAddress.id}) }}"
+       title="{{ "account.overviewChangeShipping"|trans|striptags }}"
+       class="btn btn-outline-secondary"
+       data-address-editor="true"
+       data-address-editor-options='{{ addressEditorOptions|json_encode }}'>
+        {{ "account.overviewChangeShipping"|trans|sw_sanitize }}
+    </a>
+{% endblock %}

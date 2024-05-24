@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_header %}
+    <div class="filter-panel-offcanvas-header">
+        <div class="filter-panel-offcanvas-only filter-panel-offcanvas-title">{{ "listing.filterTitleText"|trans }}</div>
+
+        <div class="btn btn-outline-primary filter-panel-offcanvas-only filter-panel-offcanvas-close js-offcanvas-close">
+            {{ "listing.filterPanelClose"|trans }}
+        </div>
+    </div>
+{% endblock %}

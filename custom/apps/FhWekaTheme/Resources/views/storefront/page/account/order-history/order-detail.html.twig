@@ -1,0 +1,58 @@
+{% sw_extends '@Storefront/storefront/page/account/order-history/order-detail.html.twig' %}
+
+{% block page_account_order_item_detail_table_header %}
+    <div class="order-detail-content-header">
+        <div class="row order-detail-content-row">
+            {% block page_account_order_item_detail_table_header_name %}
+                <div class="col-6 order-detail-content-header-cell order-header-name ps-0">
+                    {{ "account.orderItemColumnName"|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+
+            {% block page_account_order_item_detail_table_header_quantity %}
+                <div class="col-2 order-detail-content-header-cell order-header-quantity">
+                    {{ "account.orderItemColumnQuantity"|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+
+            {% block page_account_order_item_detail_table_header_price %}
+                <div class="col-2 order-detail-content-header-cell order-header-price">
+                    {{ "account.orderItemColumnPrice"|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+
+            {% block page_account_order_item_detail_table_header_total %}
+                <div class="col-2 order-detail-content-header-cell order-header-total pe-0">
+                    {{ "account.orderItemColumnTotal"|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_account_order_item_detail_table_body_customer_comment %}
+    <div class="order-detail-content-body border my-3 p-3">
+        <div class="row">
+            {% block page_account_order_customer_comment_header %}
+                <div class="col-12">
+                    <h3 class="card-title">
+                        <i class="bi bi-xxs bi-chat-right-text pe-2"></i>{{ "checkout.customerCommentHeader"|trans|sw_sanitize }}
+                    </h3>
+                </div>
+            {% endblock %}
+
+            {% block page_account_order_customer_comment_content %}
+                <div class="col-12">{{ order.customerComment|sw_sanitize|nl2br }}</div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_account_order_item_detail_table_footnote %}
+    <div class="order-item-detail-footnotes mt-3 small">
+        {{ "footer.%s"|format(order.taxStatus == "gross" ? "includeVatText" : "excludeVatText")|trans({
+            '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+        })|raw }}
+    </div>
+{% endblock %}
+

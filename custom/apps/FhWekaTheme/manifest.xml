@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/app-system/0.1.0/src/Core/Content/App/Manifest/Schema/manifest-1.0.xsd">
+    <meta>
+        <name>FhWekaTheme</name>
+        <label>WEKA Theme</label>
+        <label lang="de-DE">WEKA Theme</label>
+        <description>The FH WEKA Theme has a woody and light design for perfect product placement. It offers additional functions and can be extended by apps.</description>
+        <description lang="de-DE">Das FH WEKA Theme hat ein cleanes und leichtes Design für eine perfekte Produktplatzierung. Es bietet zusätzliche Funktionen und kann durch Apps erweitert werden.</description>
+        <author>FULLHAUS GmbH</author>
+        <copyright>(c) by FULLHAUS GmbH</copyright>
+        <version>5.1.83</version>
+        <icon>icon.png</icon>
+        <license>Proprietary</license>
+    </meta>
+</manifest>

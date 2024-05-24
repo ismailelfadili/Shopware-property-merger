@@ -1,0 +1,56 @@
+{% sw_extends '@Storefront/storefront/component/delivery-information.html.twig' %}
+
+{% block component_delivery_information %}
+
+    {# Check between list and product detail #}
+    {% if page.product %}
+        {% set product = page.product %}
+    {% else %}
+        {% set product = product %}
+    {% endif %}
+
+    <div class="product-delivery-information">
+        {% if product.shippingFree %}
+            {% block component_delivery_information_shipping_free %}
+                {{ parent() }}
+            {% endblock %}
+        {% endif %}
+
+        {% if not product.active %}
+            {% block component_delivery_information_not_available %}
+                {{ parent() }}
+            {% endblock %}
+        {% elseif product.releaseDate and product.releaseDate|date('U') > "now"|date('U') %}
+            {% block component_delivery_information_pre_order %}
+                {{ parent() }}
+            {% endblock %}
+
+        {% elseif product.availableStock <= 0 %}
+
+            <link itemprop="availability" href="http://schema.org/LimitedAvailability"/>
+            <p class="delivery-information">
+                <span class="delivery-status-indicator bg-danger"></span>
+                {{ "detail.soldOut"|trans }}
+            </p>
+
+        {% elseif product.availableStock > 0 and product.availableStock <= 5 %}
+
+            <link itemprop="availability" href="http://schema.org/InStock"/>
+            <p class="delivery-information">
+                <span class="delivery-status-indicator bg-warning"></span>
+
+                {{ "detail.deliveryFewAvailable"|trans }}
+            </p>
+
+        {% elseif product.availableStock > 5 %}
+
+            <link itemprop="availability" href="http://schema.org/InStock"/>
+            <p class="delivery-information">
+                <span class="delivery-status-indicator bg-success"></span>
+
+                {{ "detail.deliveryAvailable"|trans }}
+            </p>
+
+        {% endif %}
+    </div>
+{% endblock %}

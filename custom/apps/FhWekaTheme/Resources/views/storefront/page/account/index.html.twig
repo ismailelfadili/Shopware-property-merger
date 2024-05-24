@@ -1,0 +1,46 @@
+{% sw_extends '@Storefront/storefront/page/account/index.html.twig' %}
+
+
+{% block page_account_overview_profile_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-person pe-2"></i>{{ "account.overviewProfileHeader"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}
+
+{% block page_account_overview_payment_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-cash-stack pe-2"></i>{{ "account.overviewPaymentHeader"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}
+
+{% block page_account_overview_newsletter_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-newspaper pe-2"></i>{{ "account.newsletterTitle"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}
+
+ {% block page_account_overview_newest_order_title %}
+     <h3 class="card-title">
+         <i class="bi bi-xxs bi-box-seam pe-2"></i>{{ "account.overviewNewestOrderHeader"|trans|sw_sanitize }}
+     </h3>
+ {% endblock %}
+
+{% block page_account_overview_profile_actions %}
+    <div class="card-actions">
+        <a href="{{ path('frontend.account.profile.page') }}"
+           title="{{ "account.overviewChangeProfile"|trans|striptags }}"
+           class="btn btn-outline-secondary">
+            {{ "account.overviewChangeProfile"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block page_account_overview_payment_actions %}
+    <div class="card-actions">
+        <a href="{{ path('frontend.account.payment.page') }}"
+           title="{{ "account.overviewChangePayment"|trans|striptags }}"
+           class="btn btn-outline-secondary">
+            {{ "account.overviewChangePayment"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}

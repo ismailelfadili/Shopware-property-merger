@@ -1,0 +1,100 @@
+{% block page_product_detail_properties_inner %}
+    <div class="product-detail-configurator-columns">
+        {% block page_product_detail_properties_container %}
+            <div class="row">
+
+
+                {% block page_product_detail_properties_table %}
+
+                    <div class="col col-12 col-xl-6 mb-3">
+
+                        <table class="sw-text-editor-table w-100 mb-4">
+                            <tbody>
+                            {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
+                            {% for group in page.product.sortedProperties|sort((a, b) => a.description <=> b.description)
+                                if group.description == '1_custom_basic_measurement'
+                                or group.description == '2_custom_size'
+                                or group.description == 'custom_external_dimensions'
+                                or group.description == 'custom_wall_thickness'
+                                or group.description == 'custom_floor'
+                                or group.description == 'custom_height'
+                                or group.description == 'custom_extension'
+                                or group.description == 'custom_oven_type'
+                                or group.description == 'custom_oven_control'
+                                or group.description == 'custom_power' %}
+
+                                {% block page_product_detail_properties_table_row %}
+                                    {% set displayType = group.displayType %}
+
+                                    <tr class="product-detail-configurator-group">
+
+                                        {% block page_product_detail_properties_item_label %}
+                                            {% if displayType == "color" %}
+                                            {% else %}
+                                                <th class="product-detail-configurator-option-custom-label">{{ group.translated.name|e }} </th>
+                                            {% endif %}
+                                        {% endblock %}
+
+                                        {% block page_product_detail_properties_item_value %}
+
+                                            {% apply spaceless %}
+                                                {% for option in group.options %}
+                                                    {% set i = ( i | default(0) ) + 1 %}
+
+                                                    {% if displayType == "color" %}
+                                                        <th colspan="2">
+                                                            <div class="product-detail-configurator-color-options">
+                                                                <div class="product-detail-configurator-option">
+                                                                    <label title="{{ option.translated.name|e }}" class="product-detail-configurator-option-custom-label is-combinable is-display-color pb-4">
+                                                                        <span class="text-center" style="background-color:{% if option.colorHexCode %}{{ option.colorHexCode }}{% else %}transparent{% endif %}">
+                                                                            <i class="bi bi-check bi-md"></i>
+                                                                        </span><p class="d-inline-block px-2 m-0">{{ option.translated.name|e }}</p>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    {% else %}
+                                                        <td class="product-detail-configurator-option-custom-value">
+                                                            {% if i > 1 %}, {% endif %}{{ option.translated.name|e }}
+                                                        </td>
+                                                    {% endif %}
+
+                                                {% endfor %}
+                                            {% endapply %}
+
+                                        {% endblock %}
+                                    </tr>
+
+                                {% endblock %}
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col col-12 col-xl-6 mb-3">
+
+                        <table class="sw-text-editor-table w-100 mb-4">
+                            <tbody>
+                            {% for group in page.product.sortedProperties|sort((a, b) => a.description <=> b.description)
+                                if group.description == '1_custom_color'
+                                or group.description == 'custom_window'
+                                or group.description == 'custom_door'
+                                or group.description == 'custom_canopy'
+                                or group.description == 'custom_lounger'
+                                or group.description == 'custom_cross_lounger' %}
+
+                                {{ block('page_product_detail_properties_table_row') }}
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                {% endblock %}
+
+
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

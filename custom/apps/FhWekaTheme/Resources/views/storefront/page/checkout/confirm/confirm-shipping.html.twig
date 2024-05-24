@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-shipping.html.twig' %}
+
+{# Set icons #}
+
+{% block page_checkout_confirm_shipping_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-truck pe-2"></i>{{ "checkout.confirmShippingMethod"|trans|sw_sanitize }}
+    </h3>
+{% endblock %}

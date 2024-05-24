@@ -1,0 +1,269 @@
+/*
+Main navigation
+==============================================
+Custom styling for main navigation on larger screens.
+
+Based on bootstrap nav:
+https://getbootstrap.com/docs/4.3/components/navs/
+*/
+
+.main-navigation-menu {
+    /* font-family : $font-family-headline; */
+    font-weight : $font-weight-normal;
+    font-size   : 1.1rem; /* fixed */
+
+    * {
+        line-height : 1;
+    }
+}
+
+.nav-link {
+    &.is-back-link {
+        border-top : 1px solid $sw-border-color;
+    }
+}
+
+.navigation-offcanvas-list-item {
+    border-top : 1px solid $sw-border-color;
+
+    &:last-child {
+        border-bottom : 1px solid $sw-border-color;
+    }
+}
+
+.navigation-offcanvas-link, .main-navigation-link {
+    .item-name {
+        position : relative;
+    }
+
+    .wk-offers-nav-badge {
+        position         : absolute;
+        right            : -40px;
+        top              : -3px;
+        border-radius    : 100%;
+        width            : 30px;
+        height           : 30px;
+        background-color : #ce0019;
+        line-height      : 1;
+        text-align       : center;
+        display          : flex;
+        align-items      : center;
+        justify-content  : center;
+        font-weight      : $font-weight-normal;
+        border           : 1px dotted $white;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .main-navigation-menu {
+
+        .main-navigation-link {
+            padding      : 0;
+            margin-right : 1.25rem;
+            transition   : $animation;
+            display      : flex;
+            align-items  : center;
+
+            &:first-child {
+                padding-left : 0;
+            }
+
+            .main-navigation-link-text {
+                border  : 0;
+                padding : 0;
+            }
+
+            position     : relative;
+            color        : lighten($wood, 35%);
+
+            &::after {
+                position          : absolute;
+                bottom            : 10px;
+                left              : 0;
+                width             : 100%;
+                height            : 0;
+                background        : $primary;
+                content           : "";
+                transition        : $animation;
+                -webkit-transform : translateY(10px);
+                -moz-transform    : translateY(10px);
+                transform         : translateY(10px);
+            }
+
+            &:hover::after,
+            &:focus::after,
+            &.is-open::after {
+                bottom            : 0;
+                height            : 5px;
+                -webkit-transform : translateY(0px);
+                -moz-transform    : translateY(0px);
+                transform         : translateY(0px);
+            }
+
+            &:hover,
+            &.is-open {
+                color : $white;
+            }
+
+            &.active {
+                color       : $white;
+                font-weight : $font-weight-normal;
+
+                &::after {
+                    bottom            : 0;
+                    height            : 15px;
+                    -webkit-transform : translateY(0px);
+                    -moz-transform    : translateY(0px);
+                    transform         : translateY(0px);
+                }
+            }
+        }
+    }
+}
+
+/* Header action buttons */
+.header-actions-col {
+    position : relative;
+
+    .search-toggle-btn, .header-wishlist-btn, .account-menu-btn, .service-menu-btn, .header-cart-btn {
+        position : relative;
+        border   : 0;
+
+        .icon, .header-cart-total {
+            font-size      : $font-size-base;
+            vertical-align : middle;
+            color          : lighten($wood, 35%);
+            transition     : $animation;
+        }
+
+        &:hover, &:focus {
+            outline    : none !important;
+            box-shadow : none !important;
+
+            .icon, .header-cart-total {
+                color : $white;
+            }
+        }
+
+        &::after {
+            position          : absolute;
+            bottom            : 10px;
+            left              : 0;
+            width             : 100%;
+            height            : 0;
+            background        : $primary;
+            content           : "";
+            transition        : $animation;
+            -webkit-transform : translateY(10px);
+            -moz-transform    : translateY(10px);
+            transform         : translateY(10px);
+        }
+
+        &:hover::after,
+        &:focus::after,
+        &.is-open::after {
+            bottom            : 0;
+            height            : 5px;
+            -webkit-transform : translateY(0px);
+            -moz-transform    : translateY(0px);
+            transform         : translateY(0px);
+        }
+
+        &.active {
+            color       : $white;
+            font-weight : $font-weight-normal;
+
+            &::after {
+                bottom            : 0;
+                height            : 5px;
+                -webkit-transform : translateY(0px);
+                -moz-transform    : translateY(0px);
+                transform         : translateY(0px);
+            }
+        }
+    }
+}
+
+.card-title.cart-table-header {
+    border-bottom : 1px solid $dark;
+}
+
+.cart-main-header {
+    margin-bottom : 2rem;
+}
+
+/* Hamburger menu */
+.header-main {
+
+    .offcanvas-toggler {
+        border           : 0;
+        background-color : transparent;
+        padding          : 0 .65rem;
+
+        span {
+            display    : block;
+            width      : 25px;
+            height     : 2px;
+            margin     : 7px auto;
+            background : lighten($wood, 35%);
+            transition : all .6s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+        }
+
+        &:hover, &:focus {
+            outline    : none !important;
+            box-shadow : none !important;
+
+            span {
+                background : $white;
+            }
+        }
+    }
+
+    /* rotate first span */
+    .offcanvas-toggler:focus span:first-of-type {
+        transform : rotate(45deg) translate(5px, 5px);
+    }
+
+    /* hide second span */
+    .offcanvas-toggler:focus span:nth-of-type(2) {
+        opacity : 0;
+    }
+
+    /* rotate third span */
+    .offcanvas-toggler:focus span:last-of-type {
+        transform : rotate(-45deg) translate(8px, -8px);
+    }
+
+    .dropdown-menu {
+        margin     : 0;
+        border-top : 0;
+    }
+}
+
+.navigation-offcanvas {
+    .is-home-link {
+        background-color : $gray-200;
+    }
+
+    .nav-link {
+        color : $sw-text-color;
+    }
+
+    .is-back-link {
+        color            : $sw-text-color;
+        background-color : $light;
+    }
+
+    .is-current-category {
+        display : block;
+        color   : $sw-color-brand-primary;
+    }
+}
+
+.navigation-offcanvas-headline, .account-menu-header {
+    border      : 0;
+    color       : $headings-color;
+    font-weight : $headings-font-weight;
+    font-family : $headings-font-family;
+    font-size   : $h5-font-size;
+}

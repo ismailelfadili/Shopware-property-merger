@@ -1,0 +1,448 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_content %}
+    {% block page_product_detail %}
+
+        <div class="product-detail"
+             itemscope
+             itemtype="https://schema.org/Product">
+            {% block page_product_detail_inner %}
+                {% block page_product_detail_content %}
+                    <div id="print-configuration-cover"></div>
+
+                    <div class="product-detail-content">
+                        <div class="product-container">
+
+                            <div class="row">
+                                <div class="col-auto ms-auto">
+                                    {% set lastPage = page.product.seoCategory.id %}
+
+                                    <a class="btn pe-0" href="{% if lastPage %}{{ seoUrl('frontend.navigation.page', { navigationId: lastPage }) }}{% else %}javascript:history.back();{% endif %}" title="{{ "general.back_to_overview"|trans }}">
+                                        <i class="bi bi-sm bi-arrow-left-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row mt-n1">
+
+                                <div class="col-12">
+                                    <div class="product-header">
+
+                                        {% block page_product_detail_headline %}
+                                            <div class="product-detail-headline">
+                                                {% block page_product_detail_name_container %}
+                                                    <div class="product-detail-name-container">
+                                                        {% block page_product_detail_name %}
+                                                            <h1 class="product-detail-name pt-0" itemprop="name">
+                                                                {{ page.product.translated.name }}
+                                                            </h1>
+                                                        {% endblock %}
+                                                    </div>
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block page_product_detail_ordernumber_container %}
+                                            {% if page.product.productNumber %}
+                                                <div class="product-detail-ordernumber-container mb-0">
+                                                    {% block page_product_detail_ordernumber_label %}
+                                                        <span class="text-secondary">{{ "detail.ordernumberLabel"|trans }}</span>
+                                                    {% endblock %}
+
+                                                    {% block page_product_detail_ordernumber %}
+                                                        <meta itemprop="productID" content="{{ page.product.id }}" />
+                                                        <span class="product-detail-ordernumber" itemprop="sku">{{ page.product.productNumber }}</span>
+                                                    {% endblock %}
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+
+                                        {% block page_product_detail_wishlist %}
+                                            {% if config('core.cart.wishlistEnabled') %}
+                                                <div class="mb-3">
+                                                    {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                                                        showText: true,
+                                                        size: 'md',
+                                                        productId: page.product.id
+                                                    } %}
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                {# left column #}
+                                <div class="product-detail-left-col col col-12 col-md-6 col-xl-8">
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {% block page_product_detail_description_content_text %}
+                                                <div class="product-detail-description mb-3" itemprop="description">
+                                                    <p class="lead m-0">{{ page.product.translated.description|striptags }}</p>
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                                    </div>
+
+                                    <div class="product-detail-information mb-4">
+                                        {# Media image #}
+                                        {% set mediaItems = page.product.media.media %}
+
+                                        {% block page_product_detail_main %}
+                                            <div class="product-detail-main">
+
+                                                <div class="product-detail-badges">
+                                                    {% block component_product_box_badges %}
+                                                        {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
+                                                    {% endblock %}
+                                                </div>
+
+                                                {% block page_product_detail_media %}
+                                                    <div class="product-detail-media">
+                                                        {% if page.product.media %}
+
+                                                            {# Bugfix for double "1" in gallery cover setting #}
+                                                            {% set count = 0 %}
+                                                            {% set coverpos = 0 %}
+                                                            {% set isset = false %}
+
+                                                            {% for media in page.product.media %}
+                                                                {# Count items ordered by output be -> fe and set count #}
+                                                                {% set count = count + 1 %}
+
+                                                                {# by hitting mediaId in loop, take counted number #}
+                                                                {% if media.mediaId in page.product.cover.mediaId and isset == false %}
+                                                                    {% set coverpos = count %}
+                                                                    {% set isset = true %}
+                                                                {% endif %}
+                                                            {% endfor %}
+
+                                                            {# set output #}
+                                                            {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+                                                                'mediaItems': mediaItems,
+                                                                'zoom': false,
+                                                                'zoomModal': true,
+                                                                'displayMode': 'contain',
+                                                                'gutter': 4,
+                                                                'minHeight': '470px',
+                                                                'navigationArrows': 'inside',
+                                                                'navigationDots': false,
+                                                                'galleryPosition': 'left',
+                                                                'isProduct': true,
+                                                                'fallbackImageTitle': page.product.translated.name,
+                                                                'startIndexThumbnails': 1,
+                                                                'startIndexSlider': 1,
+                                                                'keepAspectRatioOnZoom': true
+                                                            } %}
+                                                        {% endif %}
+                                                    </div>
+                                                {% endblock %}
+                                            </div>
+
+                                            {% block page_product_detail_buy %}
+                                                {% sw_include '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+                                            {% endblock %}
+
+                                        {% endblock %}
+                                    </div>
+
+                                    {# New line left #}
+                                    <div class="product-detail-container">
+                                        {# If variants are available, show variant configurator #}
+                                        {% block page_product_detail_configurator_include %}
+                                            <div class="product-detail-configurator-container">
+                                                {% sw_include '@Storefront/storefront/page/product-detail/configurator.html.twig' %}
+                                            </div>
+                                        {% endblock %}
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {# Add buy button if in offer #}
+                                                {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+                                                    {% block page_product_delivery_informations %}
+                                                        <div class="product-detail-delivery-information">
+                                                            <div class="row">
+                                                                <div class="col-12 col-lg-6 ms-auto">
+                                                                    {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endblock %}
+
+                                                    {% block page_product_detail_buy_form %}
+                                                        {% if page.product.active %}
+                                                            <div class="product-detail-form-container pb-4">
+                                                                <div class="row">
+                                                                    <div class="col-12 col-lg-6 ms-auto">
+                                                                        {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endblock %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        {# Add some datasheets #}
+                                        <div class="product-detail-sheets pt-3 mb-4">
+                                            {% block page_product_detail_custom_sheets %}
+                                                <div class="row g-0">
+                                                    <div class="col col-auto">
+                                                        {% block custom_productDataSheet %}
+
+                                                            {# simplify access to id #}
+                                                            {% set datasheet_id = page.product.translated.customFields.custom_productinformation_datasheet %}
+                                                            {% if datasheet_id %}
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set datasheet_media = searchMedia([datasheet_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set dataSheet = datasheet_media.get(datasheet_id) %}
+
+                                                                <a href="{{ dataSheet.url }}"
+                                                                   title="{{ "detail.dataColumnDatasheet"|trans }}"
+                                                                   class="product-detail-link me-4"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> {{ "detail.dataColumnDatasheet"|trans }}
+                                                                </a>
+
+                                                            {% endif %}
+                                                        {% endblock %}
+                                                    </div>
+                                                    <div class="col col-auto">
+                                                        {% block custom_productAssemblingInstructions %}
+
+                                                            {# assembling instruction #1 simplify access to id #}
+                                                            {% set assemblinginstructions_id = page.product.translated.customFields.custom_productinformation_assemblinginstructions %}
+                                                            {% if assemblinginstructions_id %}
+
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set assemblinginstructions_media = searchMedia([assemblinginstructions_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set assemblingInstructions = assemblinginstructions_media.get(assemblinginstructions_id) %}
+
+                                                                <a href="{{ assemblingInstructions.url }}"
+                                                                   title="{{ "detail.dataColumnAssemblingInstructions"|trans }}"
+                                                                   class="product-detail-link me-4"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> {{ "detail.dataColumnAssemblingInstructions"|trans }}
+                                                                </a>
+                                                            {% endif %}
+
+                                                            {# assembling instruction #2 simplify access to id #}
+                                                            {% set assemblinginstructions2_id = page.product.translated.customFields.custom_productinformation_assemblinginstruction_two %}
+                                                            {% if assemblinginstructions2_id %}
+
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set assemblinginstructions2_media = searchMedia([assemblinginstructions2_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set assemblingInstructions2 = assemblinginstructions2_media.get(assemblinginstructions2_id) %}
+
+                                                                <a href="{{ assemblingInstructions2.url }}"
+                                                                   title="{{ "detail.dataColumnAssemblingInstructions"|trans }}"
+                                                                   class="product-detail-link me-4"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> {{ "detail.dataColumnAssemblingInstructions"|trans }} #2
+                                                                </a>
+                                                            {% endif %}
+
+                                                            {# assembling instruction #3 simplify access to id #}
+                                                            {% set assemblinginstructions3_id = page.product.translated.customFields.custom_productinformation_assemblinginstruction_three %}
+                                                            {% if assemblinginstructions3_id %}
+
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set assemblinginstructions3_media = searchMedia([assemblinginstructions3_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set assemblingInstructions3 = assemblinginstructions3_media.get(assemblinginstructions3_id) %}
+
+                                                                <a href="{{ assemblingInstructions3.url }}"
+                                                                   title="{{ "detail.dataColumnAssemblingInstructions"|trans }}"
+                                                                   class="product-detail-link me-4"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> {{ "detail.dataColumnAssemblingInstructions"|trans }} #3
+                                                                </a>
+                                                            {% endif %}
+
+                                                            {# assembling instruction #4 simplify access to id #}
+                                                            {% set assemblinginstructions4_id = page.product.translated.customFields.custom_productinformation_assemblinginstruction_four %}
+                                                            {% if assemblinginstructions4_id %}
+
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set assemblinginstructions4_media = searchMedia([assemblinginstructions4_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set assemblingInstructions4 = assemblinginstructions4_media.get(assemblinginstructions4_id) %}
+
+                                                                <a href="{{ assemblingInstructions4.url }}"
+                                                                   title="{{ "detail.dataColumnAssemblingInstructions"|trans }}"
+                                                                   class="product-detail-link me-4"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> {{ "detail.dataColumnAssemblingInstructions"|trans }} #4
+                                                                </a>
+                                                            {% endif %}
+                                                        {% endblock %}
+                                                    </div>
+                                                    <div class="col col-auto">
+                                                        {% block custom_productSecurityDatasheet %}
+
+                                                            {# simplify access to id #}
+                                                            {% set securitysheet_id = page.product.translated.customFields.custom_productinformation_securitydatasheet %}
+                                                            {% if securitysheet_id %}
+                                                                {# fetch media as batch - optimized for performance #}
+                                                                {% set securitysheet_media = searchMedia([securitysheet_id], context.context) %}
+                                                                {# extract single media object #}
+                                                                {% set securitysheet = securitysheet_media.get(securitysheet_id) %}
+
+                                                                <a href="{{ securitysheet.url }}"
+                                                                   title="{{ "detail.dataColumnSecuritySheet"|raw }}"
+                                                                   class="product-detail-link me-3"
+                                                                   target="_blank">
+                                                                    <i class="bi bi-file-earmark-pdf pe-1"></i> Sicherheitsdatenblatt mit Inhaltsstoffen{# { "detail.dataColumnSecuritySheet"|raw } #}
+                                                                </a>
+
+                                                            {% endif %}
+
+                                                        {% endblock %}
+                                                    </div>
+                                                    <div class="col col-auto">
+                                                        {% block custom_productPrintConfig %}
+                                                            <div class="d-none d-md-block">
+                                                                <a href="#"
+                                                                   title="{{ "detail.dataColumnPrintConfig"|trans }}"
+                                                                   class="product-detail-link me-3" id="print-configuration">
+                                                                    <i class="bi bi-printer pe-1"></i> {{ "detail.dataColumnPrintConfig"|trans }}
+                                                                </a>
+                                                            </div>
+                                                        {% endblock %}
+                                                    </div>
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {# Right column #}
+                                <div class="product-detail-right-col col col-12 col-md-6 col-xl-4">
+
+                                    <div class="custom-product-information">
+                                        {% block custom_productInformation %}
+
+                                            {% if page.product.translated.customFields.custom_productinformation_benefits|length > 0 %}
+                                                <div class="card bg-white">
+                                                    <div class="card-body">
+
+                                                        <h3 class="mb-2 text-secondary">
+                                                            <i class="bi bi-star pe-2"></i>{{ "detail.dataColumnBenefits"|trans }}
+                                                        </h3>
+                                                        <div class="custom-product-information-benefits lead">
+                                                            {{ page.product.translated.customFields.custom_productinformation_benefits|raw }}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+
+                                            {% if page.product.translated.customFields.custom_productinformation_details|length > 0 %}
+                                                <div class="card bg-white">
+                                                    <div class="card-body">
+                                                        <h3 class="mb-2 text-secondary">
+                                                            <i class="bi bi-border-all pe-2"></i>{{ "detail.dataColumnConstruction"|trans }}
+                                                        </h3>
+                                                        <div class="custom-product-information-table">
+                                                            {{ page.product.translated.customFields.custom_productinformation_details|raw }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# remove if in offer #}
+                    {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+                    {% else %}
+                        {# Offer Link #}
+                        {% set timeDay = "now"|date("D") %}
+                        {% set timeHour = "now"|date("H") %}
+
+                        {% if timeHour >= 18 or timeHour < 7 or timeDay == "Sat" or timeDay == "Sun" %}
+                            <div class="row">
+                                <div class="product-detail-left-col col col-12 col-md-6 col-xl-8">
+                                    <div class="product-detail-buy-options">
+                                        <div class="cms-block-container-row row cms-row">
+                                            <div class="col col-12 mt-3 mb-5">
+                                                <div class="row">
+                                                    <div class="col col-12">
+                                                        <h3 class="d-flex mb-2 align-items-center text-secondary mb-2">
+                                                            <i class="bi bi-percent me-2"></i>
+                                                            Ähnliche Produkte im Angebot</h3>
+                                                        <p class="lead pb-1">Ähnliche Produkte können Sie direkt in unserem Angebotsbereich online kaufen:</p>
+                                                        <div class="wk-offer-link-item">
+                                                            <a class="product-detail-offer-link w-100 text-center" href="/angebote/angebote-garten/gartenhaeuser" title="Link zu unseren Angeboten..." target="_self">
+                                                                <img class="img-fluid" src="/bundles/fhwekatheme/assets/images/weka-offer-graphic.jpg">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {# remove if in offer #}
+                    {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+                    {% else %}
+                        {# Shop Connector #}
+                        <div class="row">
+                            <div class="product-detail-left-col col col-12 col-md-6 col-xl-8">
+                                <div class="product-detail-buy-options">
+                                    <div class="cms-block-container-row row cms-row">
+                                        {% sw_include '@ShopConnector/storefront/block/cms-block-shop-connector.html.twig' ignore missing %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {# remove if in offer #}
+                    {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+                    {% else %}
+                        {# Merchant Finder #}
+                        <div class="row">
+                            <div class="product-detail-left-col col col-12">
+                                <div class="product-detail-buy-options">
+                                    <div class="cms-block-container-row row cms-row">
+                                        {% sw_include '@FhMerchantFinder/storefront/block/cms-block-merchant-finder.html.twig' ignore missing %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="product-detail-cross-selling">
+                        <div class="cms-block-container-row row cms-row">
+                            <div class="col col-12">
+                                {% block page_product_detail_cross_selling %}
+                                    {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' with {
+                                        crossSellings: page.crossSellings
+                                    } only %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% sw_extends 'storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+    <footer class="footer-minimal wk-footer">
+        {% block layout_footer_copyright %}
+            <div class="footer-copyright">
+                <picture>
+                    {% block layout_header_logo_image_mobile %}
+                        <img src="{{ theme_config('sw-logo-desktop') |sw_encode_url }}"
+                             alt="{{ "header.logoLink"|trans|striptags }}"
+                             width="20" height="20" class="wk-copyright-logo" />
+                    {% endblock %}
+                </picture>
+                &nbsp;Copyright &copy; {{ 'now' | date('Y') }} - {{ "meta.author"|trans }}. Alle Rechte vorbehalten.
+            </div>
+        {% endblock %}
+    </footer>
+{% endblock %}

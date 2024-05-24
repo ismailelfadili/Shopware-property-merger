@@ -1,0 +1,141 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{# Set variable to "true" to enable HMR (hot page reloading) mode #}
+{% set isHMRMode = app.request.headers.get('hot-reload-mode') and app.environment == 'dev' %}
+
+{% block base_doctype %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_html %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_body %}
+    <body class="{% block base_body_classes %}is-ctl-{{ controllerName|lower }} is-act-{{ controllerAction|lower }}{% endblock %}">
+
+    {% block base_body_inner %}
+        {% block base_noscript %}
+            {{ parent() }}
+
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FCNTNV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+        {% endblock %}
+
+        {% block base_header %}
+            <header class="wk-header">
+                {# Hide offer bar if not in offer category #}
+                {% if "Angebote" in page.header.navigation.active.breadcrumb.1
+                    or page.header.navigation.active.id == "4a00af73076d4e76b0bb43dd1e2ee68a"
+                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.navigation.active.path
+                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.header.categoryTree
+                    or "4a00af73076d4e76b0bb43dd1e2ee68a" in page.product.categoryTree %}
+
+                    {% set activePromotion = context.areaRuleIds.promotion %}
+                    {% if activePromotion %}
+                        {% if 'header.offer.bar'|trans|raw %}
+                            <style>
+                                @media (min-width : 768px) {
+                                    body {
+                                        margin-top : 130px !important;
+                                    }
+                                }
+
+                                .wk-offer-bar a {
+                                    color           : #fff !important;
+                                    text-decoration : underline;
+                                }
+                            </style>
+                            <div class="wk-offer-bar bg-offer py-1 lead text-center text-white">{{ 'header.offer.bar'|trans|raw }}</div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="header-main">
+                    {% block base_header_inner %}
+                        {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+                    {% endblock %}
+                </div>
+                <div class="searchbox">
+                    {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+                </div>
+            </header>
+        {% endblock %}
+
+        {% block base_offcanvas_navigation %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block base_main %}
+
+            {% block base_main_inner %}
+                {# Used by product #}
+                {% block base_breadcrumb %}
+                    <div class="breadcrumb cms-breadcrumb container">
+                        {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                            context: context,
+                            category: page.product.seoCategory
+                        } only %}
+                    </div>
+                {% endblock %}
+
+                {% block base_flashbags %}
+                    {% for type, messages in app.flashes %}
+                        {% if messages is not empty %}
+                            <div class="flashbags container">
+                                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with { type: type, list: messages } %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endblock %}
+
+                <div class="container">
+                    {% block base_main_container %}
+                        <div class="container-main">
+                            {% block base_content %}{% endblock %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            </main>
+        {% endblock %}
+
+        {% block base_footer %}
+            <div class="wk-footline mt-5">
+                <div class="container">
+                    <div class="h4 text-wood text-right">
+                        Mehr WEKA. Mehr zufrieden.
+                    </div>
+                </div>
+            </div>
+            <footer class="footer-main wk-footer-main bg-secondary">
+                {% block base_footer_inner %}
+                    {{ parent() }}
+                {% endblock %}
+            </footer>
+        {% endblock %}
+    {% endblock %}
+
+    {% block base_scroll_up %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block base_cookie_permission %}
+        {# Disable cookie permission banner for CMP #}
+    {% endblock %}
+
+    {% block base_pseudo_modal %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block base_body_script %}
+        {{ parent() }}
+    {% endblock %}
+    </body>
+{% endblock %}
+

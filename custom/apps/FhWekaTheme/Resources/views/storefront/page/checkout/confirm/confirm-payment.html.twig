@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-payment.html.twig' %}
+
+{# Set icons #}
+
+{% block page_checkout_confirm_payment_title %}
+    <h3 class="card-title">
+        <i class="bi bi-xxs bi-cash-stack pe-2"></i>{{ "checkout.confirmPaymentMethod"|trans|sw_sanitize }}
+    </h3>
+    <div>
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "info",
+            heading: "checkout.confirmChoosePayment"|trans|sw_sanitize,
+            content: "checkout.warningPaymentLimits"|trans|sw_sanitize
+        } %}
+    </div>
+{% endblock %}

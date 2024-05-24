@@ -1,0 +1,342 @@
+{% block page_product_detail_configurator %}
+
+    {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+
+        <div class="product-detail-configurator">
+
+            {% if page.product.parentId %}
+                {% set config = {
+                    url: url('frontend.detail.switch', { productId: page.product.parentId })
+                } %}
+            {% else %}
+                {% set config = {
+                    url: url('frontend.detail.switch', { productId: page.product.id })
+                } %}
+            {% endif %}
+
+            {# Product configurator form uses product configuration table #}
+            {% block page_product_detail_configurator_form %}
+                <form data-variant-switch="true" data-variant-switch-options="{{ config|json_encode }}">
+
+                    {% block page_product_detail_configurator_groups %}
+
+                        <div class="product-detail-configurator-columns">
+
+                            <div class="row">
+
+                                <div class="col col-12 col-xl-6 mb-3">
+                                    <div class="product-detail-configurator-column">
+                                        <table class="table w-100" style="line-height:1.5rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">
+                                                        {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+                                                            <h3 class="text-center text-secondary pb-0 mb-0">
+                                                            <i class="bi bi-bounding-box pe-2"></i>{{ "detail.productDimensions"|trans|raw }}
+                                                            </h3>
+                                                        {% endif %}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {# twig merge command for combining configurator settings with product properties #}
+                                            {# properties.html.twig is no longer required #}
+
+                                            {% if page.product.sortedProperties|length > 0 %}
+                                                {# no config #}
+                                                {% set props = page.product.sortedProperties %}
+                                                {% set isCombinableCls = 'is-static' %}
+                                                {% set isCombinableText = '' %}
+                                            {% endif %}
+
+                                            {% if page.configuratorSettings|length > 0 %}
+                                                {# config set #}
+                                                {% set props = page.configuratorSettings %}
+                                                {% set isCombinableCls = 'is-combinable' %}
+                                                {% set isCombinableText = 'detail.productIsNotCombinable'|trans|raw %}
+                                            {% endif %}
+
+                                            {% set constructionGroup = [] %}
+                                            {% for group in props %}
+                                                {%  if group.description == '1_custom_basic_measurement'
+                                                    or group.description == 'custom_externalDimension'
+                                                    or group.description == 'custom_baseDimensionSize'
+                                                    or group.description == 'custom_main_door_type'
+                                                    or group.description == 'custom_door'
+                                                    or group.description == 'custom_window'
+                                                    or group.description == 'custom_number_windows'
+                                                    or group.description == 'custom_external_dimensions'
+                                                    or group.description == 'custom_height'
+                                                    or group.description == 'custom_roof_material'
+                                                    or group.description == 'custom_min_roomheight'
+                                                    or group.description == 'custom_wall_thickness'
+                                                    or group.description == 'custom_floor'
+                                                    or group.description == 'custom_equipment_room'
+                                                    or group.description == 'custom_extension'
+                                                    or group.description == 'custom_assembling_option'
+                                                %}
+                                                    {% set constructionGroup = constructionGroup|merge([{group}]) %}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            {% if constructionGroup is empty %}
+                                                <tr colspan="2">
+                                                    <td>
+                                                        <p>Keine Eigenschaften vorhanden.</p>
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+
+                                            {% for group in constructionGroup %}
+                                            {% set group = group.group %}
+
+                                                {% block page_product_detail_configurator_group %}
+                                                    <tr class="product-detail-configurator-group">
+
+                                                        {% block page_product_detail_configurator_group_title %}
+                                                            {% if group.displayType == "color" %}
+                                                            {% else %}
+                                                                <th class="product-detail-configurator-group-title d-block d-sm-table-cell">
+                                                                    {{ group.translated.name }}
+                                                                </th>
+                                                            {% endif %}
+                                                        {% endblock %}
+
+                                                        {% block page_product_detail_configurator_options %}
+                                                            {% if props.customFields.custom_productofferarticle_setter == 1 %}
+                                                                Angebotsartikel
+                                                            {% endif %}
+
+                                                            {% if group.displayType == "color" %}
+                                                                <td colspan="2" class="p-0">
+                                                                    <div class="product-detail-configurator-color-options">
+
+                                                            {% elseif group.displayType == "text" and group.options|length > 1 %}
+                                                                <td class="product-detail-configurator-select-options d-block d-sm-table-cell">
+                                                                    <div class="dropdown d-grid">
+                                                                        <button class="btn btn-outline-primary text-left dropdown-toggle {# {% if group.description == 'custom_baseDimensionSize' %}disabled border-light{% endif %} #}" type="button" id="dropdownMenuButton-{{ group.id }}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            {{ group.translated.name }}</button>
+                                                                        <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton-{{ group.id }}">
+
+                                                            {% else %}
+                                                                <td class="product-detail-configurator-select-options d-block d-sm-table-cell">
+
+                                                            {% endif %}
+
+                                                            {% for option in group.options %}
+
+                                                                {% if page.configuratorSettings|length > 0 %}
+                                                                    {# Check if option is combinable or not #}
+                                                                    {% if not option.combinable %}
+                                                                        {% set isCombinableCls = 'not-combinable' %}
+                                                                    {% else %}
+                                                                        {% set isCombinableCls = 'is-combinable' %}
+                                                                    {% endif %}
+                                                                {% endif %}
+
+                                                                {% set optionIdentifier = [group.id, option.id]|join('-') %}
+                                                                {% set isActive = false %}
+
+                                                                {% if option.configuratorSetting.media %}
+                                                                    {% set displayType = 'media' %}
+                                                                    {% set mediaUrl = option.configuratorSetting.media.url %}
+                                                                {% else %}
+                                                                    {% set displayType = group.displayType %}
+                                                                    {% if option.media %}
+                                                                        {% set mediaUrl = option.media.url %}
+                                                                    {% endif %}
+                                                                {% endif %}
+
+                                                                {% if option.id in page.product.optionIds %}
+                                                                    {% set isActive = true %}
+                                                                {% endif %}
+
+                                                                {% block page_product_detail_configurator_option %}
+
+                                                                    {% if group.displayType != 'text' %}
+                                                                        <div class="configurator-option">
+
+                                                                            {% if group.options|length > 1 %}
+                                                                                {% block page_product_detail_configurator_option_radio %}
+                                                                                    <input type="radio" name="{{ group.id }}" value="{{ option.id }}" class="product-detail-configurator-option-input {{ isCombinableCls }}" title="{{ optionIdentifier }}" id="{{ optionIdentifier }}" {% if isActive %}checked="checked"{% endif %}>
+
+                                                                                    {% block page_product_detail_configurator_option_radio_label %}
+                                                                                        <label class="{% if group.options|length > 1 %}product-detail-configurable{% endif %} product-detail-configurator-option-custom-label {{ isCombinableCls }} is-display-{{ displayType }}" {% if displayType == "color" %} style="height:4.55rem; padding:1rem;"{% endif %} title="{{ option.translated.name }}" for="{{ optionIdentifier }}">
+
+                                                                                            {% if displayType == "color" %}
+                                                                                                <span class="text-center" style="background-color:{% if option.colorHexCode %}{{ option.colorHexCode }}{% else %}transparent{% endif %}">
+                                                                                                {% if isActive %}
+                                                                                                    <i class="bi bi-check bi-lg"></i>
+                                                                                                {% endif %}
+                                                                                                </span><p class="d-inline-block px-2 m-0">{{ option.translated.name|e }}</p>
+
+                                                                                            {% elseif displayType == 'media' %}
+                                                                                                {% if mediaUrl %}
+                                                                                                    <img src="{{ mediaUrl }}" class="product-detail-configurator-option-image" alt="{{ option.translated.name }}" />
+                                                                                                {% else %}
+                                                                                                    {% sw_icon 'placeholder' style {
+                                                                                                        'size': 'lg'
+                                                                                                    } %}
+                                                                                                {% endif %}
+
+                                                                                            {% else %}
+                                                                                                {% if isActive %}
+                                                                                                    {{ option.translated.name }}
+                                                                                                {% else %}
+                                                                                                    {{ option.translated.name }}
+                                                                                                {% endif %}
+                                                                                            {% endif %}
+
+                                                                                        </label>
+                                                                                    {% endblock %}
+                                                                                {% endblock %}
+
+                                                                            {% else %}
+
+                                                                                {% if displayType == "color" %}
+                                                                                    <label title="{{ option.translated.name|e }}" class="product-detail-configurator-option-custom-label {{ isCombinableCls }} is-display-color" style="height:4.55rem; padding:1rem;">
+                                                                                        <span class="text-center" style="background-color:{% if option.colorHexCode %}{{ option.colorHexCode }}{% else %}transparent{% endif %}"><i class="bi bi-check bi-lg"></i></span><p class="d-inline-block px-2 m-0">{{ option.translated.name|e }}</p>
+                                                                                    </label>
+
+                                                                                {% elseif displayType == 'media' %}
+                                                                                    {% if mediaUrl %}
+                                                                                        <img src="{{ mediaUrl }}" class="product-detail-configurator-option-image" alt="{{ option.translated.name }}" />
+
+                                                                                    {% else %}
+                                                                                        {% sw_icon 'placeholder' style {
+                                                                                            'size': 'lg'
+                                                                                        } %}
+                                                                                    {% endif %}
+
+                                                                                {% else %}
+
+                                                                                    {% if isActive %}
+                                                                                        {{ option.translated.name }}
+                                                                                    {% else %}
+                                                                                        {{ option.translated.name }}
+                                                                                    {% endif %}
+
+                                                                                {% endif %}
+
+                                                                            {% endif %}
+
+                                                                        </div>
+
+                                                                    {% else %}
+
+                                                                        {% if group.options|length > 1 %}
+                                                                            {% block page_product_detail_configurator_option_dropdownmenu_item %}
+                                                                                <input type="radio" name="{{ group.id }}" value="{{ option.id }}" class="product-detail-configurator-option-input {{ isCombinableCls }}" title="{{ block('item_label')|spaceless }}" id="{{ optionIdentifier }}" {% if isActive %}checked="checked"{% endif %} />
+                                                                                {% block page_product_detail_configurator_option_dropdownmenu_item_label %}
+                                                                                    {# We need label here for option select function #}
+                                                                                    <label class="{% if isActive %}d-none {% endif %}{% if group.options|length > 1 %}border-0 dropdown-item my-0 product-detail-configurator-option-custom-select-label{% else %}product-detail-configurator-option-info text-left{% endif %} {{ isCombinableCls }} is-display-text" title="{{ block('item_label')|spaceless }}" for="{{ optionIdentifier }}">
+                                                                                        {% block item_label %}
+                                                                                            {{ option.translated.name }}
+                                                                                        {% endblock %}
+                                                                                    </label>
+                                                                                {% endblock %}
+                                                                            {% endblock %}
+
+                                                                        {% else %}
+                                                                            <span class="product-detail-configurator-option-input d-block">{{ option.translated.name }}</span>
+                                                                        {% endif %}
+
+                                                                    {% endif %}
+
+                                                                {% endblock %}
+
+                                                            {% endfor %}
+
+                                                                {% if group.displayType == 'color' %}
+                                                                    </div></td>
+                                                                {% elseif group.displayType == 'text' and group.options|length > 1 %}
+                                                                    </div></div></td>
+                                                                {% else %}
+                                                                    </td>
+                                                                {% endif %}
+
+                                                        {% endblock %}
+
+                                                    </tr>
+                                                {% endblock %}
+
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col col-12 col-xl-6 mb-3">
+                                    <div class="product-detail-configurator-column">
+
+                                        <table class="table w-100" style="line-height:1.5rem">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">
+                                                        {% if page.product.sortedProperties|length > 0 or page.configuratorSettings|length > 0 %}
+                                                            <h3 class="text-center text-secondary pb-0 mb-0">
+                                                            <i class="bi bi-palette2 pe-2"></i>{{ "detail.productLook"|trans|raw }}
+                                                            </h3>
+                                                        {% endif %}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% set designGroup  = [] %}
+                                                {% for group in props %}
+                                                    {% if group.description == '1_custom_color'
+                                                        or group.description == 'custom_oven_control'
+                                                        or group.description == 'custom_voltage_supply'
+                                                        or group.description == 'custom_power'
+                                                        or group.description == 'custom_oven_type'
+                                                        or group.description == 'custom_heater_type'
+                                                        or group.description == 'custom_sauna_stones'
+                                                        or group.description == 'custom_canopy'
+                                                        or group.description == 'custom_lounger'
+                                                        or group.description == 'custom_equipment_depthoflounger'
+                                                        or group.description == 'custom_cross_lounger'
+                                                        or group.description == 'custom_equipment_depthofcrosslounger'
+                                                        or group.description == 'custom_shingles'
+                                                        or group.description == 'custom_aroma'
+                                                    %}
+                                                        {% set designGroup = designGroup|merge([{group}]) %}
+                                                    {% endif %}
+                                                {% endfor %}
+
+                                                {% if designGroup is empty %}
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <p>Keine Eigenschaften vorhanden.</p>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+
+                                                {% for group in designGroup %}
+                                                    {% set group = group.group %}
+                                                    {{ block('page_product_detail_configurator_group') }}
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {% if isCombinableText %}<div class="wk-legend-text d-none"><span></span>{{ isCombinableText|raw }}</div>{% endif %}
+
+                    {% endblock %}
+                </form>
+            {% endblock %}
+        </div>
+
+    {% else %}
+
+        {# do nothing #}
+
+    {% endif %}
+
+{% endblock %}

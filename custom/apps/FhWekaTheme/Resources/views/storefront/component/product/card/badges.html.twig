@@ -1,0 +1,120 @@
+{% sw_extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{% block component_product_badges %}
+    <div class="product-badges">
+        {% block component_product_badges_discount %}
+            {#TODO: NEXT-2675 - adjust if-query and icon#}
+
+            {# We only want to display list price badge #}
+            {% set listPrice = product.calculatedPrices.count > 0 ? null : product.calculatedPrice.listPrice.percentage > 0 %}
+
+            {% if listPrice %}
+                <div class="badge-container">
+                    <div class="badge badge-discount">
+                        <span>&#37;</span>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block page_product_badges_discount %}
+            {#TODO: NEXT-2675 - adjust if-query and icon#}
+
+            {# We only want to display list price badge #}
+            {% set pagelistPrice = page.product.calculatedPrices.count > 0 ? null : page.product.calculatedPrice.listPrice.percentage > 0 %}
+
+            {% if pagelistPrice %}
+                <div class="badge-container">
+                    <div class="badge badge-discount">
+                        <span>&#37;</span>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_badges_topseller %}
+            {% if product.markAsTopseller %}
+                <div class="badge-container">
+                    <div class="badge badge-topseller">
+                        {{ "listing.boxLabelTopseller"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block page_product_badges_topseller %}
+            {% if page.product.markAsTopseller %}
+                <div class="badge-container">
+                    <div class="badge badge-topseller">
+                        {{ "listing.boxLabelTopseller"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_badges_new %}
+            {% if product.isNew %}
+                <div class="badge-container">
+                    <div class="badge badge-new">
+                        {{ "listing.boxLabelNew"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block page_product_badges_new %}
+            {% if page.product.isNew %}
+                <div class="badge-container">
+                    <div class="badge badge-new">
+                        {{ "listing.boxLabelNew"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_badges_savings_set %}
+            {% if product.customFields.custom_productinformation_economizingset %}
+                <div class="badge-container">
+                    <div class="badge badge-savings-set">
+                        {{ "listing.boxLabelSavingsSet"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block page_product_badges_savings_set %}
+            {% if page.product.customFields.custom_productinformation_economizingset %}
+                <div class="badge-container">
+                    <div class="badge badge-savings-set">
+                        {{ "listing.boxLabelSavingsSet"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_badges_custom_new %}
+            {% if product.customFields.custom_productinformation_new %}
+                <div class="badge-container">
+                    <div class="badge badge-new">
+                        {{ "listing.boxLabelCustomNew"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block page_product_badges_custom_new %}
+            {% if page.product.customFields.custom_productinformation_new %}
+                <div class="badge-container">
+                    <div class="badge badge-new">
+                        {{ "listing.boxLabelCustomNew"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block component_product_badges_custom_pricehit %}
+            {% if product.customFields.custom_productinformation_pricehit || page.product.customFields.custom_productinformation_pricehit %}
+                <div class="badge-container">
+                    <div class="badge badge-price-hit">
+                        {{ "listing.boxLabelCustomPriceHit"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

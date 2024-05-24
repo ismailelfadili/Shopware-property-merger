@@ -1,0 +1,123 @@
+/*
+Image slider
+==============================================
+Styling for image slider component.
+Displays images in a reusable slider component.
+based on "base-slider" component and "tiny-slider" (https://github.com/ganlanyuan/tiny-slider)
+*/
+
+.base-slider-controls-prev, .base-slider-controls-next {
+    opacity     : 1;
+    line-height : 1;
+    width       : 2.5rem;
+    height      : 2.5rem;
+    border      : none;
+    background  : rgba(255, 255, 255, 0.9);
+
+    .icon {
+        width  : 2.5rem;
+        height : 2.5rem;
+        color  : $secondary !important;
+    }
+}
+
+.base-slider-controls-prev .icon, .base-slider-controls-next .icon {
+    width          : 1.5rem;
+    height         : 1.5rem;
+    vertical-align : middle;
+
+    svg {
+        top  : 0 !important;
+        left : 0 !important;
+    }
+
+}
+
+.base-slider-controls-prev .icon {
+    svg {
+        right : .2rem;
+    }
+}
+
+.base-slider-controls-next .icon {
+    svg {
+        left : .2rem;
+    }
+}
+
+.cms-element-image-slider {
+
+    .tns-ah {
+        transition : none !important;
+    }
+
+    .base-slider {
+        width    : 100% !important;
+        height   : auto !important;
+        margin   : auto !important;
+        overflow : hidden;
+
+        @media(min-width : 1600px) {
+            width : 95% !important;
+        }
+
+        @media(min-width : 1900px) {
+            width : 85% !important;
+        }
+
+        @media(min-width : 2200px) {
+            width : 75% !important;
+        }
+
+        @media(min-width : 2500px) {
+            width : 65% !important;
+        }
+
+        &.has-dots-outside {
+            padding-bottom : 3rem;
+        }
+
+        .image-slider-item-container {
+            height : 100%;
+
+            .image-slider-item {
+                width         : 100%;
+                height        : auto;
+                border-radius : 0 0 5rem 0;
+                overflow      : hidden;
+
+                /*
+                width      : 100%;
+                height     : 40vh !important;
+                min-height : auto !important;
+
+                @media(min-width : 1600px) {
+                    height : 55vh !important;
+                }
+
+                @media(min-width : 1900px) {
+                    height : 60vh !important;
+                }
+
+                @media(min-width : 2200px) {
+                    height : 65vh !important;
+                }
+
+                @media(min-width : 2500px) {
+                    height : 70vh !important;
+                }
+                */
+            }
+        }
+    }
+}
+
+.base-slider .tns-nav .base-slider-dot,
+.base-slider .tns-nav button,
+.base-slider .base-slider-dots .base-slider-dot,
+.base-slider .base-slider-dots button {
+    margin  : 0 .5rem;
+    width   : 1rem;
+    height  : 1rem;
+    padding : 0;
+}

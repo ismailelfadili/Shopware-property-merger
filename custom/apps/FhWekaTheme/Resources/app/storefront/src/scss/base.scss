@@ -1,0 +1,1155 @@
+/*
+WEKA Theme styles
+==================================================
+Contains the imports to all theme styles.
+
+The file organization follows the 7-1 pattern architecture
+https://sass-guidelin.es/#the-7-1-pattern
+*/
+
+/* Variables, Mixins, Functions
+* ---------------------------- */
+
+/*
+ * Vendors
+ * ------- */
+@import '../assets/icon/bootstrap-icons-1.9.1/bootstrap-icons';
+
+/*
+ * Print-specific styles
+ * --------------------- */
+@import 'print';
+
+/*
+ * Base stuff
+ * ---------- */
+@import 'base/font';
+
+/*
+ * Components
+ * ---------- */
+@import 'component/button';
+@import 'component/category-navigation';
+@import 'component/cms-block';
+@import 'component/cms-element';
+@import 'component/hero-slider';
+@import 'component/product-box';
+@import 'component/image-slider';
+
+/*
+ * Layout-related sections
+ * ----------------------- */
+@import 'layout/container';
+@import 'layout/header';
+@import 'layout/main-navigation';
+@import 'layout/navigation';
+@import 'layout/navigation-flyout';
+@import 'layout/footer';
+
+/*
+ * Page-specific styles
+ * -------------------- */
+@import 'page/product-detail/product-detail';
+@import 'page/product-detail/configurator';
+
+/******************************** Basics ********************************/
+
+body {
+    min-width : 340px;
+}
+
+/* Sticky header */
+@include media-breakpoint-up(md) {
+    body {
+        margin-top : 90px;
+    }
+
+    .wk-header {
+        position      : fixed;
+        right         : 0;
+        left          : 0;
+        border-radius : 0;
+        top           : 0;
+        z-index       : 1020;
+    }
+    .is-act-cartpage .checkout .checkout-aside-container {
+        top : 120px;
+    }
+}
+
+*:focus {
+    user-select         : none !important;
+    -moz-user-select    : none !important;
+    -webkit-user-select : none !important;
+    -ms-user-select     : none !important;
+    outline             : none !important;
+}
+
+.container-main {
+    padding : 0;
+}
+
+/******************************** WK Badges ********************************/
+
+.wk-offers-badge {
+    top              : 12rem;
+    position         : absolute;
+    border-radius    : 100%;
+    width            : 5rem;
+    height           : 5rem;
+    background-color : #ce0019;
+    line-height      : 1;
+    text-align       : center;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    font-weight      : 400;
+    border           : .25rem dotted #fff;
+    color            : #fff;
+    font-size        : 3rem;
+    opacity          : 0.05;
+    margin-left      : 0;
+}
+
+@include media-breakpoint-up(lg) {
+    .wk-offers-badge {
+        width     : 8rem;
+        height    : 8rem;
+        font-size : 5rem;
+        border    : .5rem dotted #fff;
+    }
+}
+
+/******************************** Additional WEKA colorsets ********************************/
+
+.bg-wood {
+    background-color : darken($wood, 15%);
+    color            : lighten($wood, 25%);
+}
+
+.bg-offer {
+    background-color : $wk-offers;
+}
+
+.text-wood {
+    color : $wood !important;
+}
+
+.text-wood-light {
+    color : lighten($wood, 30%) !important;
+}
+
+.text-white-50 {
+    color : lighten($wood, 30%) !important;
+}
+
+.text {
+    color : $text !important;
+}
+
+/******************************** Custom WK classes ********************************/
+
+.wk-hint {
+    background-color : $light;
+    border-radius    : $border-radius;
+    margin-bottom    : 3rem;
+
+    .cms-block-container {
+        padding : 1.5rem !important;
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+        color : $gray-800;
+    }
+
+    p {
+        color     : $gray-800;
+        margin    : 0;
+        font-size : 1.1rem;
+    }
+
+}
+
+#print-configuration-cover {
+    display : none;
+}
+
+.wk-content-main {
+    margin-top : -1px;
+
+    a {
+        transition : $animation;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+
+    .wk-organic-mask-slider {
+        position : relative;
+
+        &::after {
+            display     : block;
+            width       : 100%;
+            position    : absolute;
+            bottom      : 0;
+            line-height : 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .wk-organic-mask {
+        position   : relative;
+        padding    : 10rem 0;
+        background : $light;
+
+        &::before {
+            display     : block;
+            width       : 100%;
+            position    : absolute;
+            top         : 0;
+            line-height : 0;
+        }
+
+        &::after {
+            display     : block;
+            width       : 100%;
+            position    : absolute;
+            bottom      : 0;
+            line-height : 0;
+            transform   : rotate(180deg);
+        }
+    }
+}
+
+@keyframes zoom-in-out {
+    0% {
+        background-size : 100%;
+    }
+    100% {
+        background-size : 120%;
+    }
+}
+
+.wk-woody-bg {
+    background-size : cover;
+    overflow        : hidden;
+    padding         : 5rem 0;
+    transition      : zoom-in-out 15s infinite alternate;
+
+    * {
+        color       : $wood;
+        font-family : $font-family-headline;
+        font-size   : 3rem;
+        line-height : 1.2;
+    }
+}
+
+.wk-benefits {
+    background      : url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-forest-benefits.jpg') no-repeat center $wood;
+    background-size : cover;
+    padding         : 3rem 0;
+    margin-bottom   : 3rem;
+
+    * {
+        color : $white;
+    }
+}
+
+.wk-services {
+    background      : url('#{$app-css-relative-asset-path}/backgrounds/weka-truck-services.jpg') no-repeat center $wood;
+    background-size : cover;
+    padding         : 3rem 0;
+    margin-bottom   : 3rem;
+
+    * {
+        color : $white;
+    }
+}
+
+.wk-catalogue {
+    background      : url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-lines.jpg') center $white;
+    padding         : 3rem 0;
+    background-size : 150%;
+
+    @include media-breakpoint-up(md) {
+        background-size : 50%;
+    }
+}
+
+.wk-footer-main {
+    background      : url('#{$app-css-relative-asset-path}/pattern/content-weka-wood.jpg') repeat top center $wood;
+    background-size : 100%;
+    color           : lighten($wood, 30%);
+    border-top      : 10px solid $primary;
+
+    a {
+        transition : $animation;
+    }
+
+    .footerPageBenefits {
+        background-color : $white;
+        padding          : 2rem 0;
+    }
+
+    .website-tls-info {
+
+        .row {
+            border-radius       : 5px;
+            border              : 1px solid $gray-300;
+            padding             : .5rem 1rem;
+            background-image    : url('#{$app-css-relative-asset-path}/payment/waves-pattern.webp');
+            background-repeat   : repeat;
+            background-position : center;
+        }
+
+        .website-tls-headline {
+            color          : $black;
+            font-weight    : $font-weight-bold;
+            text-transform : uppercase;
+        }
+
+        .website-tls-subline {
+            color : $sw-text-color;
+        }
+    }
+}
+
+.wk-offer-link-item {
+    transition : all linear .3s;
+    position   : relative;
+
+    &:hover {
+        transform : scale(1.025);
+    }
+
+    a {
+        display         : block;
+        text-decoration : none;
+    }
+}
+
+.wk-border-top {
+    border-top : 10px solid $light;
+}
+
+.wk-copyright-logo {
+    opacity        : 0.5;
+    mix-blend-mode : luminosity;
+}
+
+.border-bottom-thead {
+    border-bottom : 2px solid $border-color;
+}
+
+/******************************** WK offer pages and products ********************************/
+
+.wk-offers {
+
+    .product-price-info * {
+        color : $white;
+    }
+
+    h1, .h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6, .cms-page a:not(.btn) {
+        color : $wk-offers;
+    }
+
+    .wk-footer-main, .wk-benefits {
+        border-top : 10px solid $wk-offers !important;
+    }
+
+    .product-detail-price-box-snippet {
+        border-color : darken($wk-offers, 20%) transparent transparent transparent;
+    }
+
+    .header-promotion-box {
+        display     : block;
+        line-height : 1;
+        position    : relative;
+        z-index     : 10;
+        margin-top  : 10px;
+
+        .header-promotion-box-snippet {
+            width        : 0;
+            height       : 0;
+            border-style : solid;
+            border-width : 15px 50px 0 0;
+            position     : absolute;
+            top          : 50px;
+            right        : 20px;
+            border-color : darken($wk-offers, 20%) transparent transparent transparent;
+        }
+
+        .header-promotion-marketing {
+            background-color : $wk-offers;
+            text-align       : center;
+            padding          : .4rem;
+            height           : 50px;
+            color            : $white;
+
+            h1, h2, h3, h4, h5 {
+                line-height : 1.2;
+                font-size   : 17px;
+                color       : $white;
+                margin      : 0;
+                padding     : 0;
+            }
+
+            p {
+                font-size : 12px;
+                color     : $white;
+                padding   : 0;
+                margin    : 0;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .wk-offers {
+        .header-promotion-box {
+            margin-top : 0;
+            display    : block;
+            right      : 0;
+            top        : 10px;
+            position   : absolute;
+            z-index    : 10;
+        }
+    }
+}
+
+/******************************** Bootstrap icon sizes ********************************/
+
+.bi {
+    &-xs {
+        font-size : calc(#{$font-size-xs} * 2);
+    }
+
+    &-sm {
+        font-size : calc(#{$font-size-sm} * 2);
+    }
+
+    &-md {
+        font-size : calc(#{$font-size-md} * 2);
+    }
+
+    &-lg {
+        font-size : calc(#{$font-size-lg} * 2);
+    }
+
+    &-xl {
+        font-size : calc(#{$font-size-xl} * 2);
+    }
+
+    &-xxl {
+        font-size : calc(#{$font-size-xxl} * 3);
+    }
+}
+
+/******************************** SW6 important icon fix ********************************/
+
+.icon {
+    svg {
+        top    : 0;
+        width  : inherit;
+        height : inherit;
+    }
+}
+
+.icon {
+    display        : inline-block;
+    position       : relative;
+    vertical-align : middle;
+    line-height    : 0;
+    color          : inherit;
+
+    svg {
+        line-height : 0;
+        top         : -1px !important;
+        overflow    : visible !important; /* remove Pixelbug */
+    }
+}
+
+.product-wishlist .icon-wishlist {
+    width  : $font-size-base;
+    height : auto;
+}
+
+/******************************** SW6 modal ********************************/
+
+.modal-header {
+    padding : 1.5rem 1.5rem 0 1.5rem;
+    margin  : 0;
+    border  : 0;
+}
+
+.modal-title {
+    padding        : 0;
+    margin         : 0;
+    font-family    : $sw-font-family-headline;
+    font-size      : $h3-font-size;
+    text-transform : uppercase;
+    line-height    : $line-height-base;
+}
+
+.modal-body {
+    padding : 1.5rem;
+}
+
+/******************************** SW6 flashbags ********************************/
+
+.flashbags {
+    padding-top : 3rem;
+
+    .alert {
+        margin : 0;
+    }
+}
+
+/******************************** SW6 account ********************************/
+
+.account-welcome {
+    padding : 0;
+}
+
+.account-salutation {
+    line-height : $line-height-base;
+}
+
+.account-orders-overview {
+    margin-bottom : 1.25rem;
+}
+
+.order-table {
+    padding       : 1.25rem;
+    background    : $light;
+    margin-bottom : 2rem;
+
+    &:last-child {
+        margin-bottom : 0;
+    }
+}
+
+.order-item-actions {
+    margin-bottom : 1.25rem;
+}
+
+.order-table .order-detail-content {
+    border  : 1px solid $border-color;
+    margin  : 0;
+    padding : 1.5rem;
+}
+
+.order-table .order-item-detail {
+    background : $white;
+}
+
+.order-item-img {
+    width  : 100%;
+    height : auto;
+}
+
+.order-item-detail-list-item {
+    margin : 0;
+}
+
+.order-item-detail-list-item-divider {
+    margin : 1.25rem 0;
+}
+
+.order-detail-content-header, .order-detail-content-row {
+    margin  : 0;
+    padding : 0 0 .5rem;
+}
+
+.order-item-detail-footer {
+    padding : 0;
+}
+
+.order-item-product-image {
+    border : 1px solid $border-color;
+}
+
+.order-detail-content-header-cell {
+    font-weight : $font-weight-bold;
+}
+
+/******************************** SW6 navigation parts ********************************/
+
+.nav-tabs {
+
+    .nav-item {
+        margin-bottom : -1px;
+
+        .nav-link {
+            color         : $sw-text-color;
+            border        : 1px solid;
+            border-color  : transparent transparent $border-color transparent;
+            background    : $white;
+            margin-right  : 2px;
+            margin-bottom : 2px;
+            transition    : $animation;
+
+            &:hover {
+                background : lighten($link-hover-color, 60%);
+                transition : $animation;
+            }
+
+            &.active {
+                color        : $primary;
+                border-color : $border-color $border-color transparent;
+                background   : $white;
+
+                &:hover {
+                    background : $white;
+                }
+            }
+        }
+    }
+}
+
+.gallery-slider-single-image {
+    background-color : $white;
+
+    img {
+        mix-blend-mode : normal;
+    }
+}
+
+.random-image {
+    display : none;
+}
+
+.bg-light, .order-detail-table-footer {
+    background : $gray-200 !important;
+}
+
+/******************************** Bootstrap validation background ********************************/
+
+.form-control {
+    background-size     : .75rem;
+    background-position : right .9rem center !important;
+}
+
+.js-validation-message {
+    font-size : $font-size-small;
+    margin    : 0;
+    padding   : 0;
+}
+
+/******************************** SW6 breadcrumb optimization ********************************/
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left : .5rem;
+}
+
+.breadcrumb {
+    font-size   : $font-size-small;
+    line-height : 3;
+    margin      : 0 auto;
+    padding     : .25rem 0;
+    color       : lighten($sw-text-color, 25%);
+    font-weight : $font-weight-normal;
+
+    .icon {
+        color : lighten($sw-text-color, 25%);
+
+        svg {
+            top     : 0;
+            height  : 10px;
+            padding : 0 5px;
+        }
+    }
+
+    &.cms-breadcrumb {
+        padding : 0 1.5rem;
+    }
+
+    .breadcrumb-container {
+        padding : 7px 0 8px 0;
+    }
+
+    a {
+        font-size  : $font-size-small;
+        transition : $animation;
+        color      : lighten($sw-text-color, 25);
+
+        &:hover {
+            text-decoration : underline;
+            transition      : $animation;
+            color           : lighten($sw-text-color, 25%);
+        }
+
+        &.is-active {
+            font-weight : $font-weight-normal;
+        }
+    }
+}
+
+.product-detail-buy {
+    margin-top  : 2rem;
+    padding-top : 1.5rem;
+    border-top  : 1px solid $border-color;
+
+    .price-display__price {
+        font-size   : 2rem;
+        font-weight : $font-weight-semibold;
+    }
+
+    .price-display__kiloprice {
+        font-weight : $font-weight-semibold;
+    }
+}
+
+.is-act-confirmpage .checkout .checkout-additional, .is-ctl-accountorder .checkout .checkout-additional {
+    margin-top : 0;
+}
+
+/******************************** WK checkout optimization ********************************/
+
+.checkout,
+.cms-page.search-page,
+.account.account-content,
+.account-register,
+.account-recover-password,
+.customer-account,
+.wishlist-page {
+    padding-top    : 3rem !important;
+    padding-bottom : 3rem;
+}
+
+/* Already registered */
+.register-login-collapse-toogle {
+    font-size : 1rem;
+    margin    : 1.5rem 0;
+
+    a {
+        text-decoration : underline;
+        color           : $dark;
+    }
+}
+
+.login-submit {
+    text-align : right;
+}
+
+.payment-method-image, .payment-method-footer {
+    height        : 25px;
+    padding-right : .75rem;
+}
+
+.payment-method-description p, .shipping-method-description p {
+    color     : $gray-600;
+    font-size : .8rem;
+}
+
+.checkout-aside-product-header {
+    margin-bottom : 0;
+}
+
+.line-item-quantity-label,
+.line-item-unit-price-label,
+.line-item-total-price-label,
+.line-item-tax-price-label {
+    margin-bottom : 0;
+}
+
+/******************************** SW6 account ********************************/
+
+.address-action-create {
+    margin : 0;
+}
+
+.customer-account-content {
+    margin  : 0;
+    padding : 0;
+
+    .account-overview-card {
+        margin : 0;
+    }
+}
+
+.account-aside-header {
+    font-family : $headings-font-family;
+    font-size   : 1.4rem;
+}
+
+.address-editor-list-wrapper,
+.address-editor-create-address-wrapper {
+    padding : 0;
+}
+
+.address {
+    margin-bottom : 1.5rem;
+}
+
+/******************************** SW6 wishlist ********************************/
+
+.product-wishlist-action, .product-wishlist-action-circle {
+    color : $sw-color-brand-primary;
+}
+
+.product-wishlist-btn-content {
+    color           : $link-color;
+    text-decoration : none;
+    transition      : $animation;
+
+    &:hover {
+        color           : $link-hover-color;
+        text-decoration : underline;
+    }
+}
+
+.product-wishlist-action-circle {
+    background : $white;
+    padding    : 5px;
+}
+
+.product-wishlist-btn-remove {
+    background : $white;
+}
+
+/******************************** SW6 cart ********************************/
+
+/* Border color fix */
+.quantity-selector-group .btn {
+    border-color : $input-border-color !important;
+}
+
+.quickview-minimal-product-manufacturer-logo {
+    width : 25%;
+}
+
+.header-cart .header-cart-badge, .header-wishlist .header-wishlist-badge {
+    top         : 20%;
+    padding     : .25rem;
+    font-size   : .75rem;
+    font-weight : $font-weight-bold;
+}
+
+.is-offcanvas .line-item-unit-price, .line-item-details-characteristics {
+    font-size : $font-size-base;
+}
+
+.is-offcanvas .line-item-quantity-label {
+    text-align : right;
+}
+
+/* SW6 override fix for offcanvas */
+.is-offcanvas .line-item-details {
+    flex-shrink   : 0;
+    width         : 100%;
+    max-width     : 100%;
+    padding-right : calc(var(--bs-gutter-x) * .5);
+    padding-left  : calc(var(--bs-gutter-x) * .5);
+    margin-top    : var(--bs-gutter-y);
+    flex          : 0 0 auto;
+    width         : 100%;
+}
+
+@media (min-width : map-get($grid-breakpoints, "sm")) {
+    .is-offcanvas .line-item-details {
+        flex  : 0 0 auto;
+        width : 58.33333333%;
+    }
+}
+
+@media (min-width : map-get($grid-breakpoints, "md")) {
+    .is-offcanvas .line-item-details {
+        flex  : 0 0 auto;
+        width : 66.66666667%;
+    }
+}
+
+/* SW6 override fix for line-item padding */
+.checkout .line-item {
+    padding : 1rem 0 !important;
+}
+
+/******************************** Checkout aside summary receipt ********************************/
+
+.checkout-aside-summary-total {
+    border-top     : 2px dashed $dark;
+    border-bottom  : 2px dashed $dark;
+    padding-bottom : 13px;
+    margin-bottom  : 10px;
+}
+
+.checkout-aside-item-list *, .checkout-aside-summary-list * {
+    font-size : .85rem;
+}
+
+.checkout-aside-summary-total {
+    font-weight : $font-weight-bold;
+}
+
+.finish-action {
+    margin-bottom : 4rem;
+}
+
+@include media-breakpoint-up(xl) {
+    .checkout-aside {
+        flex      : 0 0 33% !important;
+        max-width : 33% !important;
+    }
+}
+
+.checkout-aside-summary, .checkout-aside-products {
+    margin-bottom : 1.5rem;
+    padding       : 0;
+}
+
+.checkout-aside-summary {
+    border-top       : 2px dotted $gray-600;
+    border-bottom    : 2px dotted $gray-600;
+    border-left      : 1px solid $gray-600;
+    border-right     : 1px solid $gray-600;
+    box-shadow       : 0 15px 10px -15px rgba(0, 0, 0, 0.35);
+    padding          : 1.5rem;
+    background-color : $white;
+}
+
+.checkout-aside-container {
+
+    .checkout-aside-summary {
+        margin-bottom : 2rem;
+
+        * {
+            color       : $sw-text-color;
+            line-height : 1.5;
+        }
+    }
+
+    .checkout-aside-summary-total {
+        border-top     : 2px dashed $dark;
+        border-bottom  : 2px dashed $dark;
+        padding-bottom : 13px;
+        margin-bottom  : 10px;
+    }
+
+    .checkout-aside-item-list *, .checkout-aside-summary-list * {
+        font-size : .85rem;
+    }
+
+    .checkout-aside-summary-total {
+        font-weight : $font-weight-bolder;
+    }
+}
+
+/******************************** Checkout optimization ********************************/
+
+.finish-info {
+    margin-bottom : 2rem;
+
+    .checkout-card {
+        height : 100%;
+    }
+}
+
+.finish-header, .finish-ordernumber, .finish-teaser {
+    text-align : left !important;
+}
+
+.finish-teaser {
+    margin-bottom : 1rem;
+    font-size     : 1rem;
+}
+
+.is-act-finishpage .checkout .checkout-additional {
+    margin-top : 0;
+}
+
+/******************************** Strong hack ********************************/
+
+b, strong {
+    font-weight : $font-weight-bold;
+}
+
+.hs-content-main {
+    b, strong {
+        color : $black;
+    }
+}
+
+/******************************** SW cross selling ********************************/
+
+.cross-selling {
+    .tab-content {
+        .cms-element-title {
+            display : none;
+        }
+    }
+}
+
+.product-slider {
+    padding : 2rem;
+}
+
+/******************************** SW ugly overrides ********************************/
+
+.table th, .table td {
+    padding        : 1rem;
+    border-top     : 0;
+    vertical-align : middle;
+}
+
+.custom-product-information-table {
+    .sw-text-editor-table {
+        width  : 100%;
+        border : 0 !important;
+    }
+}
+
+html {
+    .sw-text-editor-table {
+        border : 1px solid $border-color;
+
+        .sw-text-editor-table__row {
+            vertical-align : top;
+
+            &:nth-of-type(2n) {
+                background-color : $light;
+            }
+
+            .sw-text-editor-table__col {
+                border  : 0;
+                padding : .75rem;
+            }
+        }
+    }
+}
+
+.product-detail-cross-selling {
+    .tab-content {
+        .cms-element-title {
+            display : none;
+        }
+
+        .product-slider {
+            padding : 1.8rem;
+        }
+    }
+}
+
+.product-detail-sheets {
+    border-top : 1px solid $border-color;
+}
+
+small, .small {
+    font-size : $font-size-small;
+}
+
+hr {
+    width      : 25%;
+    border-top : 5px solid $border-color;
+    margin     : 1rem 0;
+}
+
+.scroll-up-button .btn {
+    border-radius : 50%;
+    width         : 3rem;
+    height        : 3rem;
+}
+
+.form-group {
+    padding-bottom : 1rem;
+}
+
+/******************************** SW line-item ********************************/
+
+.checkout {
+    .line-item {
+        padding : 2rem 0;
+    }
+}
+
+.line-item.is-order {
+    margin : 0;
+}
+
+.line-item-details {
+    padding-top : 0;
+
+    * {
+        font-size : .8rem;
+    }
+}
+
+.line-item-img {
+    padding    : .15rem;
+    object-fit : cover;
+}
+
+/******************************** SW captcha ********************************/
+
+.basic-captcha-content-image img {
+    height : 42px;
+    width  : auto !important;
+}
+
+/******************************** SW card ********************************/
+
+.card {
+    ul {
+        list-style : none;
+        margin     : 0;
+        padding    : 0 0 0 2rem;
+    }
+
+    li {
+        position       : relative;
+        padding-top    : .25rem;
+        padding-bottom : .25rem;
+    }
+
+    ul li:before {
+        position       : absolute;
+        content        : "\F138";
+        font-family    : bootstrap-icons !important;
+        color          : $sw-text-color;
+        padding-right  : .75rem;
+        margin-left    : -1.8rem;
+        vertical-align : top;
+    }
+}
+
+/******************************** SW6 card bug fix ********************************/
+
+.product-detail-review-login .login-card .card-body {
+    padding : 1.25rem;
+}
+
+/* Important for account and checkout! */
+.card {
+    height        : auto;
+    margin-bottom : 2rem;
+}
+
+.card-col {
+    margin : 0;
+}
+
+/******************************** Card hack ********************************/
+
+.confirm-payment {
+    margin : 0;
+}
+
+.confirm-main-header, .confirm-tos, .confirm-address, .confirm-payment-shipping, .confirm-payment, .confirm-product {
+    margin : 0;
+}
+
+.card-title, h1.card-title, h2.card-title, h3.card-title, h4.card-title, h5.card-title {
+    font-weight    : $headings-font-weight;
+    color          : $sw-text-color;
+    font-family    : $headings-font-family;
+    padding-bottom : 1rem;
+}
+
+#customerComment {
+    width      : 100%;
+    min-height : 220px;
+    margin-top : 10px;
+}
+
+/******************************** Recompile ********************************/

@@ -1,0 +1,44 @@
+{% sw_extends '@Storefront/storefront/component/address/address-editor-modal-create-address.html.twig' %}
+
+{# Rearrange, set icons, modify buttons #}
+
+{% block component_address_address_editor_modal_create_address_title %}
+    {# Remove #}
+{% endblock %}
+
+{% block component_address_address_editor_modal_create_address_card_body %}
+    <div class="card-body">
+        <h3 class="card-title create-address-title">
+            {% if address %}
+                <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressEditWelcome"|trans|sw_sanitize }}
+            {% else %}
+                <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressCreateWelcome"|trans|sw_sanitize }}
+            {% endif %}
+        </h3>
+
+        {% block component_address_address_editor_modal_create_address_form %}
+            <form method="post"
+                  action="{{ path('frontend.account.addressbook') }}"
+                  class="js-close-address-editor"
+                  data-form-ajax-submit="true"
+                  data-form-ajax-submit-options='{{ formAjaxSubmitOptions|json_encode }}'>
+
+                {% block component_address_address_editor_modal_create_address_form_hidden_inputs %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block component_address_address_editor_modal_create_address_form_fields_include %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block component_address_address_editor_modal_create_address_required_hint %}
+                    {{ parent() }}
+                {% endblock %}
+
+                {% block component_address_address_editor_modal_create_address_form_actions %}
+                    {{ parent() }}
+                {% endblock %}
+            </form>
+        {% endblock %}
+    </div>
+{% endblock %}

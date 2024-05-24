@@ -1,0 +1,111 @@
+{% sw_extends '@Storefront/storefront/page/account/addressbook/index.html.twig' %}
+
+{% block page_account_main_content %}
+    <div class="account-address">
+        {% block page_account_address_welcome %}
+            <div class="account-welcome">
+                {% block page_account_address_welcome_headline %}
+                    <h1>
+                        {{ "account.addressWelcome"|trans|sw_sanitize }}
+                    </h1>
+                {% endblock %}
+                {% block page_account_address_welcome_intro %}
+                    <p>
+                        {{ "account.addressText"|trans|sw_sanitize }}
+                    </p>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block page_account_address_success_messages %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block page_account_address_main %}
+            {% set defaultBillingAddress = context.customer.defaultBillingAddress %}
+            {% set defaultShippingAddress = context.customer.defaultShippingAddress %}
+
+            {% block page_account_address_default %}
+                <div class="row default-address">
+                    {% block page_account_address_billing %}
+                        <div class="col-sm-6 card-col address-card">
+                            <div class="billing-address">
+                                {% block page_account_address_billing_body %}
+                                    {% block page_account_address_billing_title %}
+                                        <h3 class="card-title">
+                                            <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressesTitleDefaultBillingAddress"|trans|sw_sanitize }}
+                                        </h3>
+                                    {% endblock %}
+                                    {% block page_account_address_billing_address %}
+                                        {% sw_include '@Storefront/storefront/component/address/address.html.twig' with {
+                                            'address': defaultBillingAddress
+                                        } %}
+                                    {% endblock %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block page_account_address_shipping %}
+                        <div class="col-sm-6 card-col address-card">
+                            <div class="shipping-address">
+                                {% block page_account_address_shipping_body %}
+                                    {% block page_account_address_shipping_title %}
+                                        <h3 class="card-title">
+                                            <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressesTitleDefaultShippingAddress"|trans|sw_sanitize }}
+                                        </h3>
+                                    {% endblock %}
+                                    {% block page_account_address_shipping_address %}
+                                        {% sw_include '@Storefront/storefront/component/address/address.html.twig' with {
+                                            'address': defaultShippingAddress
+                                        } %}
+                                    {% endblock %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block page_account_address_item_content_create %}
+                <div class="address-action-create">
+                    <a href="{{ path('frontend.account.address.create.page') }}"
+                       title="{{ "account.addressCreateBtn"|trans|striptags }}"
+                       class="btn btn-outline-secondary">
+                        {{ "account.addressCreateBtn"|trans|sw_sanitize }}
+                    </a>
+                </div>
+            {% endblock %}
+
+            {% block page_account_address_list %}
+                <div class="address-list">
+                    <h3 class="card-title">
+                        <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.addressListHeader"|trans|sw_sanitize }}
+                    </h3>
+
+                    <div class="row">
+                        {% for address in page.addresses %}
+                            <div class="col-sm-6 card-col address-card">
+                                <div class="card other-address">
+                                    <div class="card-body">
+                                        {% block page_account_address_overview_body %}
+                                            {% block page_account_address_overview_address %}
+                                                {% sw_include '@Storefront/storefront/component/address/address.html.twig' with { 'showShippingWarning': defaultShippingAddress.id != address.id } %}
+                                            {% endblock %}
+
+                                            {% block page_account_address_overview_actions %}
+                                                <div class="card-actions">
+                                                    {% sw_include '@Storefront/storefront/page/account/addressbook/address-actions.html.twig' %}
+                                                </div>
+                                            {% endblock %}
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

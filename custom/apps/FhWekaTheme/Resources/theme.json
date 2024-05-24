@@ -1,0 +1,370 @@
+{
+    "name": "WEKA Theme",
+    "author": "FULLHAUS GmbH",
+    "views": [
+        "@Storefront",
+        "@FhWekaTheme",
+        "@SwagPayPal",
+        "@Plugins"
+    ],
+    "previewMedia": "app/storefront/src/assets/images/weka-theme-preview.png",
+    "style": [
+        "app/storefront/src/scss/overrides.scss",
+        "@StorefrontBootstrap",
+        "@Plugins",
+        "app/storefront/src/scss/base.scss"
+    ],
+    "script": [
+        "@Storefront",
+        "app/storefront/dist/storefront/js/fh-weka-theme.js"
+    ],
+    "asset": [
+        "@Storefront",
+        "app/storefront/src/assets"
+    ],
+    "config": {
+
+        "blocks": {
+            "themeColors": {
+                "label": {
+                    "en-GB": "Theme colors",
+                    "de-DE": "Themenfarben"
+                }
+            },
+            "typography": {
+                "label": {
+                    "en-GB": "Typography",
+                    "de-DE": "Typografie"
+                }
+            },
+            "statusColors": {
+                "label": {
+                    "en-GB": "Status messages",
+                    "de-DE": "Statusmeldungen"
+                }
+            },
+            "media": {
+                "label": {
+                    "en-GB": "Media",
+                    "de-DE": "Medien"
+                }
+            },
+            "logo": {
+                "label": {
+                    "en-GB": "Logos",
+                    "de-DE": "Logos"
+                }
+            },
+            "footer": {
+                "label": {
+                    "en-GB": "Footer",
+                    "de-DE": "Fußzeile"
+                }
+            },
+            "404 Page": {
+                "label": {
+                    "en-GB": "404 error page",
+                    "de-DE": "404-Fehlerseite"
+                }
+            },
+            "Maintenance Page": {
+                "label": {
+                    "en-GB": "Maintenance page",
+                    "de-DE": "Wartungsseite"
+                }
+            },
+            "wishlist": {
+                "label": {
+                    "en-GB": "Wishlist",
+                    "de-DE": "Wishlist"
+                }
+            }
+        },
+
+
+        "fields": {
+            "sw-color-brand-primary": {
+                "label": {
+                    "en-GB": "Primary colour",
+                    "de-DE": "Primärfarbe"
+                },
+                "value": "#98be17"
+            },
+            "sw-color-brand-secondary": {
+                "label": {
+                    "en-GB": "Secondary colour",
+                    "de-DE": "Sekundärfarbe"
+                },
+                "value": "#555555"
+            },
+            "sw-border-color": {
+                "label": {
+                    "en-GB": "Border",
+                    "de-DE": "Rahmen"
+                },
+                "value": "#e1e1e1"
+            },
+            "sw-background-color": {
+                "label": {
+                    "en-GB": "Background",
+                    "de-DE": "Hintergrund"
+                },
+                "value": "#ffffff"
+            },
+            "sw-color-success": {
+                "label": {
+                    "en-GB": "Success",
+                    "de-DE": "Erfolg"
+                },
+                "value": "#b4d259"
+            },
+            "sw-color-info": {
+                "label": {
+                    "en-GB": "Information",
+                    "de-DE": "Information"
+                },
+                "value": "#89cffb"
+            },
+            "sw-color-warning": {
+                "label": {
+                    "en-GB": "Notice",
+                    "de-DE": "Hinweis"
+                },
+                "value": "#ffd486"
+            },
+            "sw-color-danger": {
+                "label": {
+                    "en-GB": "Error",
+                    "de-DE": "Fehler"
+                },
+                "value": "#ff8b8a"
+            },
+            "sw-font-family-base": {
+                "label": {
+                    "en-GB": "Text font type",
+                    "de-DE": "Schriftart Text"
+                },
+                "value": "'Roboto', sans-serif"
+            },
+            "sw-text-color": {
+                "label": {
+                    "en-GB": "Text colour",
+                    "de-DE": "Textfarbe"
+                },
+                "value": "#333333"
+            },
+            "sw-font-family-headline": {
+                "label": {
+                    "en-GB": "Headline font type",
+                    "de-DE": "Schriftart Überschrift"
+                },
+                "value": "'Roboto Slab', sans-serif"
+            },
+            "sw-headline-color": {
+                "label": {
+                    "en-GB": "Headline colour",
+                    "de-DE": "Überschriftfarbe"
+                },
+                "value": "#98be17"
+            },
+            "sw-color-price": {
+                "label": {
+                    "en-GB": "Price",
+                    "de-DE": "Preis"
+                },
+                "value": "#333333"
+            },
+            "sw-color-buy-button": {
+                "label": {
+                    "en-GB": "Cart button",
+                    "de-DE": "Warenkorb-Button"
+                },
+                "value": "#98be17"
+            },
+            "sw-color-buy-button-text": {
+                "label": {
+                    "en-GB": "Cart button text",
+                    "de-DE": "Warenkorb-Button-Text"
+                },
+                "value": "#ffffff"
+            },
+
+            "sw-logo-desktop": {
+                "label": {
+                    "en-GB": "Desktop",
+                    "de-DE": "Desktop"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/logo/weka-logo.svg",
+                "editable": false,
+                "block": "logo"
+            },
+            "sw-logo-tablet": {
+                "label": {
+                    "en-GB": "Tablet",
+                    "de-DE": "Tablet"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/logo/weka-logo.svg",
+                "editable": false,
+                "block": "logo"
+            },
+            "sw-logo-mobile": {
+                "label": {
+                    "en-GB": "Mobile",
+                    "de-DE": "Handy"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/logo/weka-logo.svg",
+                "editable": false,
+                "block": "logo"
+            },
+            "sw-logo-share": {
+                "label": {
+                    "en-GB": "App & share icon",
+                    "de-DE": "App- & Share-Icon"
+                },
+                "block": "logo"
+            },
+            "sw-logo-favicon": {
+                "label": {
+                    "en-GB": "Favicon",
+                    "de-DE": "Favicon"
+                },
+                "block": "logo"
+            },
+            "sw-footer-logo": {
+                "label": {
+                    "en-GB": "Footer logo",
+                    "de-DE": "Footer-Logo"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/logo/weka-logo.svg",
+                "editable": false,
+                "block": "logo"
+            },
+
+            "sw-instagram-link": {
+                "label": {
+                    "en-GB": "Instagram link",
+                    "de-DE": "Instagram-Link"
+                },
+                "type": "textarea",
+                "value": "https://www.instagram.com/",
+                "editable": true,
+                "block": "footer"
+            },
+            "sw-facebook-link": {
+                "label": {
+                    "en-GB": "Facebook link",
+                    "de-DE": "Facebook-Link"
+                },
+                "type": "textarea",
+                "value": "https://www.facebook.com/",
+                "editable": true,
+                "block": "footer"
+            },
+            "sw-youtube-link": {
+                "label": {
+                    "en-GB": "Youtube link",
+                    "de-DE": "Youtube-Link"
+                },
+                "type": "textarea",
+                "value": "https://www.youtube.com/",
+                "editable": true,
+                "block": "footer"
+            },
+
+            "sw-404-bg-desktop": {
+                "label": {
+                    "en-GB": "Desktop background",
+                    "de-DE": "Desktop-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-404-error.svg",
+                "editable": false,
+                "block": "404 Page"
+            },
+            "sw-404-bg-tablet": {
+                "label": {
+                    "en-GB": "Tablet background",
+                    "de-DE": "Tablet-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-404-error.svg",
+                "editable": false,
+                "block": "404 Page"
+            },
+            "sw-404-bg-mobile": {
+                "label": {
+                    "en-GB": "Mobile background",
+                    "de-DE": "Handy-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-404-error.svg",
+                "editable": false,
+                "block": "404 Page"
+            },
+            "sw-maintenance-bg-mobile": {
+                "label": {
+                    "en-GB": "Mobile background",
+                    "de-DE": "Handy-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-maintenance-mode.svg",
+                "editable": false,
+                "block": "Maintenance Page"
+            },
+            "sw-maintenance-bg-tablet": {
+                "label": {
+                    "en-GB": "Tablet background",
+                    "de-DE": "Tablet-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-maintenance-mode.svg",
+                "editable": false,
+                "block": "Maintenance Page"
+            },
+            "sw-maintenance-bg-desktop": {
+                "label": {
+                    "en-GB": "Desktop background",
+                    "de-DE": "Desktop-Hintergrund"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/website-maintenance-mode.svg",
+                "editable": false,
+                "block": "Maintenance Page"
+            },
+            "sw-wishlist-empty": {
+                "label": {
+                    "en-GB": "Mobile empty state",
+                    "de-DE": "Handy-Leerzustand"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/empty-wishlist.svg",
+                "editable": false,
+                "block": "wishlist"
+            },
+            "sw-wishlist-empty-tablet": {
+                "label": {
+                    "en-GB": "Tablet empty state",
+                    "de-DE": "Tablet-Leerzustand"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/empty-wishlist.svg",
+                "editable": false,
+                "block": "wishlist"
+            },
+            "sw-wishlist-empty-desktop": {
+                "label": {
+                    "en-GB": "Desktop empty state",
+                    "de-DE": "Desktop-Leerzustand"
+                },
+                "type": "media",
+                "value": "app/storefront/src/assets/illustration/empty-wishlist.svg",
+                "editable": false,
+                "block": "wishlist"
+            }
+        }
+    }
+}

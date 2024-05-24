@@ -1,0 +1,62 @@
+{% sw_extends '@Storefront/storefront/page/account/addressbook/address-actions.html.twig' %}
+
+{# Rearranged, fixed SW6 layout, icons set, modifed buttons #}
+
+{% block page_account_address_actions_set_default %}
+    <div class="address-actions-defaults">
+        {% block page_account_address_actions_set_default_shipping %}
+            {% if defaultShippingAddress.id != address.id %}
+                <form action="{{ path('frontend.account.address.set-default-address', {'type': 'shipping', 'addressId': address.id}) }}"
+                      method="post">
+                    <button type="submit"
+                            title="{{ "account.addressesSetAsDefaultShippingAction"|trans|striptags }}"
+                            class="btn btn-outline-secondary mb-2"
+                        {% if not address.country.shippingAvailable %} disabled="disabled"{% endif %}>
+                        {{ "account.addressesSetAsDefaultShippingAction"|trans|sw_sanitize }}
+                    </button>
+                </form>
+            {% endif %}
+        {% endblock %}
+
+        {% block page_account_address_actions_set_default_billing %}
+            {% if defaultBillingAddress.id != address.id %}
+                <form action="{{ path('frontend.account.address.set-default-address', {'type': 'billing', 'addressId': address.id}) }}"
+                      method="post">
+
+                    <button type="submit"
+                            title="{{ "account.addressesSetAsDefaultBillingAction"|trans|striptags }}"
+                            class="btn btn-outline-secondary mb-2">
+                        {{ "account.addressesSetAsDefaultBillingAction"|trans|sw_sanitize }}
+                    </button>
+                </form>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block page_account_address_actions_update %}
+    <div class="col-auto">
+        <a href="{{ path('frontend.account.address.edit.page', {'addressId': address.id}) }}"
+           title="{{ "account.addressesContentItemActionEdit"|trans|striptags }}"
+           class="btn btn-outline-secondary btn-sm">
+            {{ "account.addressesContentItemActionEdit"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block page_account_address_actions_delete %}
+    {% if defaultShippingAddress.id != address.id and defaultBillingAddress.id != address.id %}
+        <div class="col-auto">
+            <form action="{{ path('frontend.account.address.delete', {'addressId': address.id}) }}"
+                  class="address-action-delete"
+                  method="post">
+
+                <button type="submit"
+                        class="btn btn-outline-danger btn-sm"
+                        title="{{ "account.addressesContentItemActionDelete"|trans|striptags }}">
+                    {{ "account.addressesContentItemActionDelete"|trans|sw_sanitize }}
+                </button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

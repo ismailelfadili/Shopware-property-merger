@@ -1,0 +1,36 @@
+/*
+Button
+==============================================
+Custom skin styling for bootstrap button component.
+
+https://getbootstrap.com/docs/5.2/components/buttons/
+*/
+
+/* Shopware overrides */
+.btn, a {
+    transition : $animation;
+}
+
+/* Filter Buttons and Dropdown */
+.filter-panel-item .filter-panel-item-toggle {
+    border     : 1px solid darken($light, 10%);
+    background : $light;
+}
+
+.filter-panel-item-dropdown {
+    border-radius : 0 !important;
+    padding       : 0 !important;
+
+    ul {
+        padding : .5rem 0;
+    }
+}
+
+.filter-multi-select-manufacturer {
+    display : none !important;
+}
+
+/* Button light contrast fix */
+.btn.btn-outline-light {
+    color : $dark;
+}

@@ -1,0 +1,67 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/categories.html.twig' %}
+
+{% block layout_navigation_categories %}
+    {% set navigationMaxDepth = 3 %}
+
+    {% if not level %}
+        {% set level = 1 %}
+    {% endif %}
+
+    <div class="{% if level == 1 %}row {% endif %}navigation-flyout-categories is-level-{{ level - 1}}">
+        {# iterate navigation #}
+        {% for treeItem in navigationTree %}
+
+            {% set subId = treeItem.category.id %}
+            {% set name = treeItem.category.translated.name %}
+            {% set link = treeItem.category.externalLink %}
+
+            {% if loop.first and level == 1 %}
+                <div class="col-3"> {# open col #}
+            {% endif %}
+
+            {% block layout_navigation_categories_item %}
+                <div class="navigation-flyout-col">
+                    {% block layout_navigation_categories_item_link %}
+                        {% if treeItem.category.type == 'folder' %}
+                            <div class="nav-item nav-link navigation-flyout-link is-level-{{ level - 1 }}"
+                                 title="{{ name }}">
+                                <span itemprop="name">{{ name }}</span>
+                            </div>
+                        {% else %}
+                            <a class="nav-item nav-link navigation-flyout-link is-level-{{ level - 1 }}
+                            {% if treeItem.category.id is same as(activeId) %} active{% endif %}"
+                               href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: subId }) }}{% endif %}"
+                               itemprop="url"
+                               title="{{ name }}">
+                                <span itemprop="name">{{ name }}</span>
+                            </a>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block layout_navigation_categories_recoursion %}
+                        {% if level < navigationMaxDepth %}
+                            {% sw_include '@Storefront/storefront/layout/navigation/categories.html.twig' with {
+                                navigationTree: treeItem.children,
+                                level: level + 1
+                            }  %}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+
+            {% if loop.length >= 6 and loop.index is divisible by(4) and not loop.last and level == 1 %}
+                </div><div class="col-3"> {# after 4 iterates close col and open new #}
+            {% endif %}
+
+            {% if loop.length <= 5 and loop.index is divisible by(1) and not loop.last and level == 1 %}
+                </div><div class="col-3"> {# after 1 iterates close col and open new #}
+            {% endif %}
+
+            {% if loop.last and level == 1 %}
+                </div> {# close last col #}
+            {% endif %}
+
+        {% endfor %}
+    </div>
+{% endblock %}

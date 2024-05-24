@@ -1,0 +1,110 @@
+{% sw_extends '@Storefront/storefront/component/account/register.html.twig' %}
+
+{% block component_account_register %}
+    <h2 class="h3 mb-2">{{ "account.registerPersonalHeader"|trans|sw_sanitize }}</h2>
+
+    {% block component_account_register_form %}
+        <form action="{{ path('frontend.account.register.save') }}"
+              class="register-form"
+              method="post"
+              data-form-validation="true">
+
+            {% block component_account_register_redirect %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block component_account_register_create_account %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block component_account_register_form_action %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block component_account_register_personal %}
+                <div class="card register-card">
+                    <div class="card-body">
+                        {% block component_account_register_header %}
+                            <h3 class="card-title">
+                                <i class="bi bi-xxs bi-person pe-2"></i>{{ "checkout.addressRegisterCardTitle"|trans|sw_sanitize }}
+                            </h3>
+                        {% endblock %}
+
+                        <div class="register-personal">
+                            {% block component_account_register_personal_fields %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block component_account_register_address %}
+                <div class="card register-card">
+                    <div class="card-body">
+                        <div class="register-address">
+                            {% block component_account_register_address_fields %}
+                                {% block component_account_register_address_billing %}
+                                    <div class="register-billing">
+                                        {% block component_account_register_address_billing_header %}
+                                            <h3 class="card-title">
+                                                <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.registerAddressBillingHeader"|trans|sw_sanitize }}
+                                            </h3>
+                                        {% endblock %}
+
+                                        {% block component_account_register_address_billing_fields %}
+                                            {{ parent() }}
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+
+                                {% block component_account_register_address_different_shipping %}
+                                    <div>
+                                        {% block component_account_register_address_different_shipping_control %}
+                                            {{ parent() }}
+                                        {% endblock %}
+
+                                        {% block component_account_register_address_shipping %}
+                                            <div class="register-shipping js-form-field-toggle-shipping-address d-none">
+                                                {% block component_account_register_address_shipping_header %}
+                                                    <h3 class="card-title">
+                                                        <i class="bi bi-xxs bi-journal-text pe-2"></i>{{ "account.registerAddressShippingHeader"|trans|sw_sanitize }}
+                                                    </h3>
+                                                {% endblock %}
+
+                                                {% block component_account_register_address_shipping_fields %}
+                                                    {{ parent() }}
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+            <div class="card register-card">
+                <div class="card-body">
+                    {% block component_account_register_captcha %}
+                        {{ parent() }}
+                    {% endblock %}
+
+                    {% block component_account_register_privacy %}
+                        {{ parent() }}
+                    {% endblock %}
+
+                    {% block component_account_register_required_fields %}
+                        {{ parent() }}
+                    {% endblock %}
+
+                    {% block component_account_register_submit %}
+                        {{ parent() }}
+                    {% endblock %}
+                </div>
+            </div>
+        </form>
+    {% endblock %}
+
+{% endblock %}
