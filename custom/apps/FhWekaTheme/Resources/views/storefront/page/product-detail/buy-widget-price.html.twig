@@ -132,7 +132,6 @@
                     {% endif %}
 
                     <div class="col-auto product-price">
-                        {% if page.product.customFields.custom_productinformation_rrp == true %}{{ 'detail.productRrp'|trans|raw }} {% endif %}
                         {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
                     </div>
                 </div>

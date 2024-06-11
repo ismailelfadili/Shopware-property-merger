@@ -64,7 +64,6 @@
                         <div>
                             {{ "listing.cheapestPriceLabel"|trans|sw_sanitize }}
                             <span class="product-cheapest-price-price">
-                                {% if product.customFields.custom_productinformation_rrp == true %}{{ 'detail.productRrp'|trans|sw_sanitize }} {% endif %}
                                 {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
                             </span>
                         </div>
@@ -74,7 +73,6 @@
                 {# List view #}
                 <div class="product-listview-price{% if isListPrice %} with-list-price{% endif %}{% if isRegulationPrice %} with-regulation-price{% endif %}">
                     <p class="product-price">
-                        {% if product.customFields.custom_productinformation_rrp == true %}{{ 'detail.productRrp'|trans|raw }} {% endif %}
                         {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
                     </p>
 
