@@ -134,11 +134,9 @@
                             {% endblock %}
 
                             {% block page_product_delivery_informations %}
-                                {% if "4a00af73076d4e76b0bb43dd1e2ee68a" in product.categoryTree %}
-                                    <div class="product-detail-delivery-information">
-                                        {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
-                                    </div>
-                                {% endif %}
+                                <div class="product-detail-delivery-information">
+                                    {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+                                </div>
                             {% endblock %}
 
                             {% block component_product_box_action %}
