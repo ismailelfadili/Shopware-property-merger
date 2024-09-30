@@ -96,28 +96,28 @@ The following commands and scripts are available
 
 **Setup/Install/Deployment**
 
-|Command|Description|
-|---|---|
-| `bin/console system:setup` | Configure and create .env and optionally create jwt secret |
-| `bin/console system:generate-jwt-secret` | Generates a new jwt secret |
-| `bin/console system:generate-app-secret` | Outputs a new app secret. This does not update your .env! |
-| `bin/console system:install` | Setup database and optional install some basic data |
-| `bin/console system:update:prepare` | Run update preparations before the update. Do not update if this fails |
-| `bin/console system:update:finish` | Executes the migrations and finishes the update |
-| `bin/console theme:change` | Assign theme to a sales channel |
+| Command                                  | Description                                                            |
+|------------------------------------------|------------------------------------------------------------------------|
+| `bin/console system:setup`               | Configure and create .env and optionally create jwt secret             |
+| `bin/console system:generate-jwt-secret` | Generates a new jwt secret                                             |
+| `bin/console system:generate-app-secret` | Outputs a new app secret. This does not update your .env!              |
+| `bin/console system:install`             | Setup database and optional install some basic data                    |
+| `bin/console system:update:prepare`      | Run update preparations before the update. Do not update if this fails |
+| `bin/console system:update:finish`       | Executes the migrations and finishes the update                        |
+| `bin/console theme:change`               | Assign theme to a sales channel                                        |
 
 
 **Build**
 
 *bash is required for the shell scripts* 
 
-|Command|Description|
-|---|---|
-| `bin/console theme:compile` | Compile all assigned themes |
-| `bin/build.sh` | Complete build including composer install|
-| `bin/build-js.sh` | Build administration and storefront, including all plugins in `var/plugins.json`.|
-| `bin/build-administration.sh` | Just build the administration. |
-| `bin/build-storefront.sh` | Just build the storefront. You need to have built the administration once. |
+| Command                       | Description                                                                       |
+|-------------------------------|-----------------------------------------------------------------------------------|
+| `bin/console theme:compile`   | Compile all assigned themes                                                       |
+| `bin/build.sh`                | Complete build including composer install                                         |
+| `bin/build-js.sh`             | Build administration and storefront, including all plugins in `var/plugins.json`. |
+| `bin/build-administration.sh` | Just build the administration.                                                    |
+| `bin/build-storefront.sh`     | Just build the storefront. You need to have built the administration once.        |
 
 
 **Dev**
@@ -126,11 +126,11 @@ Run `bin/build-js.sh` once to install the npm dependencies.
 
 *bash is required for the shell scripts* 
 
-|Command|Description|
-|---|---|
-| `bin/console theme:refresh` | Reload theme.json of active themes |
-| `bin/watch-administration.sh` | Watcher for administration changes, recompile and reload page if required  |
-| `bin/watch-storefront.sh` | Watcher for storefront changes, recompile and reload page if required  |
+| Command                       | Description                                                               |
+|-------------------------------|---------------------------------------------------------------------------|
+| `bin/console theme:refresh`   | Reload theme.json of active themes                                        |
+| `bin/watch-administration.sh` | Watcher for administration changes, recompile and reload page if required |
+| `bin/watch-storefront.sh`     | Watcher for storefront changes, recompile and reload page if required     |
 
 ## Configuration
 
@@ -145,27 +145,27 @@ This directory tree should give an overview of the template structure.
 ├── composer.json         # defines dependencies and setups autoloading
 ├── composer.lock         # pins all dependencies to allow for reproducible installs
 ├── config                # contains application configuration
-│   ├── bundles.php       # defines static symfony bundles - use plugins for dynamic bundles
-│   ├── etc/              # contains the configuration of the docker image
-│   ├── jwt/              # secrets for generating jwt tokens - DO NOT COMMIT these secrets
-│   ├── packages/         # configure packages - see: config/README.md
-│   ├── secrets/          # symfony secrets store - DO NOT COMMIT these secrets
-│   ├── services/         # contains some default overrides
-│   ├── services.xml      # just imports the default overrides - this file should not change
-│   └── services_test.xml # just imports the default overrides for tests
+│   ├── bundles.php       # defines static symfony bundles - use plugins for dynamic bundles
+│   ├── etc/              # contains the configuration of the docker image
+│   ├── jwt/              # secrets for generating jwt tokens - DO NOT COMMIT these secrets
+│   ├── packages/         # configure packages - see: config/README.md
+│   ├── secrets/          # symfony secrets store - DO NOT COMMIT these secrets
+│   ├── services/         # contains some default overrides
+│   ├── services.xml      # just imports the default overrides - this file should not change
+│   └── services_test.xml # just imports the default overrides for tests
 ├── custom                # contains custom files
-│   ├── plugins           # store plugins
-│   ├── static-plugins    # static project specific plugins
+│   ├── plugins           # store plugins
+│   ├── static-plugins    # static project specific plugins
 ├── docker-compose.yml    # example docker-compose
 ├── Dockerfile            # minimal docker image
 ├── phpunit.xml.dist      # phpunit config
 ├── public                # should be the web root
-│   ├── index.php         # main entrypoint for the web application
+│   ├── index.php         # main entrypoint for the web application
 ├── README.md             # this file
 ├── src
-│   ├── Command/*
-│   ├── Kernel.php        # our kernel extension
-│   └── TestBootstrap.php # required to run unit tests
+│   ├── Command/*
+│   ├── Kernel.php        # our kernel extension
+│   └── TestBootstrap.php # required to run unit tests
 └── var
     ├── log/              # log dir
     |── cache/            # cache directory for symfony
