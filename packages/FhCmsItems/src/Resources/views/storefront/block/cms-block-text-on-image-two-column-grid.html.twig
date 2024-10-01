@@ -1,0 +1,38 @@
+{% block sw_cms_block_text_on_image_two_column_grid %}
+    {% set columns = 2 %}
+
+    <div class="col-12">
+        <div class="row">
+
+            {% block sw_cms_block_text_on_image_two_column_grid_left %}
+                <div class="col-md-6 item">
+                    <div class="position-relative">
+                        {% block block_text_two_column_left_inner %}
+                            {% set element = block.slots.getSlot('left-image') %}
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                            {% set element = block.slots.getSlot('left-text') %}
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block block_text_on_image_two_column_grid_right %}
+                <div class="col-md-6 item">
+                    <div class="position-relative">
+                        {% block block_text_two_column_right_inner %}
+                            {% set element = block.slots.getSlot('right-image') %}
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+                            {% set element = block.slots.getSlot('right-text') %}
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+
+        </div>
+    </div>
+{% endblock %}
+

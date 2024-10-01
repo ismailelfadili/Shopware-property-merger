@@ -1,0 +1,27 @@
+{% block sw_cms_block_text_on_image_two_column_grid %}
+    <div class="sw-cms-block-text-on-image-two-column-grid">
+        <div class="sw-cms-block-text-on-image-two-column-grid__image">
+            <div class="sw-cms-block-text-on-image-two-column-grid__content">
+                <div class="sw-cms-block-text-on-image-two-column-grid__image">
+                    <slot name="left-image"></slot>
+
+                    <div class="sw-cms-block-text-on-image-two-column-grid__text">
+                        <slot name="left-text"></slot>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="sw-cms-block-text-on-image-two-column-grid__image">
+            <div class="sw-cms-block-text-on-image-two-column-grid__content">
+                <div class="sw-cms-block-text-on-image-two-column-grid__image">
+                    <slot name="right-image"></slot>
+
+                    <div class="sw-cms-block-text-on-image-two-column-grid__text">
+                        <slot name="right-text"></slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

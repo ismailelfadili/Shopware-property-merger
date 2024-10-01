@@ -1,0 +1,21 @@
+{% block sw_cms_element_accordion %}
+	{% set config = element.fieldConfig.elements %}
+	{% set elementData = element.data %}
+
+	<div class="accordion" id="accordion_{{ element.id }}">
+		{% for n in range(1, element.config.numberOfItems.value) %}
+			<div class="accordion-item">
+				<button class="accordion-button {% if(n==1 and element.config.firstItemOpened.value) %}{% else %}collapsed{% endif %}" data-bs-toggle="collapse" data-bs-target="#item{{ element.id }}_{{ n }}" aria-expanded="{% if( not (n==1 and element.config.firstItemOpened.value)) %}true{% endif %}" aria-controls="item{{ element.id }}_{{ n }}">
+					{{ element.config["itemtitle#{n}"].value|raw }}
+				</button>
+
+				<div id="item{{ element.id }}_{{ n }}" class="accordion-collapse collapse {% if(n==1 and element.config.firstItemOpened.value) %}show{% endif %}" data-bs-parent="#accordion_{{ element.id }}">
+					<div class="accordion-body">
+						{{ element.config["itemcontents#{n}"].value|raw }}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

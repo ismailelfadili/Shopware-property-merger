@@ -1,0 +1,21 @@
+.sw-cms-element-preview-accordion {
+  font-size: 80%;
+  inline-size: 100%;
+  position: relative;
+
+  .accordion {
+    overflow: hidden;
+
+    .item {
+      background-color: #eee;
+      font-weight: bold;
+      margin-block-end: 0.125rem;
+      padding: 0.25rem;
+    }
+
+    .item-container {
+      display: block;
+      margin: 0.5rem;
+    }
+  }
+}

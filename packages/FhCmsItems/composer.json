@@ -1,0 +1,32 @@
+{
+    "name": "fullhaus/cms-items",
+    "description": "Content Management Elements for Shopware 6",
+    "version": "v2.0.8",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FULLHAUS GmbH"
+        }
+    ],
+    "require": {
+			"shopware/core": "6.4.*|6.5.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "FULLHAUS\\CmsItems\\FhCmsItems",
+        "copyright": "Copyright (c) by FULLHAUS GmbH",
+        "label": {
+            "de-DE": "CMS Elementerweiterung",
+            "en-GB": "CMS Element Extension"
+        },
+        "description": {
+            "de-DE": "Fügt neue Contentelemente dem Shopware 6 CMS hinzu.",
+            "en-GB": "Adds new Elements to Shopware 6 CMS."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "FULLHAUS\\CmsItems\\": "src/"
+        }
+    }
+}

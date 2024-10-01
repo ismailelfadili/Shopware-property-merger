@@ -1,0 +1,17 @@
+.sw-cms-element-preview-local-video {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+
+  &__img {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+
+  &__icon {
+    block-size: 2.1875rem;
+    position: absolute;
+  }
+}

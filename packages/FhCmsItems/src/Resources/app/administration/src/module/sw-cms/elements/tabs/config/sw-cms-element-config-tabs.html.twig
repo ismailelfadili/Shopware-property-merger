@@ -1,0 +1,38 @@
+{% block sw_cms_element_config_tabs %}
+    <div class="sw-cms-element-config-fh">
+        <sw-container columns="1fr 1fr 1fr 1fr" gap="20px">
+            <sw-number-field numbertype="int" :min="2" :max="10"
+                             :label="$tc('sw-cms.elements.tabs.config.numberOfTabs')"
+                             v-model="element.config.numberOfTabs.value">
+            </sw-number-field>
+        </sw-container>
+
+        <sw-tabs :small="false" defaultItem="tab1">
+            <template slot-scope="{ active }">
+                <sw-tabs-item v-for="n in element.config.numberOfTabs.value" :key="n"
+                              :name="'tab' + n" :activeTab="active"
+                              :title="'Tab ' + n">
+                    <span v-if="element.config['tabtitle' + n].value" v-html="element.config['tabtitle' + n].value"></span>
+                    <span v-else>
+                        Tab {{ n }}
+                    </span>
+                </sw-tabs-item>
+            </template>
+
+            <template slot="content" slot-scope="{ active }">
+                <sw-container v-for="n in element.config.numberOfTabs.value" :key="n"
+                              v-if="active === 'tab' + n">
+
+                    <sw-text-field :label="$tc('sw-cms.elements.tabs.config.tabtitle')"
+                                   v-model="element.config['tabtitle' + n].value">
+                    </sw-text-field>
+
+                    <sw-text-editor :label="$tc('sw-cms.elements.tabs.config.tabcontents')"
+                                    v-model="element.config['tabcontents' + n].value">
+                    </sw-text-editor>
+
+                </sw-container>
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

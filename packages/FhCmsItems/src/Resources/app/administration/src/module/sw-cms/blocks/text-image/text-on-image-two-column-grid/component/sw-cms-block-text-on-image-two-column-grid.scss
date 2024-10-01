@@ -1,0 +1,47 @@
+.sw-cms-block-text-on-image-two-column-grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+
+  .sw-cms-block-text-on-image-two-column-grid__content {
+    block-size: 100%;
+    position: relative;
+  }
+
+  .sw-cms-block-text-on-image-two-column-grid__image {
+    block-size: 100%;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: relative;
+
+    img {
+      block-size: 100%;
+      display: block;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+
+    .sw-cms-block-text-on-image-two-column-grid__text {
+      inline-size: 75%;
+      inset-block-end: 2rem;
+      inset-inline-end: 0;
+      position: absolute;
+
+      .sw-text-editor .sw-text-editor__content {
+        background-color: #fff;
+        padding: 1rem;
+      }
+
+      h2 {
+        font-size: 1.1875rem;
+        padding-inline-start: 0.25rem;
+      }
+
+      p {
+        font-size: 0.875rem;
+        padding-inline-start: 0.25rem;
+      }
+    }
+  }
+}

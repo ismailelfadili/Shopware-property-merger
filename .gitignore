@@ -129,8 +129,10 @@ config/services*
 
 custom/*
 !custom/apps/
-!/custom/scripts/boot
-!/custom/scripts/examples
+!custom/plugins/
+custom/plugins/*
+!custom/static-plugins/
+
 files/*
 install.lock
 docker-compose.override.yaml

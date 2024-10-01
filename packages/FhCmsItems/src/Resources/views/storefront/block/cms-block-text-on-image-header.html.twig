@@ -1,0 +1,16 @@
+{% block sw_cms_block_text_on_image_header %}
+    {% set columns = 1 %}
+
+    <div class="col-12" data-cms-element-id="{{ element.id }}">
+        {% block sw_cms_block_text_on_image_header_inner %}
+
+            {% set element = block.slots.getSlot('header-image') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+            {% set element = block.slots.getSlot('header-text') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-text-on-image-header.html.twig" ignore missing %}
+
+        {% endblock %}
+    </div>
+
+{% endblock %}

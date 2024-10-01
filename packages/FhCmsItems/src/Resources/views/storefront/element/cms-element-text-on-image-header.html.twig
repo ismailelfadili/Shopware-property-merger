@@ -1,0 +1,21 @@
+{% block sw_cms_element_text_on_image_header %}
+    {% set config = element.fieldConfig.elements %}
+    {% set elementData = element.data %}
+
+    <div class="cms-element-text {{ displayMode }}">
+        <div class="container">
+            {% block element_text_alignment %}
+                <div class="cms-element-alignment{% if config.verticalAlign.value == "center" %} align-self-center{% elseif config.verticalAlign.value == "flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+                    {% block element_text_inner %}
+                        <div class="wk-headline category-name">
+                            <h1 class="wk-text-stroke">{{ element.data.content|striptags }}</h1>
+                            <div class="wk-text-shadow">{{ element.data.content|striptags }}</div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}
+

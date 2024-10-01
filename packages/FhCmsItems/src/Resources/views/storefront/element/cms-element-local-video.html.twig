@@ -1,0 +1,50 @@
+{% block sw_cms_element_local_video %}
+    {% set config = element.fieldConfig.elements %}
+    {% set elementData = element.data %}
+
+    {% set videoUrl = videoUrl ~ config.videoID.value %}
+    {% set mediaId = config.previewMedia.value %}
+
+    {% if config.autoPlay.value %}
+        {% set videoAttr = videoAttr ~'autoplay' ~ ' ' %}
+    {% endif %}
+
+    {% if config.loop.value %}
+        {% set videoAttr = videoAttr ~'loop' ~ ' ' %}
+    {% endif %}
+
+    {% if config.muted.value %}
+        {% set videoAttr = videoAttr ~ 'muted=true' ~ ' ' %}
+    {% endif %}
+
+    {% if config.showControls.value %}
+        {% set videoAttr = videoAttr ~ 'controls' ~ ' ' %}
+    {% endif %}
+
+    {% if config.poster.value %}
+        {% set videoAttr = videoAttr ~ 'poster=' ~ mediaId ~ ' ' %}
+    {% endif %}
+
+    {% if config.start.value > 0 %}
+        {% set videoUrl = videoUrl ~ '#t=' ~ config.start.value %}
+    {% endif %}
+
+    {% if config.end.value == not null %}
+        {% set videoUrl = videoUrl ~ ',' ~ config.end.value %}
+    {% endif %}
+
+    {% if config.displayMode.value == 'standard' or config.displayMode.value == null %}
+        {% set displayMode = 'ratio ratio-16x9' %}
+    {% else %}
+        {% set displayMode = 'is--' ~ config.displayMode.value %}
+    {% endif %}
+
+    <div class="cms-element-local-video {{ displayMode }}">
+        {% block element_local_video_inner %}
+                <video class="sw-cms-element-local-video__video w-100" {{ videoAttr }} >
+                    <source src="{{ videoUrl }}" type="video/mp4">
+                </video>
+        {% endblock %}
+    </div>
+
+{% endblock %}

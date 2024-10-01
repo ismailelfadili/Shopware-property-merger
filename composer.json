@@ -26,17 +26,22 @@
 			"Shopware\\Production\\": "src/"
 		}
 	},
-	"repositories": [
-		{
+	"repositories": {
+		"shopware-packages": {
+			"type": "composer",
+			"url": "https://packages.shopware.com"
+		},
+		"local": {
 			"type": "path",
-			"url": "custom/*/*"
+			"url": "./packages/*"
 		}
-	],
+	},
 	"require": {
 		"php": "^8.2",
 		"composer-runtime-api": "^2.0",
 		"frosh/development-helper": "1.0.3",
 		"frosh/platform-html-minify": "2.0.3",
+		"fullhaus/cms-items": "@dev",
 		"shopware/administration": "~6.5.5.2",
 		"shopware/core": "~6.5.5.2",
 		"shopware/elasticsearch": "~6.5.5.2",

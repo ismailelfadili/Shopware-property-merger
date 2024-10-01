@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f52367d1975bf242473cb7f2ddc12727",
+    "content-hash": "fefdce6a885dc79b07a97b6079aab853",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2331,6 +2331,48 @@
                 "source": "https://github.com/FriendsOfShopware/FroshPlatformHtmlMinify/tree/2.0.3"
             },
             "time": "2024-01-22T22:00:25+00:00"
+        },
+        {
+            "name": "fullhaus/cms-items",
+            "version": "v2.0.8",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhCmsItems",
+                "reference": "4be250d69c9c95a3c956db3fd324f5acfc75068a"
+            },
+            "require": {
+                "shopware/core": "6.4.*|6.5.*"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\CmsItems\\FhCmsItems",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "CMS Elementerweiterung",
+                    "en-GB": "CMS Element Extension"
+                },
+                "description": {
+                    "de-DE": "Fügt neue Contentelemente dem Shopware 6 CMS hinzu.",
+                    "en-GB": "Adds new Elements to Shopware 6 CMS."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\CmsItems\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Content Management Elements for Shopware 6",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "google/auth",
@@ -11960,11 +12002,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "fullhaus/cms-items": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4.3 || ^8.0",
+        "php": "^8.2",
         "composer-runtime-api": "^2.0"
     },
     "platform-dev": [],

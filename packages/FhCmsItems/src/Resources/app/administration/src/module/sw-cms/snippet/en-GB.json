@@ -1,0 +1,50 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "video": {
+                "localVideo": {
+                    "label": "Local Video"
+                }
+            }
+        },
+        "configResponsive": "Responsive configuration",
+        "configResponsiveNoBreakpoint": "Attention: this element is never displayed!",
+        "elements": {
+            "accordion": {
+                "config": {
+                    "firstItemOpened": "Show first item opened",
+                    "itemcontents": "Item contents",
+                    "itemtitle": "Item title",
+                    "numberOfItems": "Number of items"
+                },
+                "label": "Accordion"
+            },
+            "localVideo": {
+                "config": {
+                    "label": {
+                        "autoPlay": "Autoplay",
+                        "end": "Stop",
+                        "loop": "Loop",
+                        "muted": "Mute",
+                        "poster": "Preview image",
+                        "showControls": "Show controls",
+                        "start": "Start",
+                        "videoId": "Video-URL"
+                    },
+                    "placeholder": {
+                        "videoId": "https://www.fullhaus.de/media/..."
+                    }
+                }
+            },
+            "tabs": {
+                "config": {
+                    "numberOfTabs": "Number of tabs",
+                    "tabcontents": "Tab contents",
+                    "tabtitle": "Tab title"
+                },
+                "label": "Tabs"
+            }
+        },
+        "sidebarLabel": "PowerPack"
+    }
+}

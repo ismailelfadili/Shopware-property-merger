@@ -1,0 +1,15 @@
+{% block sw_cms_block_text_on_image_teaser %}
+
+    <div class="col-12 position-relative" data-cms-element-id="{{ element.id }}">
+        {% block sw_cms_block_text_on_image_teaser_inner %}
+
+            {% set element = block.slots.getSlot('image') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+            {% set element = block.slots.getSlot('text') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+
+        {% endblock %}
+    </div>
+
+{% endblock %}

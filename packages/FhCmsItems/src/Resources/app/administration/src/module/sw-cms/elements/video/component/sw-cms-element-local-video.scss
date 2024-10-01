@@ -1,0 +1,23 @@
+.sw-cms-element-local-video {
+  inline-size: 100%;
+  position: relative;
+
+  &.is--streched {
+    block-size: 100%;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    inline-size: 100%;
+    padding-block-start: calc((9 / 16) * 100%);
+  }
+
+  &__video {
+    block-size: 100%;
+    border: 0 none;
+    inline-size: 100%;
+    inset: 0;
+    position: absolute;
+  }
+}

@@ -1,0 +1,22 @@
+.sw-cms-preview-accordion {
+  font-size: 80%;
+  inline-size: 100%;
+  padding: 0.9375rem;
+  position: relative;
+
+  .accordion {
+    overflow: hidden;
+    padding-block-start: 0.0625rem;
+
+    .item {
+      border: 0.0625rem solid #dadee5;
+      border-radius: 0.25rem;
+      margin-block-start: -0.0625rem;
+      padding: 0.3125rem;
+    }
+
+    .item-container {
+      padding: 0.625rem;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{% block sw_cms_element_tabs %}
+    <div class="sw-cms-element-tabs">
+        <sw-tabs :small="false" defaultItem="tab1">
+            <template slot-scope="{ active }">
+                <sw-tabs-item v-for="n in element.config.numberOfTabs.value" :key="n" :name="'tab' + n" :activeTab="active" :title="'Tab ' + n">
+                    <sw-text-editor v-model="element.config['tabtitle' + n].value" :isInlineEdit="true">
+                    </sw-text-editor>
+                </sw-tabs-item>
+            </template>
+
+            <template slot="content" slot-scope="{ active }">
+                <sw-container v-for="n in element.config.numberOfTabs.value" :key="n" v-if="active === 'tab' + n">
+                    <sw-text-editor v-model="element.config['tabcontents' + n].value" :isInlineEdit="true">
+                    </sw-text-editor>
+                </sw-container>
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}
