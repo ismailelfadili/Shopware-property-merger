@@ -1,0 +1,15 @@
+.sw-cms-preview_fh-column-four {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 0.625rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0.9375rem;
+
+  span {
+    background-color: #bae2ff;
+    block-size: 2.5rem;
+    border: 0.125rem dashed #3badff;
+    border-radius: 0.3125rem;
+    inline-size: 100%;
+  }
+}

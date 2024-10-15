@@ -1,0 +1,41 @@
+.sw-cms-preview_fh-cluster-l {
+  align-items: center;
+  display: grid;
+  grid-column: 12;
+  grid-gap: 0.625rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.9375rem;
+
+  span {
+    background-color: #bae2ff;
+    block-size: 100%;
+    border: 0.125rem dashed #3badff;
+    border-radius: 0.3125rem;
+    min-block-size: 2.5rem;
+  }
+
+  .one {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .two {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .three {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .four {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .five {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+}

@@ -1,0 +1,47 @@
+{% block sw_cms_block_fh_text_image_two_column %}
+{% set columns = 2 %}
+
+    <div class="col-12">
+        <div class="row">
+            {% block block_text_image_two_column_left %}
+                <div class="col-md-6" data-cms-element-id="{{ element.id }}">
+
+                    {% block block_text_two_column_left_inner %}
+                        <div class="row">
+                            <div class="col-md-5 d-flex align-items-center">
+                                <div class="p-1">
+                                    {% set element = block.slots.getSlot('left-image') %}
+                                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                                </div>
+                            </div>
+                            <div class="col-md-7 d-flex align-items-center">
+                                {% set element = block.slots.getSlot('left-text') %}
+                                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block block_text_image_two_column_right %}
+                <div class="col-md-6" data-cms-element-id="{{ element.id }}">
+
+                    {% block block_text_two_column_right_inner %}
+                        <div class="row">
+                            <div class="col-md-5 d-flex align-items-center p-2">
+                                <div class="p-1">
+                                    {% set element = block.slots.getSlot('right-image') %}
+                                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                                </div>
+                            </div>
+                            <div class="col-md-7 d-flex align-items-center">
+                                {% set element = block.slots.getSlot('right-text') %}
+                                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

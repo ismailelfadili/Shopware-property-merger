@@ -42,6 +42,7 @@
 		"frosh/development-helper": "1.0.3",
 		"frosh/platform-html-minify": "2.0.3",
 		"fullhaus/cms-items": "@dev",
+		"fullhaus/cms-layout-blocks": "@dev",
 		"shopware/administration": "~6.5.5.2",
 		"shopware/core": "~6.5.5.2",
 		"shopware/elasticsearch": "~6.5.5.2",

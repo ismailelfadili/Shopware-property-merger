@@ -1,0 +1,109 @@
+@import 'cluster/fh-cluster-a';
+@import 'cluster/fh-cluster-b';
+@import 'cluster/fh-cluster-c';
+@import 'cluster/fh-cluster-d';
+@import 'cluster/fh-cluster-e';
+@import 'cluster/fh-cluster-f';
+@import 'cluster/fh-cluster-g';
+@import 'cluster/fh-cluster-h';
+@import 'cluster/fh-cluster-i';
+@import 'cluster/fh-cluster-j';
+@import 'cluster/fh-cluster-k';
+@import 'cluster/fh-cluster-l';
+@import 'cluster/fh-cluster-m';
+
+.cms-block-fh-cluster-a,
+.cms-block-fh-cluster-b,
+.cms-block-fh-cluster-c,
+.cms-block-fh-cluster-d,
+.cms-block-fh-cluster-e,
+.cms-block-fh-cluster-f,
+.cms-block-fh-cluster-g,
+.cms-block-fh-cluster-h,
+.cms-block-fh-cluster-i,
+.cms-block-fh-cluster-j,
+.cms-block-fh-cluster-k,
+.cms-block-fh-cluster-l,
+.cms-block-fh-cluster-m {
+  overflow: visible;
+}
+
+.fh-cluster-grid {
+  .fh-cluster-item {
+    block-size: 100%;
+    min-block-size: 2.5rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .fh-cluster-grid {
+    .product-action {
+      display: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  .fh-cluster-grid {
+    &.grid-g-05 {
+      grid-gap: 0.5rem !important;
+    }
+
+    &.grid-g-1 {
+      grid-gap: 1rem !important;
+    }
+
+    &.grid-g-2 {
+      grid-gap: 1rem !important;
+    }
+
+    &.grid-g-3 {
+      grid-gap: 1rem !important;
+
+    }
+
+    &.grid-g-4 {
+      grid-gap: 1rem !important;
+    }
+
+    &.grid-g-5 {
+      grid-gap: 1.5rem !important;
+    }
+
+    &.grid-g-6 {
+      grid-gap: 1.5rem !important;
+    }
+  }
+}
+
+@include media-breakpoint-down(xxl) {
+  .fh-cluster-grid {
+    &.grid-g-05 {
+      grid-gap: 0.5rem;
+    }
+
+    &.grid-g-1 {
+      grid-gap: 1rem;
+    }
+
+    &.grid-g-2 {
+      grid-gap: 1rem;
+    }
+
+    &.grid-g-3 {
+      grid-gap: 1.5rem;
+    }
+
+    &.grid-g-4 {
+      grid-gap: 1.5rem;
+    }
+
+    &.grid-g-5 {
+      grid-gap: 2.25rem;
+    }
+
+    &.grid-g-6 {
+      grid-gap: 3rem;
+    }
+  }
+}

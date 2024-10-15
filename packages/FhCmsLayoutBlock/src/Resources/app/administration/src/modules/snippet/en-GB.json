@@ -1,0 +1,37 @@
+{
+  "fh": {
+    "config": {
+      "option": {
+        "containerLg": "L - 992px",
+        "containerMd": "M - 768px",
+        "containerSm": "S - 576px",
+        "containerXl": "XL - 1200px",
+        "containerXxl": "XXL - 1400px",
+        "containerXxxl": "XXXL - 1920px",
+        "default": "Default",
+        "lg": "L",
+        "md": "M",
+        "none": "None",
+        "sm": "S",
+        "xl": "XL",
+        "xs": "XS",
+        "xxl": "XXL",
+        "xxs": "XXS",
+        "xxxl": "XXXL"
+      }
+    },
+    "detail": {
+      "label": {
+        "autoResize": "Automatic resizing",
+        "desktop": "Desktop",
+        "disabledBreadcrumb": "Disable Breadcrumb",
+        "gap": "Gap",
+        "mobile": "Mobile",
+        "tablet": "Tablet"
+      },
+      "helpText": {
+        "autoResize": "The position of the columns is automatically changed."
+      }
+    }
+  }
+}

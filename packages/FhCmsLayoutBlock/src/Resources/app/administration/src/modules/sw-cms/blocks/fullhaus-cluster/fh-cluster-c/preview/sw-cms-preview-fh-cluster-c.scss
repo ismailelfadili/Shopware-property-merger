@@ -1,0 +1,14 @@
+.sw-cms-preview_fh-cluster-c {
+  align-items: center;
+  display: grid;
+  grid-gap: 0.625rem;
+  grid-template-columns: 1fr 1fr 2fr;
+  padding: 0.9375rem;
+
+  span {
+    background-color: #bae2ff;
+    block-size: 5rem;
+    border: 0.125rem dashed #3badff;
+    border-radius: 0.3125rem;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "fh": {
+    "block": {
+      "textImageTwoColumn": {
+        "label": "Text-Bild Zweispaltig",
+        "preview": {
+          "textContainer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,\nsed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+        },
+        "slots": {
+          "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+          "header": "Lorem Ipsum dolor"
+        }
+      }
+    }
+  }
+}

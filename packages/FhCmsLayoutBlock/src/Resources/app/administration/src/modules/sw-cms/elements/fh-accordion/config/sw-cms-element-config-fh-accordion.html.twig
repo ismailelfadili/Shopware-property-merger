@@ -1,0 +1,42 @@
+{% block sw_cms_element_config_fh_accordion %}
+    <div class="sw-cms-element-config-fh">
+        <sw-container columns="1fr 2fr 1fr" gap="20px">
+            <sw-number-field numbertype="int" :min="1" :max="10"
+                             :label="$tc('fh.elements.accordion.config.numberOfItems')"
+                             v-model="element.config.numberOfItems.value">
+            </sw-number-field>
+
+            <sw-checkbox-field :label="$tc('fh.elements.accordion.config.firstItemOpened')"
+                               v-model="element.config.firstItemOpened.value">
+            </sw-checkbox-field>
+        </sw-container>
+
+        <sw-tabs :small="false" defaultItem="item1">
+            <template slot-scope="{ active }">
+                <sw-tabs-item v-for="n in element.config.numberOfItems.value" :key="n"
+                              :name="'item' + n" :activeTab="active"
+                              :title="'Item ' + n">
+                    <span v-if="element.config['itemtitle' + n].value" v-html="element.config['itemtitle' + n].value"></span>
+                    <span v-else>
+                        Item {{ n }}
+                    </span>
+                </sw-tabs-item>
+            </template>
+
+            <template slot="content" slot-scope="{ active }">
+                <sw-container v-for="n in element.config.numberOfItems.value" :key="n"
+                              v-if="active === 'item' + n">
+
+                    <sw-text-field :label="$tc('fh.elements.accordion.config.itemtitle') + ' ' + n"
+                                   v-model="element.config['itemtitle' + n].value">
+                    </sw-text-field>
+
+                    <sw-text-editor :label="$tc('fh.elements.accordion.config.itemcontents') + ' ' + n"
+                                    v-model="element.config['itemcontents' + n].value">
+                    </sw-text-editor>
+
+                </sw-container>
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

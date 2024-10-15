@@ -1,0 +1,15 @@
+{% block sw_cms_block_fh_text_on_image_header %}
+    <div class="sw-cms-block_fh-text-on-image-header">
+        <div class="sw-cms-block-fh-text-on-image-header__image">
+            <div class="sw-cms-block-fh-text-on-image-header__content">
+                <div class="sw-cms-block-fh-text-on-image-header__image">
+                    <slot name="header-image"></slot>
+
+                    <div class="sw-cms-block-fh-text-on-image-header__text">
+                        <slot name="header-text"></slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

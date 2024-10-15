@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/block/component/cms-block-fh-cluster.html.twig' %}
+
+{% block block_fh_cluster %}
+    {% set config = block.customFields %}
+    {% set columns = 2 %}
+
+    {{ parent() }}
+{% endblock %}

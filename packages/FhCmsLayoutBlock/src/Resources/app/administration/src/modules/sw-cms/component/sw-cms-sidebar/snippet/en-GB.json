@@ -1,0 +1,22 @@
+{
+  "fh": {
+    "detail": {
+      "label": {
+        "blockBase": "FULLHAUS",
+        "blockCluster": "Cluster",
+        "blockGrid": "Grid",
+        "blockText": "Text",
+        "blockTextImg": "Text-image",
+        "blockVideo": "Video"
+      }
+    },
+    "sidebar": {
+      "contentMenu": {
+        "gridSettings": "Grid",
+        "layoutSettings": "Layout",
+        "sidebarSettings": "Sidebar"
+      },
+      "headerPageSettings": "Settings"
+    }
+  }
+}

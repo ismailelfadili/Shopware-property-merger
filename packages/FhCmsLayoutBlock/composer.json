@@ -1,0 +1,39 @@
+{
+  "name": "fullhaus/cms-layout-blocks",
+  "description": "Grid / Columns for Shopping Experiences - CMS Layout Blocks ",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "FULLHAUS GmbH"
+    }
+  ],
+  "require": {
+    "shopware/core": "~v6.5",
+    "shopware/storefront": "~v6.5"
+  },
+  "require-dev": {
+    "shopware/production": "~v6.5"
+  },
+  "extra": {
+    "shopware-plugin-class": "FULLHAUS\\CmsLayoutBlock\\FhCmsLayoutBlock",
+    "copyright": "(c) by FULLHAUS GmbH",
+    "label": {
+      "de-DE": "CMS Grid / Columns",
+      "en-GB": "CMS Grid / Columns"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "FULLHAUS\\CmsLayoutBlock\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "symfony/runtime": true,
+      "symfony/flex": true
+    }
+  }
+}

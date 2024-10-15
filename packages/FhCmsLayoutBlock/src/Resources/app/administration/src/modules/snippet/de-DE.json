@@ -1,0 +1,37 @@
+{
+  "fh": {
+    "config": {
+      "option": {
+        "containerLg": "L - 992px",
+        "containerMd": "M - 768px",
+        "containerSm": "S - 576px",
+        "containerXl": "XL - 1200px",
+        "containerXxl": "XXL - 1400px",
+        "containerXxxl": "XXXL - 1920px",
+        "default": "Standard",
+        "lg": "L",
+        "md": "M",
+        "none": "Keine",
+        "sm": "S",
+        "xl": "XL",
+        "xs": "XS",
+        "xxl": "XXL",
+        "xxs": "XXS",
+        "xxxl": "XXXL"
+      }
+    },
+    "detail": {
+      "label": {
+        "autoResize": "Automatischer Komponentenabstand",
+        "desktop": "Desktop",
+        "disabledBreadcrumb": "Breadcrumbs deaktivieren",
+        "gap": "Abstand",
+        "mobile": "Mobile",
+        "tablet": "Tablet"
+      },
+      "helpText": {
+        "autoResize": "Die Position der Spalten wird automatisch geändert."
+      }
+    }
+  }
+}

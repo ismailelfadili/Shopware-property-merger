@@ -1,0 +1,19 @@
+{
+  "fh": {
+    "elements": {
+      "tabs": {
+        "config": {
+          "numberOfTabs": "Anzahl der Tabs",
+          "tabcontents": "Tab-Inhalt",
+          "tabtitle": "Tab-Titel"
+        },
+        "label": "Tabs",
+        "preview": {
+          "tab1": "Tab 1",
+          "tab2": "Tab 2",
+          "tabContainer": ".........<br>.........<br>........."
+        }
+      }
+    }
+  }
+}

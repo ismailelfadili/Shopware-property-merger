@@ -1,0 +1,12 @@
+{
+  "fh": {
+    "block": {
+      "textOnImageHeader": {
+        "label": "Category Headline",
+        "preview": {
+          "header": "Lorem ipsum dolor"
+        }
+      }
+    }
+  }
+}

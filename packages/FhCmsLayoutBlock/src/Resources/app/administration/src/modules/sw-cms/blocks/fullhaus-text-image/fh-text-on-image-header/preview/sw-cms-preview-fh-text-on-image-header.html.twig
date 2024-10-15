@@ -1,0 +1,14 @@
+{% block sw_cms_preview_fh_text_on_image_header %}
+    <div class="sw-cms-preview_fh-text-on-image-header">
+        <div class="sw-cms-preview-fh-image-header__image">
+            <div class="sw-cms-preview-fh-text-on-image-header__content">
+                <div class="sw-cms-preview-fh-text-on-image-header__image">
+                    <img :src="'/administration/static/img/cms/preview_camera_small.jpg' | asset">
+                    <div class="sw-cms-preview-fh-text-on-image-header__text">
+                        <h1>{{ $tc('fh.block.textOnImageHeader.preview.header') }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

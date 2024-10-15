@@ -1,0 +1,15 @@
+{
+  "fh": {
+    "blocks": {
+      "tabs": {
+        "label": "Mehrere Registerkarten, Tabs",
+        "preview": {
+          "tab1": "Tab 1",
+          "tab2": "Tab 2",
+          "tab3": "Tab 3",
+          "tabContainer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+        }
+      }
+    }
+  }
+}

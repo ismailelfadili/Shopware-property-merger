@@ -1,0 +1,27 @@
+{% block block_fh_column_four %}
+    {% set config = block.customFields %}
+    {% set columns = 4 %}
+
+    {% if config.fhGridAutoResize %}
+        {% set colsClassStyle = 'row-cols-1 row-cols-sm-2 row-cols-lg-4' %}
+    {% endif %}
+
+    {% set gridGapClassStyle %}{% apply spaceless %}
+        g-{{ config.fhGridGapMobile|default(3) }} g-sm-{{ config.fhGridGapTablet|default(3) }} g-lg-{{ config.fhGridGapDesktop|default(3) }}
+    {% endapply %}{% endset %}
+
+    <div class="col-12">
+        {% block block_fh_column_four_inner %}
+            <div class="row {{ colsClassStyle|default('row-cols-4')}} {{ gridGapClassStyle }}">
+
+                {% for element in block.slots|cluster_slot_sort %}
+                    {% block block_fh_column_four_col %}
+                        <div class="col" data-cms-element-id="{{ element.id }}">
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

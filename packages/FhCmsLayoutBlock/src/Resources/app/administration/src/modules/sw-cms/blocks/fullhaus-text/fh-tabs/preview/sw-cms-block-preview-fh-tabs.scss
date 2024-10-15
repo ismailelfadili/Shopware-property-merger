@@ -1,0 +1,32 @@
+.sw-cms-block-preview_fh-tabs {
+  font-size: 80%;
+  inline-size: 100%;
+  padding: 0.9375rem;
+  position: relative;
+
+  .tabs {
+    overflow: hidden;
+
+    .tab {
+      border-block-end: 0.0625rem solid #ccc;
+      display: inline-block;
+      float: left;
+      font-size: 110%;
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+    }
+
+    .tab-active {
+      border-block-end: none;
+      border-block-start: 0.0625rem solid #ccc;
+      border-inline-end: 0.0625rem solid #ccc;
+      border-inline-start: 0.0625rem solid #ccc;
+      font-weight: bold;
+    }
+  }
+
+  .tab-container {
+    display: block;
+    margin-block-start: 1rem;
+  }
+}

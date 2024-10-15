@@ -1,0 +1,19 @@
+{
+  "fh": {
+    "elements": {
+      "accordion": {
+        "config": {
+          "firstItemOpened": "Show first item opened",
+          "itemcontents": "Item contents",
+          "itemtitle": "Item title",
+          "numberOfItems": "Number of items"
+        },
+        "label": "Accordion",
+        "preview": {
+          "item": "Lorem ipsum",
+          "itemContainer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+        }
+      }
+    }
+  }
+}

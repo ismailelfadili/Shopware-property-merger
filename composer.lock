@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fefdce6a885dc79b07a97b6079aab853",
+    "content-hash": "28143a332205239d79e48b66073e2dc5",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2370,6 +2370,48 @@
                 }
             ],
             "description": "Content Management Elements for Shopware 6",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/cms-layout-blocks",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhCmsLayoutBlock",
+                "reference": "b3e99293cf472867b332a8e8988944424f6f6209"
+            },
+            "require": {
+                "shopware/core": "~v6.5",
+                "shopware/storefront": "~v6.5"
+            },
+            "require-dev": {
+                "shopware/production": "~v6.5"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\CmsLayoutBlock\\FhCmsLayoutBlock",
+                "copyright": "(c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "CMS Grid / Columns",
+                    "en-GB": "CMS Grid / Columns"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\CmsLayoutBlock\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Grid / Columns for Shopping Experiences - CMS Layout Blocks ",
             "transport-options": {
                 "relative": true
             }
@@ -12003,7 +12045,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fullhaus/cms-items": 20
+        "fullhaus/cms-items": 20,
+        "fullhaus/cms-layout-blocks": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

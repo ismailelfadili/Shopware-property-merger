@@ -1,0 +1,16 @@
+{% block sw_cms_element_fh_accordion %}
+    <div class="sw-cms-element_fh-accordion">
+        <div class="accordion">
+            <div v-for="n in element.config.numberOfItems.value" :key="n">
+                <div class="item">
+                    <sw-text-editor v-model="element.config['itemtitle' + n].value" :isInlineEdit="true">
+                    </sw-text-editor>
+                </div>
+                <div v-if="n==1 && element.config.firstItemOpened.value" class="item-container">
+                    <sw-text-editor v-model="element.config['itemcontents' + n].value" :isInlineEdit="true">
+                    </sw-text-editor>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,204 @@
+@function text-stroke($size: 2, $color: #fff, $correction: 1) {
+  $radius: $size - $correction;
+  $stroke: ();
+
+  @for $i from -$size through $size {
+    @for $k from -$size through $size {
+
+      $x: $k;
+      $y: $i;
+
+      @if $k > 0 {
+        $x: $k - 0.5;
+      } @else if $k < 0 {
+        $x: $k + 0.5;
+      }
+
+      @if $i > 0 {
+        $y: $i - 0.5;
+      } @else if $i < 0 {
+        $y: $i + 0.5;
+      }
+
+      @if ($x*$x + $y*$y <= $radius*$radius) {
+        $stroke: append($stroke, $i*0.018em $k*0.018em 0.0027em $color, comma);
+      }
+    }
+  }
+  @return $stroke;
+}
+
+@mixin text-stroke($size: 2, $color: #fff, $correction: 1) {
+  text-shadow: text-stroke($size, $color, $correction);
+}
+
+.cms-block_fh-text-on-image-header {
+  .cms-element-image {
+    block-size: auto;
+  }
+}
+
+.fh-headline {
+  line-height: 1;
+  margin-block-start: -1.5rem;
+  padding-inline-start: 0.3125rem;
+  position: relative;
+
+  h1 {
+    display: inline-block;
+    font-size: calc(1.25rem + 2vw);
+    line-height: 1;
+    padding-block-end: 1.5rem !important;
+    position: relative;
+    z-index: 50;
+
+    /* Careful! Needs rendering time */
+    @include text-stroke(9, $white);
+  }
+
+  .fh-text-shadow {
+    color: rgba(0, 0, 0, 0.75);
+    filter: blur(0.25rem);
+    font-family: $headings-font-family;
+    font-size: calc(1.25rem + 2vw);
+    font-weight: $headings-font-weight;
+    inset-block-start: 0.25rem;
+    inset-inline-start: 0.25rem;
+    line-height: 1.2;
+    position: absolute;
+    z-index: 10;
+  }
+
+  @include media-breakpoint-up(md) {
+    .fh-text-shadow {
+      filter: blur(0.5rem);
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .cms-block-fh-text-on-image-header {
+    .cms-element-text {
+      .category-name {
+        margin-block-start: -2rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .cms-block-fh-text-on-image-header {
+    .cms-element-text {
+      .category-name {
+        margin-block-start: -2rem;
+
+        h1 {
+          /* Careful! Needs rendering time */
+          @include text-stroke(10, $white);
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .cms-block-fh-text-on-image-header {
+    .cms-element-text {
+      .category-name {
+        margin-block-start: -3rem;
+      }
+    }
+  }
+}
+
+/******************************** Custom text on image main Header ********************************/
+
+.cms-block-fh-text-on-image-header {
+  inline-size: 100%;
+
+  .cms-image-container {
+    block-size: 35vh !important;
+    margin: auto;
+    min-height: 21.875rem !important;
+
+    img {
+      border-radius: 0 0 5rem 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      block-size: 40vh !important;
+      min-height: 25rem !important;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      block-size: 45vh !important;
+      min-height: 28.125rem !important;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      block-size: 50vh !important;
+      min-height: 31.25rem !important;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      block-size: 55vh !important;
+      min-height: 34.375rem !important;
+    }
+  }
+}
+
+.cms-block-fh-text-on-image-header {
+  .cms-image-container {
+    inline-size: 96.5% !important;
+    margin: 0;
+  }
+}
+
+@media(min-width: 100rem) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      inline-size: 96.5% !important;
+      margin: auto;
+    }
+  }
+}
+
+@media(min-width: 118.75rem) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      inline-size: 85.5% !important;
+    }
+  }
+}
+
+@media(min-width: 137.5rem) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      inline-size: 75.5% !important;
+    }
+  }
+}
+
+@media(min-width: 156.25rem) {
+  .cms-block-fh-text-on-image-header {
+    .cms-image-container {
+      inline-size: 65.5% !important;
+    }
+  }
+}
