@@ -1,0 +1,219 @@
+{% block fh_shopconnector_list %}
+
+    <sw-page class="fh-shopconnector-list">
+
+        <sw-sidebar slot="sidebar">
+
+            <sw-sidebar-item icon="regular-undo"
+                             :title="$t('fh-shopconnector.buttons.refreshButtonText')"
+                             @click="onRefresh"></sw-sidebar-item>
+
+            <sw-sidebar-item icon="regular-cloud-upload"
+                             :title="$t('fh-shopconnector.buttons.importButtonText')"
+                             @click="onClickUpload"></sw-sidebar-item>
+            <form style="display: none;" ref="fileForm">
+                <input class="sw-plugin-file-upload__file-input"
+                       type="file"
+                       id="files"
+                       ref="fileInput"
+                       @change="onFileInputChange" />
+            </form>
+
+            <sw-sidebar-item icon="regular-cloud-download"
+                             :title="$t('fh-shopconnector.buttons.exportButtonText')"
+                             @click="onClickDownload"></sw-sidebar-item>
+            <form id="exportCSV"
+                  style="display: none;"
+                  method="get"
+                  action="api.fh.shopconnector.export">
+            </form>
+
+            <sw-sidebar-item icon="regular-trash"
+                             :title="$t('fh-shopconnector.buttons.trashButtonText')"
+                             @click="onClickChooseDelete"></sw-sidebar-item>
+            <form id="deleteOld"
+                  style="display: none;"
+                  method="get"
+                  action="api.fh.shopconnector-products.delete">
+            </form>
+
+        </sw-sidebar>
+
+        <template slot="search-bar">
+            <sw-search-bar :initialSearchType="$tc('fh-shopconnector.general.mainMenuItemGeneral')"
+                           :initialSearch="term"
+                           :placeholder="$tc('fh-shopconnector.general.search')"
+                           class="fh-shopconnector-color"
+                           @search="onSearch">
+            </sw-search-bar>
+        </template>
+
+        {% block fh_shopconnector_list_smart_bar_header %}
+            <template slot="smart-bar-header">
+                {% block fh_shopconnector_list_smart_bar_header_title %}
+                    <h2>
+                        {% block fh_shopconnector_list_smart_bar_header_title_text %}
+                            {{ $tc('fh-shopconnector.list.textTitle') }}
+                        {% endblock %}
+
+                        {% block fh_shopconnector_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                        ({{ total }})
+                        </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block fh_shopconnector_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+                {% block fh_shopconnector_list_smart_bar_actions_add %}
+                    <sw-button :routerLink="{ name: 'fh.shopconnector.create' }" variant="primary">
+                        {{ $tc('fh-shopconnector.list.buttonAddItem') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block fh_shopconnector_list_language_switch %}
+            <sw-language-switch slot="language-switch" @on-change="onChangeLanguage"></sw-language-switch>
+        {% endblock %}
+
+        <template slot="content">
+
+            <sw-loader v-if="isImporting"></sw-loader>
+
+            {% block fh_shopconnector_list_content %}
+
+                <sw-entity-listing
+                    v-if="items"
+                    :items="items"
+                    :repository="fhShopConnectorUserRepository"
+                    :columns="columns"
+                    :isLoading="isLoading"
+                    detailRoute="fh.shopconnector.detail"
+                    :sortBy="sortBy">
+
+                    <template #column-active="{ item, isInlineEdit }">
+                        <template v-if="isInlineEdit">
+                            <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
+                        </template>
+                        <template v-else>
+                            <sw-icon v-if="item.active" name="regular-checkmark-s" small class="is--active"></sw-icon>
+                            <sw-icon v-else name="regular-times-s" small class="is--inactive"></sw-icon>
+                        </template>
+                    </template>
+
+                    {# Table contents get rendered automatically by index.js #}
+
+                </sw-entity-listing>
+
+            {% endblock %}
+
+            <sw-modal v-if="showDeleteModal" @modal-close="onCloseModal" :title="$t('fh-shopconnector.importAssistant.title')" variant="default">
+
+                <select ref="dealerId">
+                    <option disabled value="">Please select</option>
+                    <option v-for="item in items" :value="item.id">{{ item.shopOperator }}</option>
+                </select>
+
+                <template #modal-footer>
+
+                    <sw-button @click="onCloseModal" size="small">
+                        {{ $t('fh-shopconnector.buttons.cancelButtonText') }}
+                    </sw-button>
+
+                    <sw-button @click="onClickDelete"
+                               variant="danger"
+                               size="small">
+                        {{ $t('fh-shopconnector.buttons.deleteOldButtonText') }}
+                    </sw-button>
+
+                </template>
+            </sw-modal>
+
+            <sw-modal v-if="showImportModal" @modal-close="onCloseModal" :title="$t('fh-shopconnector.importAssistant.title')" variant="default">
+                <div v-if="csv.data.length == 0">
+                    <p>{{ $t('fh-shopconnector.importAssistant.errorText') }}</p>
+                </div>
+
+                <div v-if="csv.data.length > 0">
+                    <p>{{ $t('fh-shopconnector.importAssistant.loadedText', { count: csv.data.length }) }}</p>
+                    <br>
+                    <div class="sw-data-grid is--compact shopconnector-import-assistant" v-if="csv.data.length > 0">
+                        <div class="sw-data-grid__wrapper">
+                            <table class="sw-data-grid__table" cellpadding="0" cellspacing="0">
+                                <thead class="sw-data-grid__header">
+                                <tr class="sw-data-grid__row">
+                                    <th class="sw-data-grid__cell">{{ $t('fh-shopconnector.importAssistant.name') }}</th>
+                                    <th class="sw-data-grid__cell">{{ $t('fh-shopconnector.importAssistant.propertyName') }}</th>
+                                    <th class="sw-data-grid__cell">{{ $t('fh-shopconnector.importAssistant.target') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody class="sw-data-grid__body">
+                                <tr v-for="schemaProperty in csv.schemaProperties"
+                                    v-if="csv.filterSchemaProperties.indexOf(schemaProperty) === -1"
+                                    class="sw-data-grid__row">
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__label">
+                                            <label><strong>{{ $t("fh-shopconnector.properties." + schemaProperty) }}</strong></label>
+                                        </div>
+                                    </td>
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__label">
+                                            <small>({{ schemaProperty }})</small>
+                                        </div>
+                                    </td>
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__select">
+                                            <select v-model="csv.propertyMapping[schemaProperty]">
+
+                                                <optgroup :label="$t('fh-shopconnector.importAssistant.fromImport')">
+                                                    <option v-for="csvProperty in csv.csvProperties" :value="csvProperty">{{ csvProperty }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-shopconnector.importAssistant.defined')">
+                                                    <option value>{{ $t('fh-shopconnector.importAssistant.noSelection') }}</option>
+                                                    <option value="1">true</option>
+                                                    <option value="0">false</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-shopconnector.importAssistant.dealerId')">
+                                                    <option v-for="item in items" :value="item.id">{{ item.shopOperator }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-shopconnector.importAssistant.salesChannel')">
+                                                    <option v-for="salesChannel in salesChannels" :value="salesChannel.id">{{ salesChannel.name }}</option>
+                                                </optgroup>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="shopconnector-alert-warning">{{ $t('fh-shopconnector.importAssistant.infoText') }}</div>
+                    <sw-field type="switch" bordered :label="$t('fh-shopconnector.buttons.overwriteText')" v-model="csv.options.overwrite"></sw-field>
+                </div>
+
+                <template #modal-footer>
+                    <sw-button @click="onCloseModal" size="small">
+                        {{ $t('fh-shopconnector.buttons.cancelButtonText') }}
+                    </sw-button>
+
+                    <sw-button v-if="csv.data.length > 0"
+                               @click="onClickImport"
+                               variant="primary"
+                               size="small">
+                        {{ $t('fh-shopconnector.buttons.startImportButtonText') }}
+                    </sw-button>
+
+                </template>
+            </sw-modal>
+
+        </template>
+    </sw-page>
+{% endblock %}

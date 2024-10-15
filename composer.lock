@@ -2375,91 +2375,6 @@
             }
         },
         {
-            "name": "fullhaus/cms-layout-blocks",
-            "version": "1.0.0",
-            "dist": {
-                "type": "path",
-                "url": "./packages/FhCmsLayoutBlock",
-                "reference": "b3e99293cf472867b332a8e8988944424f6f6209"
-            },
-            "require": {
-                "shopware/core": "~v6.5",
-                "shopware/storefront": "~v6.5"
-            },
-            "require-dev": {
-                "shopware/production": "~v6.5"
-            },
-            "type": "shopware-platform-plugin",
-            "extra": {
-                "shopware-plugin-class": "FULLHAUS\\CmsLayoutBlock\\FhCmsLayoutBlock",
-                "copyright": "(c) by FULLHAUS GmbH",
-                "label": {
-                    "de-DE": "CMS Grid / Columns",
-                    "en-GB": "CMS Grid / Columns"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "FULLHAUS\\CmsLayoutBlock\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "FULLHAUS GmbH"
-                }
-            ],
-            "description": "Grid / Columns for Shopping Experiences - CMS Layout Blocks ",
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
-            "name": "fullhaus/merchant-finder",
-            "version": "v4.0.5",
-            "dist": {
-                "type": "path",
-                "url": "./packages/FhMerchantFinder",
-                "reference": "5fa6e8a87b675060bf51c480bda1e3d5abe9ed4d"
-            },
-            "require": {
-                "shopware/administration": "*",
-                "shopware/core": "6.5.*"
-            },
-            "type": "shopware-platform-plugin",
-            "extra": {
-                "shopware-plugin-class": "FULLHAUS\\MerchantFinder\\FhMerchantFinder",
-                "copyright": "Copyright (c) by FULLHAUS GmbH",
-                "label": {
-                    "de-DE": "Händlersuche",
-                    "en-GB": "Merchant Finder"
-                },
-                "description": {
-                    "de-DE": "Der Merchant Finder (Händlersuche) erfasst Händlerdaten und spielt diese in einer interaktiven Karte aus.",
-                    "en-GB": "The Merchant Finder collects merchant data and displays it in an interactive map."
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "FULLHAUS\\MerchantFinder\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "FULLHAUS GmbH"
-                }
-            ],
-            "description": "Merchant Finder",
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
             "name": "google/auth",
             "version": "v1.32.1",
             "source": {
@@ -12088,9 +12003,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fullhaus/cms-items": 20,
-        "fullhaus/cms-layout-blocks": 20,
-        "fullhaus/merchant-finder": 20
+        "fullhaus/cms-items": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -12098,6 +12011,6 @@
         "php": "^8.2",
         "composer-runtime-api": "^2.0"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

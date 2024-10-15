@@ -1,0 +1,34 @@
+{
+    "name": "fullhaus/shopconnector",
+    "description": "The Shop Connector collects csv files, compares the articles in them with its own shop items and adds a link to the article by matching.",
+    "version": "v4.0.6",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FULLHAUS GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "FULLHAUS\\ShopConnector\\FhShopConnector",
+        "copyright": "Copyright (c) by FULLHAUS GmbH",
+        "label": {
+            "de-DE": "Shop Connector",
+            "en-GB": "Shop Connector"
+        },
+        "description": {
+            "de-DE": "Der Shop Connector erfasst csv-Dateien, vergleicht die darin befindlichen Artikel mit eigenen Shopartikel und fügt bei Überschneidung einen Link zum Artikel hinzu.",
+            "en-GB": "The Shop Connector collects csv files, compares the articles in them with its own shop items and adds a link to the article by matching."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "FULLHAUS\\ShopConnector\\": "src/"
+        }
+    }
+}
+

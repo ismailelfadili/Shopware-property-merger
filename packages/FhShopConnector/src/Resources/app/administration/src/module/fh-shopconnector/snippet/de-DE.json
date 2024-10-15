@@ -1,0 +1,91 @@
+{
+    "fh-shopconnector": {
+        "buttons": {
+            "buttonAddItem": "Neuer Datensatz",
+            "cancelButtonText": "Abbrechen",
+            "deleteOldButtonText": "Vorhandene Händlerprodukte löschen",
+            "exportButtonText": "Export CSV",
+            "exportButtonTitle": "Lade eine CSV herunter",
+            "importButtonText": "Import CSV",
+            "importButtonTitle": "Lade deine CSV hoch",
+            "overwriteText": "Dringend empfohlen: Auf Dubletten des Händlers prüfen (originId, wekaArtNum, ean)",
+            "refreshButtonText": "Neu laden",
+            "saveButtonText": "Speichern",
+            "startImportButtonText": "Starte Import",
+            "trashButtonText": "Händlerprodukte löschen"
+        },
+        "detail": {
+            "active": "Aktiv",
+            "cancelButtonText": "Abbrechen",
+            "errorTitle": "Bitte füllen Sie alle Pflichtfelder aus",
+            "fieldDealerNum": "Händlernr.",
+            "fieldDealerNumExample": "012345",
+            "fieldShopLogo": "Shoplogo",
+            "fieldShopLogoExample": "logo-mustermann.jpg",
+            "fieldShopOperator": "Händler",
+            "fieldShopOperatorExample": "Mustermann GmbH",
+            "fieldShopUrl": "Shop URL",
+            "fieldShopUrlExample": "https://www.mustershop.de",
+            "saveButtonText": "Datensatz speichern",
+            "shopInfo": "Partnershop",
+            "textTitle": "Shop Connector"
+        },
+        "general": {
+            "descriptionTextModule": "The Shop Connector collects RSS feeds from URLs, compares the articles in them with its own shop items and adds a link to the article by matching.",
+            "mainMenuItemGeneral": "Shop Connector",
+            "search": "Händler suchen ..."
+        },
+        "importAssistant": {
+            "country": "Länder",
+            "defined": "Feste Werte",
+            "errorText": "Ihr Import wurde leider nicht erkannt, ggf. verwenden Sie ein falsches Format. Voraussetzungen: Kodierung: UTF-8, Feldtrenner: Semikolon, Texttrenner: Doppelte Anführungszeichen, Mindestens ein Datensatz im Import.",
+            "errorTitle": "Formatfehler",
+            "fromImport": "Aus Import",
+            "infoText": "Bitte wählen Sie sorgfältig die Feldzuweisungen aus!",
+            "loadedText": "Es wurden {count} Datensätze in Ihrem Import gefunden.",
+            "name": "Name",
+            "propertyName": "Feldname",
+            "salesChannel": "Sales Channel",
+            "target": "Zuweisung",
+            "title": "Importassistent",
+            "dealerId": "Händler",
+            "noSelection": "-"
+        },
+        "label": {
+            "accountCard": "Stammdaten",
+            "addressCard": "Adresse",
+            "locationCard": "Standort"
+        },
+        "list": {
+            "buttonAddItem": "neuer Partnershop",
+            "columnActive": "Aktiv",
+            "columnDealerNum": "Händlernr.",
+            "columnShopLogo": "Shoplogo",
+            "columnShopOperator": "Händler",
+            "columnShopUrl": "Shop URL",
+            "textTitle": "Shop Connector"
+        },
+        "notification": {
+            "deleteSuccessText": "Die verknüpften Shopprodukte für den gewählten Händler wurden gelöscht!",
+            "deleteTitle": "Shopprodukte werden bereinigt",
+            "errorTitle": "Fehler beim Speichern der Daten! Erforderliche Felder nicht zugewiesen!",
+            "importText": "Dieser Vorgang kann einige Minuten dauern. Bitte habe etwas Geduld...",
+            "importTitle": "Shopprodukte werden importiert und zugewiesen",
+            "successText": "Alle Shopprodukte wurden erfolgreich importiert und zugewiesen",
+            "successTitle": "Erfolgreich"
+        },
+        "properties": {
+            "active": "Aktiv",
+            "dealerId": "Händler",
+            "deepLink": "Deeplink Shop URL",
+            "ean": "EAN",
+            "gtin": "GTin",
+            "logo": "Logo",
+            "originId": "Datensatz-ID",
+            "price": "UVP",
+            "productName": "Produktname",
+            "salesChannelId": "Sales Channel",
+            "wekaArtNum": "WEKA Artikelnr."
+        }
+    }
+}

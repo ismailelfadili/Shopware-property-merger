@@ -1,0 +1,11 @@
+{
+    "fh_shopconnector": {
+        "detail": {
+            "bundleBadge": "Bundle",
+            "buyButtonText": "Kaufe Bundle und spare %bundleDiscount%",
+            "tabText": "Bundle",
+            "buyOnline": "Online Bestellen",
+            "buyOnlineHelperText": "Bestellen Sie dieses Produkt jetzt direkt über einen unserer Partner-Shops: Test"
+        }
+    }
+}

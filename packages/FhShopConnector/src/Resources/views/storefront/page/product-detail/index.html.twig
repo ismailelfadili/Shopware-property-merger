@@ -1,0 +1,51 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block shop_connector %}
+
+    {% if page.product.extensions.fhShopConnector %}
+        <div class="fh-shopconnector col col-12 mt-3 mb-5">
+            <div class="row">
+                <div class="col col-12">
+
+                    <h3 class="d-flex mb-2 align-items-center text-secondary mb-2">
+                        <i class="bi bi-shop me-2"></i>
+                        {{ page.product.name }} {{ "fh_shopconnector.detail.buyOnline"|trans }}</h3>
+                    <p class="lead pb-1">{{ "fh_shopconnector.detail.buyOnlineHelperText"|trans }}</p>
+
+                    {% set shopconnector = page.product.extensions.fhShopConnector %}
+
+                    <div class="shopconnector">
+                        <div class="row">
+                            {% for elements in shopconnector %}
+                                {% set matchingProduct = elements %}
+                                {% if matchingProduct.dealer.active === true %}
+                                    <div class="col col-12 col-lg-6">
+                                        <div class="shopconnector-item h-100">
+                                            <a class="shopconnector-link h-100 w-100" href="{{ matchingProduct.deepLink }}" title="Link zu externem Shop..." target="_blank">
+
+                                                {% set dealerLogo_id = matchingProduct.dealer.mediaId %}
+                                                {# simplify access to id #}
+                                                {% if dealerLogo_id is not null %}
+                                                    {# fetch media as batch - optimized for performance #}
+                                                    {% set dealerLogo_media = searchMedia([dealerLogo_id], context.context) %}
+                                                    {# extract single media object #}
+                                                    {% set dealerLogo = dealerLogo_media.get(dealerLogo_id) %}
+                                                {% endif %}
+
+                                                <span class="shopconnector-dealerlogo">
+                                                    <img class="img img-dealer" src="{{ dealerLogo.url }}" alt="{{ matchingProduct.dealer.shopOperator }}" title="{{ matchingProduct.dealer.shopOperator }}" />
+                                                </span>
+                                                <span class="shopconnector-dealername text-secondary align-middle">{% sw_icon 'cart' %}&nbsp;&nbsp;{{ matchingProduct.dealer.shopOperator }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

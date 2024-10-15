@@ -1,0 +1,91 @@
+{
+    "fh-shopconnector": {
+        "buttons": {
+            "buttonAddItem": "New Entry",
+            "cancelButtonText": "Cancel",
+            "deleteOldButtonText": "Delete Existing Dealer Products",
+            "exportButtonText": "Export CSV",
+            "exportButtonTitle": "Download CSV",
+            "importButtonText": "Import CSV",
+            "importButtonTitle": "Upload Your CSV",
+            "overwriteText": "Highly recommended: Check for duplicate dealer entries (originId, wekaArtNum, ean)",
+            "refreshButtonText": "Refresh",
+            "saveButtonText": "Save",
+            "startImportButtonText": "Start Import",
+            "trashButtonText": "Delete Dealer Products"
+        },
+        "detail": {
+            "active": "Active",
+            "cancelButtonText": "Cancel",
+            "errorTitle": "Please complete all required fields",
+            "fieldDealerNum": "Dealer Number",
+            "fieldDealerNumExample": "012345",
+            "fieldShopLogo": "Shop Logo",
+            "fieldShopLogoExample": "logo-example.jpg",
+            "fieldShopOperator": "Dealer",
+            "fieldShopOperatorExample": "Example Ltd.",
+            "fieldShopUrl": "Shop URL",
+            "fieldShopUrlExample": "https://www.example-shop.com",
+            "saveButtonText": "Save Entry",
+            "shopInfo": "Partner Shop",
+            "textTitle": "Shop Connector"
+        },
+        "general": {
+            "descriptionTextModule": "The Shop Connector gathers RSS feeds from URLs, compares the products within these feeds to your shop's inventory, and adds links to the corresponding products.",
+            "mainMenuItemGeneral": "Shop Connector",
+            "search": "Search Dealer..."
+        },
+        "importAssistant": {
+            "country": "Countries",
+            "defined": "Fixed Values",
+            "errorText": "Unfortunately, your import could not be processed. You may be using the wrong format. Requirements: Encoding: UTF-8, Field Separator: Semicolon, Text Delimiter: Double Quotes. At least one record must be included.",
+            "errorTitle": "Format Error",
+            "fromImport": "From Import",
+            "infoText": "Please carefully select the field mappings!",
+            "loadedText": "{count} records found in your import.",
+            "name": "Name",
+            "propertyName": "Field Name",
+            "salesChannel": "Sales Channel",
+            "target": "Mapping",
+            "title": "Import Assistant",
+            "dealerId": "Dealer",
+            "noSelection": "-"
+        },
+        "label": {
+            "accountCard": "Basic Information",
+            "addressCard": "Address",
+            "locationCard": "Location"
+        },
+        "list": {
+            "buttonAddItem": "New Partner Shop",
+            "columnActive": "Active",
+            "columnDealerNum": "Dealer Number",
+            "columnShopLogo": "Shop Logo",
+            "columnShopOperator": "Dealer",
+            "columnShopUrl": "Shop URL",
+            "textTitle": "Shop Connector"
+        },
+        "notification": {
+            "deleteSuccessText": "The associated products for the selected dealer have been successfully deleted!",
+            "deleteTitle": "Cleaning up Dealer Products",
+            "errorTitle": "Error saving data! Required fields are missing or unassigned!",
+            "importText": "This process may take a few minutes. Please be patient...",
+            "importTitle": "Importing and Assigning Dealer Products",
+            "successText": "All dealer products were successfully imported and assigned.",
+            "successTitle": "Success"
+        },
+        "properties": {
+            "active": "Active",
+            "dealerId": "Dealer",
+            "deepLink": "Direct Link to Shop",
+            "ean": "EAN",
+            "gtin": "GTIN",
+            "logo": "Logo",
+            "originId": "Record ID",
+            "price": "RRP",
+            "productName": "Product Name",
+            "salesChannelId": "Sales Channel",
+            "wekaArtNum": "WEKA Article Number"
+        }
+    }
+}

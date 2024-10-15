@@ -1,0 +1,48 @@
+.fh-shopconnector {
+  .shopconnector {
+    .row {
+      .col {
+        margin-block-end: 2rem;
+      }
+    }
+
+    .shopconnector-item {
+      background: $white;
+      border: 0.0625rem solid $border-color;
+      border-radius: $border-radius;
+      position: relative;
+      transition: all linear 100ms;
+
+      &:hover {
+        box-shadow: 0 0.9375rem 0.625rem -0.9375rem rgba(0, 0, 0, 0.35);
+        transform: scale(1.039);
+      }
+
+      .shopconnector-link {
+        display: table;
+        padding: 1.5rem;
+        text-decoration: none;
+      }
+
+      .shopconnector-dealerlogo {
+        block-size: 4.375rem;
+        display: table-cell;
+        inline-size: 9.375rem;
+        padding-inline-end: 0.9375rem;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .shopconnector-dealerlogo .img {
+        max-block-size: 100%;
+        max-inline-size: 100%;
+      }
+
+      .shopconnector-dealername {
+        border-inline-start: 0.0625rem solid $border-color;
+        display: table-cell;
+        padding-inline-start: 0.9375rem;
+      }
+    }
+  }
+}

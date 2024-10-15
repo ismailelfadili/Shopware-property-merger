@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!-- Controller -->
+        <service id="FULLHAUS\ShopConnector\Core\Content\ShopConnector\Controller\ShopConnectorApiController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="service_container"/>
+			</call>
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <!-- Entity -->
+        <service id="FULLHAUS\ShopConnector\Core\Content\ShopConnector\ShopConnectorEntityDefinitionUsers">
+            <tag name="shopware.entity.definition" entity="fh_shopconnector_users"/>
+        </service>
+
+        <service id="FULLHAUS\ShopConnector\Core\Content\ShopConnector\ShopConnectorEntityDefinitionProducts">
+            <tag name="shopware.entity.definition" entity="fh_shopconnector_products"/>
+        </service>
+
+        <service id="FULLHAUS\ShopConnector\Resources\snippet\en_GB\SnippetFile_en_GB">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="FULLHAUS\ShopConnector\Resources\snippet\de_DE\SnippetFile_de_DE">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="FULLHAUS\ShopConnector\Service\Product" public="true">
+            <argument type="service" id="fh_shopconnector_users.repository"/>
+            <argument type="service" id="fh_shopconnector_products.repository"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Search\RequestCriteriaBuilder"/>
+            <argument type="service" id="Shopware\Core\Framework\Api\Response\Type\Api\JsonApiType"/>
+        </service>
+
+        <!-- Subscriber -->
+        <service id="FULLHAUS\ShopConnector\Storefront\Subscriber\ProductSubscriber" public="true">
+            <argument type="service" id="FULLHAUS\ShopConnector\Service\Product"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+    </services>
+
+</container>
+
+
+
+
+
+
+
+
+

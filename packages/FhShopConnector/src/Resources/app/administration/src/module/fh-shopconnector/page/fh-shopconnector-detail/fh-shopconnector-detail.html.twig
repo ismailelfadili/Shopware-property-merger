@@ -1,0 +1,99 @@
+{% block fh_shopconnector_detail %}
+
+    <sw-page class="fh-shopconnector-detail">
+
+        {% block fh_shopconnector_detail_smart_bar_header %}
+            <template slot="smart-bar-header">
+                {% block fh_shopconnector_detail_smart_bar_header_title %}
+                    <h2>
+                        {% block fh_shopconnector_detail_smart_bar_header_title_text %}
+                            {{ $tc('fh-shopconnector.detail.textTitle') }}
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        <template slot="smart-bar-actions">
+
+            <sw-button :routerLink="{ name: 'fh.shopconnector.list' }">
+                {{ $t('fh-shopconnector.detail.cancelButtonText') }}
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+                {{ $t('fh-shopconnector.detail.saveButtonText') }}
+            </sw-button-process>
+
+        </template>
+
+        <template slot="content">
+
+            <sw-card-view>
+
+                <sw-card :isLoading="isLoading" :title="$tc('fh-shopconnector.detail.shopInfo')">
+
+                    <sw-container columns="repeat(auto-fit, minmax(250px, 1fr)" gap="0 30px">
+
+                    <div>
+
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('fh-shopconnector.detail.active')"
+                                      v-model="item.active"></sw-field>
+
+
+                            <sw-field type="text"
+                                      :label="$t('fh-shopconnector.detail.fieldDealerNum')"
+                                      :placeholder="$t('fh-shopconnector.detail.fieldDealerNumExample')"
+                                      v-model="item.dealerNum"
+                                      required="required"></sw-field>
+
+                            <div class="sw-field">
+                                <sw-upload-store-listener
+                                    :uploadTag="uploadTag"
+                                    autoUpload
+                                    @media-upload-finish="setMediaItem">
+                                </sw-upload-store-listener>
+                                <sw-media-upload-v2
+                                    :uploadTag="uploadTag"
+                                    :source="item.mediaId"
+                                    :allowMultiSelect="false"
+                                    :label="$t('fh-shopconnector.properties.logo')"
+                                    :defaultFolder="mediaStore.entityName"
+                                    variant="regular"
+                                    @sw-media-upload-media-upload-success="setMediaItem"
+                                    @media-drop="onDropMedia"
+                                    @media-upload-remove-image="onUnlinkMedia">
+                                </sw-media-upload-v2>
+                            </div>
+
+                            <sw-field type="text"
+                                      :label="$t('fh-shopconnector.detail.fieldShopOperator')"
+                                      :placeholder="$t('fh-shopconnector.detail.fieldShopOperatorExample')"
+                                      v-model="item.shopOperator"
+                                      required="required"></sw-field>
+
+                            <sw-field type="text"
+                                      :label="$t('fh-shopconnector.detail.fieldShopUrl')"
+                                      :placeholder="$t('fh-shopconnector.detail.fieldShopUrlExample')"
+                                      v-model="item.shopUrl"
+                                      required="required"></sw-field>
+
+                        </div>
+
+                    </sw-container>
+
+                </sw-card>
+
+            </sw-card-view>
+
+        </template>
+
+    </sw-page>
+
+{% endblock %}
