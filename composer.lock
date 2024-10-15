@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28143a332205239d79e48b66073e2dc5",
+    "content-hash": "36e561d87ce57ace9e034ef398d2454d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2412,6 +2412,49 @@
                 }
             ],
             "description": "Grid / Columns for Shopping Experiences - CMS Layout Blocks ",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/merchant-finder",
+            "version": "v4.0.5",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhMerchantFinder",
+                "reference": "5fa6e8a87b675060bf51c480bda1e3d5abe9ed4d"
+            },
+            "require": {
+                "shopware/administration": "*",
+                "shopware/core": "6.5.*"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\MerchantFinder\\FhMerchantFinder",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "Händlersuche",
+                    "en-GB": "Merchant Finder"
+                },
+                "description": {
+                    "de-DE": "Der Merchant Finder (Händlersuche) erfasst Händlerdaten und spielt diese in einer interaktiven Karte aus.",
+                    "en-GB": "The Merchant Finder collects merchant data and displays it in an interactive map."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\MerchantFinder\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Merchant Finder",
             "transport-options": {
                 "relative": true
             }
@@ -12046,7 +12089,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "fullhaus/cms-items": 20,
-        "fullhaus/cms-layout-blocks": 20
+        "fullhaus/cms-layout-blocks": 20,
+        "fullhaus/merchant-finder": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -12054,6 +12098,6 @@
         "php": "^8.2",
         "composer-runtime-api": "^2.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

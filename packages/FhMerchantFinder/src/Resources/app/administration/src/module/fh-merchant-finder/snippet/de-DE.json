@@ -1,0 +1,91 @@
+{
+    "fh-merchant-finder": {
+        "buttons": {
+            "addMerchantButtonText": "Neuer Händler",
+            "cancelButtonText": "Abbrechen",
+            "exportButtonText": "Export CSV",
+            "exportButtonTitle": "Lade ein CSV runter",
+            "getLocButtonText": "Beschaffe Koordinaten",
+            "importButtonText": "Import CSV",
+            "importButtonTitle": "Lade dein CSV hoch",
+            "openMapButtonText": "Karte öffnen",
+            "overwriteText": "Bereits vorhandene Datensätze aktualisieren (originId muss gesetzt sein)",
+            "refreshButtonText": "Neu laden",
+            "saveButtonText": "Speichern",
+            "selectLocButtonText": "Auswählen",
+            "startImportButtonText": "Starte Import"
+        },
+        "general": {
+            "descriptionTextModule": "Verwalte die Händler hier",
+            "mainMenuItemGeneral": "Händlersuche",
+            "search": "Händler durchsuchen"
+        },
+        "importAssistant": {
+            "categoryId": "Kategorie",
+            "country": "Länder",
+            "customerGroup": "Kundengruppe",
+            "defined": "Feste Werte",
+            "errorText": "Ihr Import wurde leider nicht erkannt, ggf. verwenden Sie ein falsches Format. Voraussetzungen: Kodierung: UTF-8, Feldtrenner: Semikolon, Texttrenner: Doppelte Anführungszeichen, Mindestens ein Datensatz im Import.",
+            "fromImport": "Aus Import",
+            "infoText": "Bitte wählen Sie sorgfältig die Feldzuweisungen aus!",
+            "loadedText": "Es wurden {count} Datensätze in Ihrem Import gefunden.",
+            "media": "Media",
+            "name": "Name",
+            "noSelection": "-",
+            "propertyName": "Feldname",
+            "salesChannel": "Sales Channel",
+            "target": "Zuweisung",
+            "title": "Importassistent"
+        },
+        "label": {
+            "accountCard": "Stammdaten",
+            "addressCard": "Adresse",
+            "locationCard": "Standort"
+        },
+        "notification": {
+            "errorTitle": "Fehler beim Speichern des Händlers",
+            "importText": "Dieser Vorgang kann einige Minuten dauern. Bitte habe etwas Geduld...",
+            "importTitle": "Händler werden importiert",
+            "successText": "Alle Händler wurden erfolgreich importiert",
+            "successTitle": "Erfolgreich"
+        },
+        "properties": {
+            "active": "Aktiv",
+            "additionalAddressLine1": "Adressfeld 1",
+            "additionalAddressLine2": "Adressfeld 2",
+            "city": "Stadt",
+            "company": "Firma",
+            "country": "Land",
+            "countryCode": "Länderkürzel",
+            "countryId": "Land",
+            "createdAt": "Erstellt",
+            "customerGroupId": "Kundengruppe",
+            "department": "Filiale",
+            "description": "Beschreibung",
+            "email": "E-Mail",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "location": "Koordinaten",
+            "locationLat": "Breitengrad",
+            "locationLon": "Längengrad",
+            "logo": "Logo",
+            "markerId": "Marker",
+            "markerSettings": "Marker Settings",
+            "markerShadowId": "Marker Shadow",
+            "merchantGroupId": "Händlergruppe",
+            "merchantTypeId": "Händlertyp",
+            "merchantUrl": "Händler URL",
+            "openingHours": "Öffnungszeiten",
+            "originId": "Original ID",
+            "phoneNumber": "Telefon",
+            "salesChannelId": "Sales Channel",
+            "shopUrl": "Shop URL",
+            "street": "Straße",
+            "streetNumber": "Hausnummer",
+            "title": "Titel",
+            "updatedAt": "Aktualisiert",
+            "vatId": "Steuer-ID",
+            "zipcode": "PLZ"
+        }
+    }
+}

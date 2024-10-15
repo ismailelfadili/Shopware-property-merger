@@ -1,0 +1,13 @@
+{% block element_merchant_finder %}
+    {% set config = element.fieldConfig.elements %}
+
+    {% sw_include '@FhMerchantFinder/storefront/component/search-form.html.twig' %}
+    <div class="row form-row">
+        <div class="col-12 col-lg-5 mb-4">
+            {% sw_include '@FhMerchantFinder/storefront/component/result-list.html.twig' %}
+        </div>
+        <div class="col-12 col-lg-7 mb-4">
+            {% sw_include '@FhMerchantFinder/storefront/component/map.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

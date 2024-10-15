@@ -1,0 +1,23 @@
+{
+    "fh-merchant-finder": {
+        "description": "Description",
+        "displayOnMap": "Display on map",
+        "distance": "Distance",
+        "eMail": "E-Mail:",
+        "finderHeadline": "Your Local Dealer",
+        "finderSubline": "Dealer for WEKA products within a radius (50 km) of:",
+        "km": "km",
+        "lowLengthNum": "Please enter a zip with a minimum of three digits",
+        "lowLengthText": "Please enter city name with a minimum of two letters",
+        "merchantUrl": "Go to Website",
+        "noDigit": "Please enter first zip or city name",
+        "noResult": "No results were found within a 50 km radius",
+        "openingHours": "Opening hours",
+        "phoneNumber": "Phone:",
+        "radius": "Radius",
+        "search": "search",
+        "searchFor": "Merchant / Company",
+        "shopUrl": "Visit Shop",
+        "zipcodeCity": "zipcode or city"
+    }
+}

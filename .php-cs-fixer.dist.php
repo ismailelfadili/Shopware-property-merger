@@ -1,8 +1,8 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__)
-    ->exclude('var')
+    ->in(__DIR__.'/packages/FhMerchantFinder')
+    ->exclude('Migration')
 ;
 
 return (new PhpCsFixer\Config())

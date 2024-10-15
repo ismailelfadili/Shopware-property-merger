@@ -1,0 +1,44 @@
+<!-- Search Results Template -->
+<div id="searchResultInfo" class="alert alert-warning alert-has-icon d-none" role="alert">
+    <span class="icon icon-info">{% sw_icon 'info' %}</span>
+    <div class="alert-content-container">
+        <div class="alert-content">
+            {{ "fh-merchant-finder.noResult"|trans }}
+        </div>
+    </div>
+</div>
+
+<div id="searchResultInfoEmpty" class="alert alert-warning alert-has-icon d-none" role="alert">
+    <span class="icon icon-info">{% sw_icon 'info' %}</span>
+    <div class="alert-content-container">
+        <div class="alert-content">
+            {{ "fh-merchant-finder.noDigit"|trans }}
+        </div>
+    </div>
+</div>
+
+<div id="searchResultInfoLowLengthText" class="alert alert-warning alert-has-icon d-none" role="alert">
+    <span class="icon icon-info">{% sw_icon 'info' %}</span>
+    <div class="alert-content-container">
+        <div class="alert-content">
+            {{ "fh-merchant-finder.lowLengthText"|trans }}
+        </div>
+    </div>
+</div>
+
+<div id="searchResultInfoLowLengthNum" class="alert alert-warning alert-has-icon d-none" role="alert">
+    <span class="icon icon-info">{% sw_icon 'info' %}</span>
+    <div class="alert-content-container">
+        <div class="alert-content">
+            {{ "fh-merchant-finder.lowLengthNum"|trans }}
+        </div>
+    </div>
+</div>
+
+<div class="fh-merchant-finder-result-wrapper d-none" id="resultWrapper">
+    <div class="zig-zag-container">
+        <div class="zig-zag-top"></div>
+        <ul class="fh-merchant-finder-results list-group" id="searchResults"></ul>
+        <div class="zig-zag-bottom"></div>
+    </div>
+</div>

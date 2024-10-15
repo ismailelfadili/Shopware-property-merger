@@ -1,0 +1,33 @@
+{
+  "name": "fullhaus/merchant-finder",
+  "description": "Merchant Finder",
+  "version": "v4.0.5",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "FULLHAUS GmbH"
+    }
+  ],
+  "require": {
+    "shopware/core": "6.5.*",
+    "shopware/administration": "*"
+  },
+  "extra": {
+    "shopware-plugin-class": "FULLHAUS\\MerchantFinder\\FhMerchantFinder",
+    "copyright": "Copyright (c) by FULLHAUS GmbH",
+    "label": {
+      "de-DE": "Händlersuche",
+      "en-GB": "Merchant Finder"
+    },
+    "description": {
+      "de-DE": "Der Merchant Finder (Händlersuche) erfasst Händlerdaten und spielt diese in einer interaktiven Karte aus.",
+      "en-GB": "The Merchant Finder collects merchant data and displays it in an interactive map."
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "FULLHAUS\\MerchantFinder\\": "src/"
+    }
+  }
+}

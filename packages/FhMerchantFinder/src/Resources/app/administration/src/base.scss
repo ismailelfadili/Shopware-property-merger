@@ -1,0 +1,21 @@
+.fh-merchant-finder-color {
+  .sw-search-bar__field {
+    .sw-search-bar__type--v2 {
+      background-color: #ff3d58 !important;
+    }
+  }
+}
+
+.sw-data-grid .sw-icon.is--active, .sw-data-grid .sw-icon.is--inactive {
+  block-size: 1rem;
+  inline-size: 1rem;
+  padding: 0.1875rem;
+}
+
+.sw-data-grid .sw-icon.is--inactive {
+  color: #de294c;
+}
+
+.sw-data-grid .sw-icon.is--active {
+  color: #37d046;
+}

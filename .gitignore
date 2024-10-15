@@ -153,3 +153,7 @@ devenv.local.nix
 
 # DDEV
 /.ddev
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

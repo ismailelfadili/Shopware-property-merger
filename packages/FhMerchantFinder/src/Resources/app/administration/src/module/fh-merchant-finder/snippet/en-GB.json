@@ -1,0 +1,90 @@
+{
+    "fh-merchant-finder": {
+        "buttons": {
+            "addMerchantButtonText": "New merchant",
+            "cancelButtonText": "Cancel",
+            "exportButtonText": "Export CSV",
+            "exportButtonTitle": "Download your CSV",
+            "getLocButtonText": "Get positions by OpenStreetMap",
+            "importButtonText": "Import CSV",
+            "importButtonTitle": "Upload your CSV",
+            "openMapButtonText": "Open Map",
+            "overwriteText": "Overwrite existing datarows (originId need to be set).",
+            "refreshButtonText": "Reload",
+            "saveButtonText": "Save",
+            "selectLocButtonText": "Chose",
+            "startImportButtonText": "Start import"
+        },
+        "general": {
+            "descriptionTextModule": "Manage your Merchants here",
+            "mainMenuItemGeneral": "Merchant Finder",
+            "search": "Search Merchant"
+        },
+        "importAssistant": {
+            "categoryId": "Category",
+            "country": "Countries",
+            "customerGroup": "Customer group",
+            "defined": "Fixed values",
+            "errorText": "Something went wrong",
+            "fromImport": "From import",
+            "loadedText": "There are {count} datarows in your file. Please configure datamapping in the next step.",
+            "media": "Media",
+            "name": "Name",
+            "noSelection": "-",
+            "propertyName": "Fieldname",
+            "salesChannel": "Sales channel",
+            "target": "Mapping",
+            "title": "Import Assistant"
+        },
+        "label": {
+            "accountCard": "General",
+            "addressCard": "Address",
+            "locationCard": "Location"
+        },
+        "notification": {
+            "errorTitle": "Some error while saving",
+            "importText": "This proccess could take a while, please calm...",
+            "importTitle": "Merchants are importing now",
+            "successText": "All merchants have been imported",
+            "successTitle": "Success"
+        },
+        "properties": {
+            "active": "Active",
+            "additionalAddressLine1": "Address line 1",
+            "additionalAddressLine2": "Address line 2",
+            "city": "City",
+            "company": "Company",
+            "country": "Country",
+            "countryCode": "Country code",
+            "countryId": "Country",
+            "createdAt": "Created at",
+            "customerGroupId": "Customer group",
+            "department": "Department",
+            "description": "Description",
+            "email": "E-Mail",
+            "firstName": "Firstname",
+            "lastName": "Lastname",
+            "location": "Position",
+            "locationLat": "Latitude",
+            "locationLon": "Longitude",
+            "logo": "Logo",
+            "markerId": "Marker",
+            "markerSettings": "Marker Settings",
+            "markerShadowId": "Marker Shadow",
+            "merchantGroupId": "Merchant group",
+            "merchantTypeId": "Merchant Type",
+            "merchantUrl": "Merchant URL",
+            "openingHours": "Opening hours",
+            "originId": "Origin ID",
+            "phoneNumber": "Phone",
+            "salesChannelId": "Sales Channel",
+            "shopUrl": "Shop URL",
+            "street": "Street",
+            "streetNumber": "Number",
+            "title": "Title",
+            "updatedAt": "Updated at",
+            "vatId": "VAT-ID",
+            "zipcode": "Zipcode"
+        }
+    }
+}

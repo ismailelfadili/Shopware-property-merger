@@ -1,0 +1,23 @@
+{
+    "fh-merchant-finder": {
+        "description": "Beschreibung",
+        "displayOnMap": "auf Karte anzeigen",
+        "distance": "Entfernung",
+        "eMail": "E-Mail:",
+        "finderHeadline": "Ihr Händler vor Ort",
+        "finderSubline": "Händler für WEKA Produkte im Umkreis (50 km) von:",
+        "km": "km",
+        "lowLengthNum": "Bitte geben Sie eine PLZ mit mindestens drei Zeichen ein",
+        "lowLengthText": "Bitte geben Sie einen Ort mit mindestens zwei Zeichen ein",
+        "merchantUrl": "Zur Website",
+        "noDigit": "Bitte geben Sie zuerst eine PLZ oder einen Ort ein",
+        "noResult": "Es wurden keine Ergebnisse im Umkreis von 50 km gefunden",
+        "openingHours": "Öffnungszeiten",
+        "phoneNumber": "Tel.:",
+        "radius": "Umkreis",
+        "search": "suchen",
+        "searchFor": "Händler / Firma",
+        "shopUrl": "Zum Händlershop",
+        "zipcodeCity": "PLZ oder Ort"
+    }
+}

@@ -1,0 +1,38 @@
+.merchant-finder-settings-credentials-fields {
+  margin: 1.875rem;
+}
+
+.merchant-finder-alert-warning {
+  background: #ffeb8f;
+  border: 0.0625rem solid #f1dc7c;
+  border-radius: 0.25rem;
+  color: #423809;
+  display: block;
+  margin-block-start: 1.5625rem;
+  padding: 0.9375rem;
+}
+
+.merchant-finder-import-assistant {
+  table {
+    border: 0.0625rem solid #d1d9e0;
+    border-collapse: inherit !important;
+    border-radius: 0.25rem !important;
+
+    thead th {
+      border-block-end: 0.125rem solid #d1d9e0;
+      padding: 0.3125rem !important;
+    }
+
+    td {
+      padding: 0.3125rem !important;
+    }
+
+    select {
+      background: #fff;
+      border: 0.0625rem solid #d1d9e0 !important;
+      border-radius: 0.25rem;
+      inline-size: 22.5rem !important;
+      padding: 0.3125rem !important;
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{% block fh_merchant_finder_list %}
+
+    <sw-page class="fh-merchant-finder-list">
+
+        <sw-sidebar slot="sidebar">
+
+            <sw-sidebar-item icon="regular-undo"
+                             :title="$t('fh-merchant-finder.buttons.refreshButtonText')"
+                             @click="onRefresh"></sw-sidebar-item>
+
+            <sw-sidebar-item icon="regular-cloud-upload"
+                             :title="$t('fh-merchant-finder.buttons.importButtonText')"
+                             @click="onClickUpload"></sw-sidebar-item>
+
+            <form style="display: none;" ref="fileForm">
+                <input class="sw-plugin-file-upload__file-input"
+                       type="file"
+                       id="files"
+                       ref="fileInput"
+                       @change="onFileInputChange" />
+            </form>
+
+            <sw-sidebar-item icon="regular-cloud-download"
+                             :title="$t('fh-merchant-finder.buttons.exportButtonText')"
+                             @click="onClickDownload"></sw-sidebar-item>
+
+            <form id="exportCSV"
+                  style="display: none;"
+                  method="get"
+                  action="api.fh.merchant-finder.export">
+            </form>
+
+        </sw-sidebar>
+
+        <template slot="search-bar">
+            <sw-search-bar :initialSearchType="$tc('fh-merchant-finder.general.mainMenuItemGeneral')"
+                           :initialSearch="term"
+                           :placeholder="$tc('fh-merchant-finder.general.search')"
+                           class="fh-merchant-finder-color"
+                           @search="onSearch">
+            </sw-search-bar>
+        </template>
+
+        <template slot="smart-bar-header">
+            <h2>
+                {{ $tc('fh-merchant-finder.general.mainMenuItemGeneral') }}
+
+                <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                        ({{ total }})
+                        </span>
+            </h2>
+        </template>
+
+        <template slot="smart-bar-actions">
+
+            <sw-button variant="primary" :routerLink="{ name: 'fh.merchant.finder.create' }">
+                {{ $t('fh-merchant-finder.buttons.addMerchantButtonText') }}
+            </sw-button>
+
+        </template>
+
+        <template slot="content">
+
+            <sw-loader v-if="isImporting"></sw-loader>
+
+            {% block fh_merchant_finder_list_content %}
+
+                <sw-entity-listing
+                    v-if="merchants"
+                    :items="merchants"
+                    :repository="repository"
+                    :showSelection="true"
+                    :columns="columns"
+                    :isLoading="isLoading"
+                    detailRoute="fh.merchant.finder.detail"
+                    @select-item="updateSelection"
+                    @update-records="updateTotal">
+
+                    <template #column-active="{ item, isInlineEdit }">
+                        <template v-if="isInlineEdit">
+                            <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
+                        </template>
+                        <template v-else>
+                            <sw-icon v-if="item.active" name="regular-checkmark-s" small class="is--active"></sw-icon>
+                            <sw-icon v-else name="regular-times-s" small class="is--inactive"></sw-icon>
+                        </template>
+                    </template>
+
+                    <template #column-locationLon="{ item }">
+                        <span>{{ item.locationLon }}|{{ item.locationLat }}</span>
+                    </template>
+
+                    <template #preview-company="{ item }">
+                        <sw-media-preview :source="item.mediaId"></sw-media-preview>
+                    </template>
+
+                    {# Table contents get rendered automatically by index.js #}
+
+                </sw-entity-listing>
+
+            {% endblock %}
+
+            <sw-modal v-if="showImportModal" @modal-close="onCloseModal" :title="$t('fh-merchant-finder.importAssistant.title')" variant="default">
+
+                <div v-if="csv.data.length == 0">
+                    <p>{{ $t('fh-merchant-finder.importAssistant.errorText') }}</p>
+                </div>
+
+                <div v-if="csv.data.length > 0">
+                    <p>{{ $t('fh-merchant-finder.importAssistant.loadedText', { count: csv.data.length }) }}</p>
+                    <br>
+                    <div class="sw-data-grid is--compact merchant-finder-import-assistant" v-if="csv.data.length > 0">
+                        <div class="sw-data-grid__wrapper">
+                            <table class="sw-data-grid__table" cellpadding="0" cellspacing="0">
+                                <thead>
+                                <tr class="sw-data-grid__row">
+                                    <th class="sw-data-grid__cell">{{ $t('fh-merchant-finder.importAssistant.name') }}</th>
+                                    <th class="sw-data-grid__cell">{{ $t('fh-merchant-finder.importAssistant.propertyName') }}</th>
+                                    <th class="sw-data-grid__cell">{{ $t('fh-merchant-finder.importAssistant.target') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody class="sw-data-grid__body">
+                                <tr v-for="schemaProperty in csv.schemaProperties"
+                                    v-if="csv.filterSchemaProperties.indexOf(schemaProperty) === -1"
+                                    class="sw-data-grid__row">
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__label">
+                                            <label><strong>{{ $t("fh-merchant-finder.properties." + schemaProperty) }}</strong></label>
+                                        </div>
+                                    </td>
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__label">
+                                            <small>({{ schemaProperty }})</small>
+                                        </div>
+                                    </td>
+                                    <td class="sw-data-grid__cell">
+                                        <div class="sw-field__select">
+                                            <select v-model="csv.propertyMapping[schemaProperty]">
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.fromImport')">
+                                                    <option v-for="csvProperty in csv.csvProperties" :value="csvProperty">{{ csvProperty }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.defined')">
+                                                    <option value>{{ $t('fh-merchant-finder.importAssistant.noSelection') }}</option>
+                                                    <option value="1">true</option>
+                                                    <option value="0">false</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.salesChannel')">
+                                                    <option v-for="salesChannel in salesChannels" :value="salesChannel.id">{{ salesChannel.name }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.country')">
+                                                    <option v-for="country in countries" :value="country.id">{{ country.name }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.customerGroup')">
+                                                    <option v-for="customerGroup in customerGroups" :value="customerGroup.id">{{ customerGroup.name }}</option>
+                                                </optgroup>
+
+                                                <optgroup :label="$t('fh-merchant-finder.importAssistant.media')">
+                                                    <option v-for="media in medias" :value="media.id">{{ media.fileName }}</option>
+                                                </optgroup>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="shopconnector-alert-warning">{{ $t('fh-merchant-finder.importAssistant.infoText') }}</div>
+                    <sw-field type="switch" bordered :label="$t('fh-merchant-finder.buttons.getLocButtonText')" v-model="csv.options.getPosition"></sw-field>
+                    <sw-field type="switch" bordered :label="$t('fh-merchant-finder.buttons.overwriteText')" v-model="csv.options.overwrite"></sw-field>
+                </div>
+
+                <template #modal-footer>
+                    <sw-button @click="onCloseModal" size="small">
+                        {{ $t('fh-merchant-finder.buttons.cancelButtonText') }}
+                    </sw-button>
+
+                    <sw-button v-if="csv.data.length > 0"
+                               @click="onClickImport"
+                               variant="primary"
+                               size="small">
+                        {{ $t('fh-merchant-finder.buttons.startImportButtonText') }}
+                    </sw-button>
+                </template>
+
+            </sw-modal>
+
+        </template>
+    </sw-page>
+{% endblock %}

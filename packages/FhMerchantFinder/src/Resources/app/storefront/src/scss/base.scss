@@ -1,0 +1,195 @@
+@import "../../../../../Resources/leaflet/leaflet";
+
+/* Custom Leaflet Styles */
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  font: normal 1.125rem $font-family-base;
+}
+
+.leaflet-default-icon-path {
+  background-image: url('/bundles/fhmerchantfinder/storefront/css/images/marker-icon.png');
+}
+
+.leaflet-container img.leaflet-tile {
+  filter: grayscale(0.15) hue-rotate(-15deg) saturate(75%) !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-bar {
+  border-radius: $border-radius !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  box-shadow: 0 0.9375rem 0.625rem -0.9375rem rgba(0, 0, 0, 0.35);
+}
+
+.leaflet-popup {
+  margin-block-end: 1.5625rem;
+}
+
+/* Plugin styles */
+.fh-merchant-finder {
+
+  .zig-zag-container {
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+      .zig-zag-top:before {
+        background-image: url('/bundles/fhmerchantfinder/storefront/css/images/zig-zag-pattern.png');
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: 1.25rem 0.625rem;
+        block-size: 0.625rem;
+        content: " ";
+        display: block;
+
+        filter: brightness(150%);
+        inline-size: 100%;
+
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        position: absolute;
+        z-index: 100;
+      }
+
+      .zig-zag-bottom:after {
+        background-image: url('/bundles/fhmerchantfinder/storefront/css/images/zig-zag-pattern.png');
+        background-position: center bottom;
+        background-repeat: no-repeat;
+
+        background-size: 1.25rem 0.625rem;
+        block-size: 0.625rem;
+        content: "";
+        display: block;
+        filter: brightness(150%);
+
+        inline-size: 100%;
+        inset-block-end: 0;
+
+        inset-inline-start: 0;
+        position: absolute;
+        transform: rotate(180deg);
+        z-index: 100;
+      }
+    }
+  }
+
+  .fh-merchant-finder-search-field {
+    border: 0;
+    border-block-end: 0.125rem solid $secondary !important
+  }
+
+  .fh-merchant-finder-preloader {
+    background-color: rgba(255, 255, 255, 0.5);
+    block-size: 100%;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: absolute;
+    z-index: 400;
+  }
+
+  .fh-merchant-finder-badge, .fh-merchant-finder-badge-premium {
+    border: 0.0625rem solid $black;
+    display: inline-block;
+    line-height: 1;
+    padding: 0.3125rem;
+  }
+
+  .fh-merchant-finder-badge {
+    background-color: $black;
+    color: $white;
+  }
+
+  .fh-merchant-finder-badge-premium {
+    background-color: $white;
+    color: $black;
+  }
+
+  .list-group-item {
+    transition: all linear 0.3s;
+
+    &.active {
+      /* Custom color */
+      background-color: rgba(116, 145, 17, .15);
+      border-color: $primary;
+      color: $sw-text-color;
+    }
+  }
+
+  .fh-merchant-finder-results {
+    block-size: auto;
+    position: relative !important;
+
+    .fh-merchant-finder-merchant-name {
+      color: $black;
+      font-size: $h5-font-size;
+    }
+  }
+
+  .fh-merchant-finder-map {
+    block-size: 50vh;
+    border-radius: $border-radius;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .fh-merchant-finder-results,
+    .fh-merchant-finder-map {
+      block-size: 50vh;
+      pointer-events: inherit;
+    }
+    .fh-merchant-finder-results {
+      overflow-y: scroll;
+    }
+  }
+
+  .spinner {
+    block-size: 2.5rem;
+    inline-size: 2.5rem;
+    inset-block-start: 50%;
+    margin-block-start: -1.25rem;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
+    position: relative;
+  }
+
+  .double-bounce1, .double-bounce2 {
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+    background-color: $secondary;
+    block-size: 100%;
+    border-radius: 50%;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+
+    opacity: 0.6;
+    position: absolute;
+  }
+
+  .double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+
+  @-webkit-keyframes sk-bounce {
+    0%, 100% {
+      -webkit-transform: scale(0.0)
+    }
+    50% {
+      -webkit-transform: scale(1.0)
+    }
+  }
+
+  @keyframes sk-bounce {
+    0%, 100% {
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    }
+    50% {
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
+
+}

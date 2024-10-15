@@ -1,0 +1,21 @@
+{% block block_merchant_finder %}
+    {% set columns = 1 %}
+
+    <div class="fh-merchant-finder col col-12 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="d-flex mb-2 align-items-center text-secondary">
+                    <i class="bi bi-pin-map me-2"></i>
+                    {{ "fh-merchant-finder.finderHeadline"|trans }}</h3>
+                <div class="merchant-finder">
+                    {% block block_merchant_finder_inner %}
+                        {% set element = block.slots.getSlot('merchant-finder') %}
+                        {% sw_include "storefront/element/cms-element-merchant-finder.html.twig" ignore missing %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
