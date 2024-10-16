@@ -1,0 +1,33 @@
+{
+    "name": "fullhaus/productvideo",
+    "description": "Add videos to product galleries in Shopware 6 easily",
+    "version": "2.0.5",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FULLHAUS GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.5.*",
+        "shopware/administration": "6.5.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "FULLHAUS\\ProductVideo\\FhProductVideo",
+        "copyright": "Copyright (c) by FULLHAUS GmbH",
+        "label": {
+            "de-DE": "Produktgalerie Videos",
+            "en-GB": "Product gallery videos"
+        },
+        "description": {
+            "de-DE": "Videos ganz einfach in die Produktgalerie von Shopware 6 einbinden",
+            "en-GB": "Add videos to product gallery in Shopware 6 easily"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "FULLHAUS\\ProductVideo\\": "src/"
+        }
+    }
+}

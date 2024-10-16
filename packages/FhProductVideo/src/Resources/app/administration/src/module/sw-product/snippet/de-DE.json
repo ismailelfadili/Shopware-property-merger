@@ -1,0 +1,17 @@
+{
+  "sw-product": {
+    "fh-product-media-form": {
+      "embed": {
+        "add": "Zur Liste hinzufügen",
+        "source": "Video Quelle",
+        "thumbnail": "Vorschaubild",
+        "title": "Video einbetten",
+        "url": "Video Url",
+        "url-help-text": "Bitte verwenden Sie nur Urls, in denen lediglich die Video-ID und keine anderen Eigenschaften vorkommen (z.B. https://www.youtube.com/watch?v=aBc123xYz)"
+      },
+      "upload": {
+        "title": "Upload"
+      }
+    }
+  }
+}

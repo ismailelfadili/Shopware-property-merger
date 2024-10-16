@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36e561d87ce57ace9e034ef398d2454d",
+    "content-hash": "c7fb91f5276cbfab9a7d26affe43911b",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2370,6 +2370,177 @@
                 }
             ],
             "description": "Content Management Elements for Shopware 6",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/cms-layout-blocks",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhCmsLayoutBlock",
+                "reference": "b3e99293cf472867b332a8e8988944424f6f6209"
+            },
+            "require": {
+                "shopware/core": "~v6.5",
+                "shopware/storefront": "~v6.5"
+            },
+            "require-dev": {
+                "shopware/production": "~v6.5"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\CmsLayoutBlock\\FhCmsLayoutBlock",
+                "copyright": "(c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "CMS Grid / Columns",
+                    "en-GB": "CMS Grid / Columns"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\CmsLayoutBlock\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Grid / Columns for Shopping Experiences - CMS Layout Blocks ",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/merchant-finder",
+            "version": "v4.0.5",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhMerchantFinder",
+                "reference": "5fa6e8a87b675060bf51c480bda1e3d5abe9ed4d"
+            },
+            "require": {
+                "shopware/administration": "*",
+                "shopware/core": "6.5.*"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\MerchantFinder\\FhMerchantFinder",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "Händlersuche",
+                    "en-GB": "Merchant Finder"
+                },
+                "description": {
+                    "de-DE": "Der Merchant Finder (Händlersuche) erfasst Händlerdaten und spielt diese in einer interaktiven Karte aus.",
+                    "en-GB": "The Merchant Finder collects merchant data and displays it in an interactive map."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\MerchantFinder\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Merchant Finder",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/productvideo",
+            "version": "2.0.5",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhProductVideo",
+                "reference": "321d46d0d07af5a5777d5bb964cff4f0351ea78e"
+            },
+            "require": {
+                "shopware/administration": "6.5.*",
+                "shopware/core": "6.5.*"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\ProductVideo\\FhProductVideo",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "Produktgalerie Videos",
+                    "en-GB": "Product gallery videos"
+                },
+                "description": {
+                    "de-DE": "Videos ganz einfach in die Produktgalerie von Shopware 6 einbinden",
+                    "en-GB": "Add videos to product gallery in Shopware 6 easily"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\ProductVideo\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Add videos to product galleries in Shopware 6 easily",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/shopconnector",
+            "version": "v4.0.6",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhShopConnector",
+                "reference": "61aa9b29c12e48fcbf54e38505251bb2d3ebf7a5"
+            },
+            "require": {
+                "shopware/administration": "*",
+                "shopware/core": "*"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\ShopConnector\\FhShopConnector",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "Shop Connector",
+                    "en-GB": "Shop Connector"
+                },
+                "description": {
+                    "de-DE": "Der Shop Connector erfasst csv-Dateien, vergleicht die darin befindlichen Artikel mit eigenen Shopartikel und fügt bei Überschneidung einen Link zum Artikel hinzu.",
+                    "en-GB": "The Shop Connector collects csv files, compares the articles in them with its own shop items and adds a link to the article by matching."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\ShopConnector\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "The Shop Connector collects csv files, compares the articles in them with its own shop items and adds a link to the article by matching.",
             "transport-options": {
                 "relative": true
             }
@@ -12003,7 +12174,11 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fullhaus/cms-items": 20
+        "fullhaus/cms-items": 20,
+        "fullhaus/cms-layout-blocks": 20,
+        "fullhaus/merchant-finder": 20,
+        "fullhaus/productvideo": 20,
+        "fullhaus/shopconnector": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -12011,6 +12186,6 @@
         "php": "^8.2",
         "composer-runtime-api": "^2.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

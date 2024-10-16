@@ -1,0 +1,10 @@
+{% block sw_product_detail_base_media_card_form %}
+  <fh-product-media-form
+    v-if="mediaFormVisible"
+    :productId="isInherited ? parentProduct.id : product.id"
+    :key="isInherited"
+    :isInherited="isInherited"
+    :disabled="isInherited"
+    @add-embedded-video-media="addMedia"
+    @media-open="onOpenMediaModal" />
+{% endblock %}

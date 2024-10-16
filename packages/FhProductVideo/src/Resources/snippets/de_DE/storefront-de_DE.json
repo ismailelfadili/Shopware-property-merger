@@ -1,0 +1,9 @@
+{
+  "fh_productvideo": {
+    "element": {
+      "youtube": "Youtube",
+      "vimeo": "Vimeo",
+      "warning": "Ihr Browser unterstützt das HTML-Video-Tag nicht."
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.sw-product-media-form {
+  .embed-media-container {
+    .video-url-help-text {
+      float: right;
+    }
+
+    label[for='sw-field--embeddedVideo-source'] {
+      margin-block-end: 1rem;
+    }
+
+    .sw-media-upload-v2 {
+      margin-block-end: 2rem;
+    }
+  }
+}

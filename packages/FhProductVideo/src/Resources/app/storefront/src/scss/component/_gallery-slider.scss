@@ -1,0 +1,77 @@
+.gallery-slider-item {
+  .fh-pv-container {
+    align-items: center;
+    block-size: 100%;
+    display: flex;
+  }
+
+  .fh-pv-item {
+    background-color: #000000;
+    inline-size: 100%;
+    padding-block-start: 56.25%;
+    position: relative;
+  }
+
+  iframe,
+  video {
+    block-size: 100%;
+    border: none;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: absolute;
+  }
+
+  video:focus {
+    outline: none;
+  }
+
+  .modal.zoom-modal & {
+    .fh-pv-container {
+      padding: 1.875rem;
+    }
+
+    .fh-pv-item {
+      block-size: 100%;
+      padding-block-start: 0;
+    }
+  }
+}
+
+.gallery-slider-thumbnails-item {
+  .gallery-slider-thumbnails-item-inner {
+    position: relative;
+  }
+
+  .fh-pv-item {
+    background-color: #000000;
+    inline-size: 100%;
+    padding-block-start: 56.25%;
+    position: relative;
+  }
+
+  video {
+    block-size: 100%;
+    border: none;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: absolute;
+  }
+
+  .fh-pv-icon {
+    display: flex;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    .icon > svg {
+      inset-block-start: 0;
+    }
+  }
+
+  .modal.zoom-modal &.is-video {
+    inline-size: 5.3125rem;
+  }
+}
