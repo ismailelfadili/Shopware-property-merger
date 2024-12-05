@@ -1,36 +1,57 @@
-/*
-Button
-==============================================
-Custom skin styling for bootstrap button component.
-
-https://getbootstrap.com/docs/5.2/components/buttons/
-*/
-
-/* Shopware overrides */
 .btn, a {
-    transition : $animation;
+    transition: $animation;
 }
 
-/* Filter Buttons and Dropdown */
 .filter-panel-item .filter-panel-item-toggle {
-    border     : 1px solid darken($light, 10%);
-    background : $light;
+    background: $light;
+    border: 0.0625rem solid darken($light, 10%);
 }
 
 .filter-panel-item-dropdown {
-    border-radius : 0 !important;
-    padding       : 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
 
     ul {
-        padding : .5rem 0;
+        padding-block: 0.5rem;
+        padding-inline: 0;
     }
 }
 
 .filter-multi-select-manufacturer {
-    display : none !important;
+    display: none !important;
 }
 
-/* Button light contrast fix */
 .btn.btn-outline-light {
-    color : $dark;
+    color: $dark;
+}
+
+.scroll-up-button .btn {
+    block-size: 3rem;
+    border-radius: 50%;
+    inline-size: 3rem;
+}
+
+.bg-wood {
+    background-color: darken($wood, 15%);
+    color: lighten($wood, 25%);
+}
+
+.text-wood {
+    color: $wood !important;
+}
+
+.text-wood-light {
+    color: lighten($wood, 30%) !important;
+}
+
+.bg-offer {
+    background-color: $wk-offers;
+}
+
+.text-white-50 {
+    color: lighten($wood, 30%) !important;
+}
+
+.text {
+    color: $text !important;
 }

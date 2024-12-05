@@ -1,0 +1,52 @@
+.breadcrumb-item + .breadcrumb-item {
+    padding-inline-start: 0.5rem;
+}
+
+.breadcrumb {
+    color: lighten($sw-text-color, 25%);
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    line-height: 3;
+    margin-block: 0;
+    margin-inline: auto;
+    padding-block: 0.25rem;
+    padding-inline: 0;
+
+    .icon {
+        color: lighten($sw-text-color, 25%);
+
+        svg {
+            block-size: 0.625rem;
+            inset-block-start: 0;
+            padding-block: 0;
+            padding-inline: 0.312rem;
+        }
+    }
+
+    &.cms-breadcrumb {
+        padding-block: 0;
+        padding-inline: 1.5rem;
+    }
+
+    .breadcrumb-container {
+        padding-block-end: 0.5rem;
+        padding-block-start: 0.437rem;
+        padding-inline: 0;
+    }
+
+    a {
+        color: lighten($sw-text-color, 25);
+        font-size: $font-size-small;
+        transition: $animation;
+
+        &:hover {
+            color: lighten($sw-text-color, 25%);
+            text-decoration: underline;
+            transition: $animation;
+        }
+
+        &.is-active {
+            font-weight: $font-weight-normal;
+        }
+    }
+}

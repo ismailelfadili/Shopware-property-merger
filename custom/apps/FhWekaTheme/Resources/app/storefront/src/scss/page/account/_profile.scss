@@ -1,0 +1,20 @@
+.account-welcome {
+    padding: 0;
+}
+
+.account-salutation {
+    line-height: $line-height-base;
+}
+
+.account-orders-overview {
+    margin-block-end: 1.25rem;
+}
+
+.customer-account-content {
+    margin: 0;
+    padding: 0;
+
+    .account-overview-card {
+        margin: 0;
+    }
+}

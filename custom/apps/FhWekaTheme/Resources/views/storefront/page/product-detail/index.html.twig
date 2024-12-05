@@ -17,7 +17,7 @@
                                 <div class="col-auto ms-auto">
                                     {% set lastPage = page.product.seoCategory.id %}
 
-                                    <a class="btn pe-0" href="{% if lastPage %}{{ seoUrl('frontend.navigation.page', { navigationId: lastPage }) }}{% else %}javascript:history.back();{% endif %}" title="{{ "general.back_to_overview"|trans }}">
+                                    <a class="btn pe-0" href="{% if lastPage %}{{ seoUrl('frontend.navigation.page', { navigationId: lastPage }) }}{% else %}javascript:history.back();{% endif %}" title="{{ "general.backToOverview"|trans }}">
                                         <i class="bi bi-sm bi-arrow-left-circle"></i>
                                     </a>
                                 </div>

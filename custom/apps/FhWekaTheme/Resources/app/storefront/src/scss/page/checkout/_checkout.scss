@@ -1,0 +1,96 @@
+.checkout,
+.cms-page.search-page,
+.account.account-content,
+.account-register,
+.account-recover-password,
+.customer-account,
+.wishlist-page {
+    padding-block-end: 3rem;
+    padding-block-start: 3rem !important;
+}
+
+/* Already registered */
+.register-login-collapse-toogle {
+    font-size: 1rem;
+    margin-block: 1.5rem;
+    margin-inline: 0;
+
+    a {
+        color: $dark;
+        text-decoration: underline;
+    }
+}
+
+.login-submit {
+    text-align: right;
+}
+
+.payment-method-image, .payment-method-footer {
+    block-size: 1.5625rem;
+    padding-inline-end: 0.75rem;
+}
+
+.payment-method-description p, .shipping-method-description p {
+    color: $gray-600;
+    font-size: 0.8rem;
+}
+
+.checkout-aside-product-header {
+    margin-block-end: 0;
+}
+
+.line-item-quantity-label,
+.line-item-unit-price-label,
+.line-item-total-price-label,
+.line-item-tax-price-label {
+    margin-block-end: 0;
+}
+
+.is-act-confirmpage .checkout .checkout-additional, .is-ctl-accountorder .checkout .checkout-additional {
+    margin-block-start: 0;
+}
+
+.finish-info {
+    margin-block-end: 2rem;
+
+    .checkout-card {
+        block-size: 100%;
+    }
+}
+
+.finish-header, .finish-ordernumber, .finish-teaser {
+    text-align: left !important;
+}
+
+.finish-teaser {
+    font-size: 1rem;
+    margin-block-end: 1rem;
+}
+
+.is-act-finishpage .checkout .checkout-additional {
+    margin-block-start: 0;
+}
+
+.checkout {
+    .line-item {
+        padding-block: 2rem;
+        padding-inline: 0;
+    }
+}
+
+.line-item.is-order {
+    margin: 0;
+}
+
+.line-item-details {
+    padding-block-start: 0;
+
+    * {
+        font-size: 0.8rem;
+    }
+}
+
+.line-item-img {
+    object-fit: cover;
+    padding: 0.15rem;
+}

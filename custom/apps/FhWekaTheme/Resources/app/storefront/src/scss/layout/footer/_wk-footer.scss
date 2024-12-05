@@ -1,0 +1,44 @@
+.wk-footer-main {
+    background: url('#{$app-css-relative-asset-path}/pattern/content-weka-wood.jpg') repeat top center $wood;
+    background-size: 100%;
+    border-block-start: 0.625rem solid $primary;
+    color: lighten($wood, 30%);
+
+    a {
+        transition: $animation;
+    }
+
+    .footerPageBenefits {
+        background-color: $white;
+        padding-block: 2rem;
+        padding-inline: 0;
+    }
+
+    .website-tls-info {
+
+        .row {
+            background-image: url('#{$app-css-relative-asset-path}/payment/waves-pattern.webp');
+            background-position: center;
+            background-repeat: repeat;
+            border: 0.0 0.62rem solid $gray-300;
+            border-radius: 0.312rem;
+            padding-block: 0.5rem;
+            padding-inline: 1rem;
+        }
+
+        .website-tls-headline {
+            color: $black;
+            font-weight: $font-weight-bold;
+            text-transform: uppercase;
+        }
+
+        .website-tls-subline {
+            color: $sw-text-color;
+        }
+    }
+}
+
+.wk-copyright-logo {
+    mix-blend-mode: luminosity;
+    opacity: 0.5;
+}

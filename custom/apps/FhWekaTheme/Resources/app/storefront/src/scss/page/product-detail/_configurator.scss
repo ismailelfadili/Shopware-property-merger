@@ -1,51 +1,51 @@
 .product-detail-configurator-group {
-    margin-bottom  : .75rem;
-    padding-bottom : .75rem;
+    margin-block-end: 0.75rem;
+    padding-block-end: 0.75rem;
 
     .product-detail-configurator-group-title {
-        font-weight   : $font-weight-normal;
-        color         : $dark;
-        margin-bottom : .5rem;
+        color: $dark;
+        font-weight: $font-weight-normal;
+        margin-block-end: 0.5rem;
     }
 
     label {
-        margin : 0;
+        margin: 0;
     }
 
     &:not(:last-child) {
-        border-bottom : 1px solid $border-color;
+        border-block-end: 0.0625rem solid $border-color;
     }
 
     &:last-child {
-        margin-bottom  : 0;
-        padding-bottom : 0;
+        margin-block-end: 0;
+        padding-block-end: 0;
     }
 }
 
 @function check-stroke($size: 2, $color: #fff, $correction: 1) {
-    $radius : $size - $correction;
-    $stroke : ();
+    $radius: $size - $correction;
+    $stroke: ();
 
     @for $i from -$size through $size {
         @for $k from -$size through $size {
 
-            $x : $k;
-            $y : $i;
+            $x: $k;
+            $y: $i;
 
             @if $k > 0 {
-                $x : $k - 0.5;
+                $x: $k - 0.5;
             } @else if $k < 0 {
-                $x : $k + 0.5;
+                $x: $k + 0.5;
             }
 
             @if $i > 0 {
-                $y : $i - 0.5;
+                $y: $i - 0.5;
             } @else if $i < 0 {
-                $y : $i + 0.5;
+                $y: $i + 0.5;
             }
 
             @if ($x*$x + $y*$y <= $radius*$radius) {
-                $stroke : append($stroke, $i*0.018em $k*0.018em 0.0027em $color, comma);
+                $stroke: append($stroke, $i*0.018em $k*0.018em 0.0027em $color, comma);
             }
         }
     }
@@ -53,258 +53,102 @@
 }
 
 @mixin check-stroke($size: 2, $color: #fff, $correction: 1) {
-    text-shadow : check-stroke($size, $color, $correction);
+    text-shadow: check-stroke($size, $color, $correction);
 }
 
 .product-detail-configurator-option {
-    display : inline-flex;
+    display: inline-flex;
 
     &:not(:last-child) {
         .is-display-color {
-            margin-bottom : .5rem;
+            margin-block-end: 0.5rem;
         }
     }
 
     .product-detail-configurator-option-input-label {
-        display : flex;
+        display: flex;
     }
 
     .is-display-static-color {
-        display       : inline-block;
-        box-shadow    : none;
-        min-width     : 0;
-        width         : 3rem;
-        height        : 3rem;
-        border        : 0;
-        border-radius : 50%;
-        position      : relative;
+        block-size: 3rem;
+        border: 0;
+        border-radius: 50%;
+        box-shadow: none;
+        display: inline-block;
+        inline-size: 3rem;
+        min-inline-size: 0;
+        position: relative;
 
         &:after {
-            content     : "\f26e";
-            color       : $white;
-            font-family : bootstrap-icons !important;
-            font-size   : 2.5rem;
-            text-align  : center;
-            display     : block;
-            top         : -5px;
-            left        : 5px;
-            position    : absolute;
+            color: $white;
+            content: "\f26e";
+            display: block;
+            font-family: bootstrap-icons !important;
+            font-size: 2.5rem;
+            inset-block-start: -0.312rem;
+            inset-inline-start: 0.312rem;
+            position: absolute;
+            text-align: center;
             /* Careful! Needs rendering time */
-            @include check-stroke(2, rgba(0, 0, 0, .15));
+            @include check-stroke(2, rgba(0, 0, 0, 0.15));
         }
     }
 
     .product-detail-color-title {
-        height       : 3rem;
-        line-height  : 3rem;
-        padding-left : 1rem;
+        block-size: 3rem;
+        line-height: 3rem;
+        padding-inline-start: 1rem;
     }
 
     .product-detail-configurator-option-input {
-        display : none;
+        display: none;
 
         + .product-detail-configurator-option-input-label {
-            opacity : 1 !important;
-            cursor  : pointer !important;
+            cursor: pointer !important;
+            opacity: 1 !important;
 
             .is-display-text {
-                display     : inline-block;
-                line-height : 2.5rem;
-                padding     : 0 1.25rem;
-                border      : 1px solid $border-color;
-                background  : $white;
+                background: $white;
+                border: 0.0625rem solid $border-color;
+                display: inline-block;
+                line-height: 2.5rem;
+                padding-block: 0;
+                padding-inline: 1.25rem;
             }
 
             .is-display-color {
-                display       : inline-block;
-                box-shadow    : none;
-                min-width     : 0;
-                width         : 3rem;
-                height        : 3rem;
-                border        : 0;
-                border-radius : 50%;
-                position      : relative;
+                block-size: 3rem;
+                border: 0;
+                border-radius: 50%;
+                box-shadow: none;
+                display: inline-block;
+                inline-size: 3rem;
+                min-inline-size: 0;
+                position: relative;
             }
         }
 
         &:checked + .product-detail-configurator-option-input-label {
             .is-display-text {
-                border-color : $primary;
-                background   : $primary;
+                background: $primary;
+                border-color: $primary;
             }
 
             .is-display-color {
                 &:after {
-                    content     : "\f26e";
-                    color       : $white;
-                    font-family : bootstrap-icons !important;
-                    font-size   : 2.5rem;
-                    text-align  : center;
-                    display     : block;
-                    top         : -5px;
-                    left        : 5px;
-                    position    : absolute;
+                    color: $white;
+                    content: "\f26e";
+                    display: block;
+                    font-family: bootstrap-icons !important;
+                    font-size: 2.5rem;
+                    inset-block-start: -0.312rem;
+                    inset-inline-start: 0.312rem;
+                    position: absolute;
+                    text-align: center;
                     /* Careful! Needs rendering time */
-                    @include check-stroke(2, rgba(0, 0, 0, .15));
+                    @include check-stroke(2, rgba(0, 0, 0, 0.15));
                 }
             }
         }
     }
 }
-
-
-/*
-.product-detail-configurator-group {
-    .dropdown-toggle {
-        &::after {
-            position      : absolute;
-            top           : 50%;
-            right         : .75rem;
-            border-top    : .35rem solid;
-            border-right  : .35rem solid transparent;
-            border-left   : .35rem solid transparent;
-            border-bottom : 0;
-            display       : block;
-            width         : 10px;
-            height        : 10px;
-            margin-top    : -1px;
-        }
-    }
-
-    .dropdown-menu {
-        min-width     : 100%;
-        background    : $white;
-        font-weight   : $font-weight-normal;
-        border-radius : $border-radius;
-        padding       : 0;
-    }
-
-    .dropdown-item {
-        padding : 0 .75rem;
-
-        &:hover {
-            background-color : lighten($link-hover-color, 60%);
-        }
-    }
-}
-*/
-
-/*
-.product-detail-configurator-group-title {
-    color : $gray-700;
-}
-
-.product-detail-configurator-group-title, .product-detail-configurator-options, .product-detail-configurator-select-options {
-    font-weight : $font-weight-normal;
-    margin      : 0;
-    padding     : 8px;
-}
-
-.product-detail-configurator-custom-options {
-    display               : grid;
-    grid-template-columns : 50% 50%;
-}
-
-.product-detail-configurator-option-input {
-    display : none;
-
-    &.is-combinable + .product-detail-configurator-option-custom-label {
-        opacity : 1;
-    }
-
-    &:checked + .product-detail-configurator-option-custom-label {
-
-        &.is-display-text {
-            background-color : $primary;
-            color            : $white;
-        }
-    }
-
-    &.is-combinable + .product-detail-configurator-option-custom-label,
-    + .product-detail-configurator-option-label {
-        &:hover,
-        &:active,
-        &:focus {
-            color : $secondary;
-        }
-    }
-}
-
-.product-detail-configurator-option-image {
-    height : 100%;
-}
-
-.product-detail-configurator-group th {
-    min-width : 135px;
-}
-
-.product-detail-configurator-select-options {
-    min-width : 270px;
-
-    .product-detail-configurator-option-info {
-        width         : 100%;
-        margin-bottom : 0;
-    }
-}
-
-.product-detail-configurator-color-options {
-    display               : grid;
-    grid-template-columns : none;
-
-    @include media-breakpoint-up(lg) {
-        grid-template-columns : 50% 50%;
-    }
-}
-*/
-
-/* can not be used atm */
-/*
-.product-detail-configurator-option-custom-select-label {
-    &:not(.is-combinable) {
-        &:before {
-            content : "●";
-            color   : orange;
-        }
-    }
-}
-*/
-
-/*
-.product-detail-configurator-option-custom-label {
-    align-items : center;
-    display     : inline-flex;
-    opacity     : 0.35;
-    margin      : 0;
-
-    &.is-display-text {
-        box-shadow : none;
-        height     : auto;
-        padding    : 5px 10px;
-    }
-
-    &.product-detail-configurable {
-        cursor : pointer;
-    }
- */
-
-/* Color */
-/*
-    span {
-        display       : inline-block;
-        width         : 2.54rem;
-        height        : 2.54rem;
-        border-radius : 100%;
-        color         : $white;
-        line-height   : 0 !important;
-    }
-}
-
-.wk-legend-text {
-    padding-bottom : 10px;
-
-    &:before {
-        content : "●";
-        color   : orange;
-    }
-}
-*/

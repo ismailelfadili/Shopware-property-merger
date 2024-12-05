@@ -1,112 +1,82 @@
-/*
-Image slider
-==============================================
-Styling for image slider component.
-Displays images in a reusable slider component.
-based on "base-slider" component and "tiny-slider" (https://github.com/ganlanyuan/tiny-slider)
-*/
-
 .base-slider-controls-prev, .base-slider-controls-next {
-    opacity     : 1;
-    line-height : 1;
-    width       : 2.5rem;
-    height      : 2.5rem;
-    border      : none;
-    background  : rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
+    block-size: 2.5rem;
+    border: none;
+    inline-size: 2.5rem;
+    line-height: 1;
+    opacity: 1;
 
     .icon {
-        width  : 2.5rem;
-        height : 2.5rem;
-        color  : $secondary !important;
+        block-size: 2.5rem;
+        color: $secondary !important;
+        inline-size: 2.5rem;
     }
 }
 
 .base-slider-controls-prev .icon, .base-slider-controls-next .icon {
-    width          : 1.5rem;
-    height         : 1.5rem;
-    vertical-align : middle;
+    block-size: 1.5rem;
+    inline-size: 1.5rem;
+    vertical-align: middle;
 
     svg {
-        top  : 0 !important;
-        left : 0 !important;
+        inset-block-start: 0 !important;
+        inset-inline-start: 0 !important;
     }
 
 }
 
 .base-slider-controls-prev .icon {
     svg {
-        right : .2rem;
+        inset-inline-end: 0.2rem;
     }
 }
 
 .base-slider-controls-next .icon {
     svg {
-        left : .2rem;
+        inset-inline-start: 0.2rem;
     }
 }
 
 .cms-element-image-slider {
 
     .tns-ah {
-        transition : none !important;
+        transition: none !important;
     }
 
     .base-slider {
-        width    : 100% !important;
-        height   : auto !important;
-        margin   : auto !important;
-        overflow : hidden;
+        block-size: auto !important;
+        inline-size: 100% !important;
+        margin: auto !important;
+        overflow: hidden;
 
-        @media(min-width : 1600px) {
-            width : 95% !important;
+        @media(min-width: 100rem) {
+            inline-size: 95% !important;
         }
 
-        @media(min-width : 1900px) {
-            width : 85% !important;
+        @media(min-width: 118.75rem) {
+            inline-size: 85% !important;
         }
 
-        @media(min-width : 2200px) {
-            width : 75% !important;
+        @media(min-width: 137.5rem) {
+            inline-size: 75% !important;
         }
 
-        @media(min-width : 2500px) {
-            width : 65% !important;
+        @media(min-width: 156.25rem) {
+            inline-size: 65% !important;
         }
 
         &.has-dots-outside {
-            padding-bottom : 3rem;
+            padding-block-end: 3rem;
         }
 
         .image-slider-item-container {
-            height : 100%;
+            block-size: 100%;
 
             .image-slider-item {
-                width         : 100%;
-                height        : auto;
-                border-radius : 0 0 5rem 0;
-                overflow      : hidden;
-
-                /*
-                width      : 100%;
-                height     : 40vh !important;
-                min-height : auto !important;
-
-                @media(min-width : 1600px) {
-                    height : 55vh !important;
-                }
-
-                @media(min-width : 1900px) {
-                    height : 60vh !important;
-                }
-
-                @media(min-width : 2200px) {
-                    height : 65vh !important;
-                }
-
-                @media(min-width : 2500px) {
-                    height : 70vh !important;
-                }
-                */
+                block-size: auto;
+                border-radius: 0 0 5rem 0;
+                inline-size: 100%;
+                overflow: hidden;
             }
         }
     }
@@ -116,8 +86,9 @@ based on "base-slider" component and "tiny-slider" (https://github.com/ganlanyua
 .base-slider .tns-nav button,
 .base-slider .base-slider-dots .base-slider-dot,
 .base-slider .base-slider-dots button {
-    margin  : 0 .5rem;
-    width   : 1rem;
-    height  : 1rem;
-    padding : 0;
+    block-size: 1rem;
+    inline-size: 1rem;
+    margin-block: 0;
+    margin-inline: 0.5rem;
+    padding: 0;
 }

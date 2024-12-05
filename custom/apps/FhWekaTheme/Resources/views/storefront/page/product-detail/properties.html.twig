@@ -3,11 +3,8 @@
         {% block page_product_detail_properties_container %}
             <div class="row">
 
-
                 {% block page_product_detail_properties_table %}
-
                     <div class="col col-12 col-xl-6 mb-3">
-
                         <table class="sw-text-editor-table w-100 mb-4">
                             <tbody>
                             {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
@@ -66,14 +63,12 @@
                                     </tr>
 
                                 {% endblock %}
-
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col col-12 col-xl-6 mb-3">
-
                         <table class="sw-text-editor-table w-100 mb-4">
                             <tbody>
                             {% for group in page.product.sortedProperties|sort((a, b) => a.description <=> b.description)
@@ -89,11 +84,8 @@
                             {% endfor %}
                             </tbody>
                         </table>
-
                     </div>
                 {% endblock %}
-
-
             </div>
         {% endblock %}
     </div>

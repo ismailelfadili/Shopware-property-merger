@@ -1,99 +1,92 @@
-/*
-CMS blocks
-==============================================
-General styling for cms blocks and
-specific styling for elements dependent on their parent block
-*/
-
 .cms-block {
-    overflow : inherit;
+    overflow: inherit;
 
     &.bg-color {
-        border-top : 10px solid $primary;
+        border-block-start: 0.625rem solid $primary;
 
         * {
-            color : $white;
+            color: $white;
         }
     }
 
     &.bg-image {
-        background-repeat   : no-repeat;
-        background-position : 50%;
+        background-position: 50%;
+        background-repeat: no-repeat;
     }
 }
 
 .cms-block-center-text {
     .cms-element-text {
-        padding : 30px;
+        padding: 1.875rem;
     }
 }
 
 .cms-block-image-three-cover {
     .row {
-        margin : 0;
+        margin: 0;
     }
 
     [class^=col-] {
-        padding : 0;
+        padding: 0;
     }
 }
 
 .cms-block-image-text-bubble,
 .cms-block-image-bubble-row {
     .cms-element-image .cms-image-container {
-        height          : 300px;
-        width           : 300px;
-        margin          : auto;
-        border-radius   : 50%;
-        background-clip : padding-box;
-        overflow        : hidden;
+        background-clip: padding-box;
+        block-size: 18.75rem;
+        border-radius: 50%;
+        inline-size: 18.75rem;
+        margin: auto;
+        overflow: hidden;
     }
 }
 
 .cms-block-image-highlight-row {
     .cms-element-image {
-        border : 12px solid $white;
+        border: 0.75rem solid $white;
     }
 }
 
 .cms-block-image-text-bubble,
 .cms-block-image-text-row {
     .cms-element-text {
-        padding-top : 20px;
+        padding-block-start: 1.25rem
     }
 }
 
 .cms-block-image-text-gallery {
     .image-text-gallery-card {
-        box-shadow : 0 15px 10px -15px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0.937rem 0.625rem -0.937rem rgba(0, 0, 0, 0.35);
     }
 
     .cms-element-text {
-        padding : 20px;
+        padding: 1.25rem;
     }
 }
 
 .cms-block-text-on-image {
     .cms-element-text {
-        padding     : 30px;
-        align-items : center;
-        min-height  : 240px;
+        align-items: center;
+        min-block-size: 15rem;
+        padding: 1.875rem;
     }
 }
 
 .cms-block-image-text-cover {
     .cms-element-text {
-        padding-top : 30px;
+        padding-block-start: 1.875rem;
     }
 }
 
 .cms-block-image-simple-grid {
     .left-top {
-        margin-bottom : $grid-gutter-width;
+        margin-block-end: $grid-gutter-width;
     }
 
     .right {
-        height : 100%;
+        block-size: 100%;
     }
 }
 
@@ -105,20 +98,20 @@ specific styling for elements dependent on their parent block
     .cms-block-image-bubble-row,
     .cms-block-image-highlight-row {
         .cms-row > :not(:last-child) {
-            margin-bottom : $grid-gutter-width;
+            margin-block-end: $grid-gutter-width;
         }
     }
 
     .cms-block-image-text,
     .cms-block-image-text-cover {
         .cms-row > :first-child {
-            margin-bottom : $grid-gutter-width;
+            margin-block-end: $grid-gutter-width;
         }
     }
 
     .cms-block-image-simple-grid {
         .left-bottom {
-            margin-bottom : $grid-gutter-width;
+            margin-block-end: $grid-gutter-width;
         }
     }
 }

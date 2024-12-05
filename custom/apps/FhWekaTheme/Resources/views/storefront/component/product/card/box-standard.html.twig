@@ -94,26 +94,7 @@
                             </a>
                             {% endblock %}
 
-                            {% block component_product_box_variant_characteristics %}
-                                {#
-                                <div class="product-variant-characteristics">
-                                    <div class="product-variant-characteristics-text">
-                                        {% if not displayParent %}
-                                            {% for variation in product.variation %}
-                                                {{ variation.group }}:
-                                                <span class="product-variant-characteristics-option">
-                                                    {{ variation.option }}
-                                                </span>
-
-                                                {% if product.variation|last != variation %}
-                                                    {{ " | " }}
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                #}
-                            {% endblock %}
+                            {% block component_product_box_variant_characteristics %}{% endblock %}
 
                             {% block component_product_box_description %}
                                 <div class="product-description">

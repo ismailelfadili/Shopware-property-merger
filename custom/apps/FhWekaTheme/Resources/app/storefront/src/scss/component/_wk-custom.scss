@@ -1,0 +1,136 @@
+.wk-hint {
+    background-color: $light;
+    border-radius: $border-radius;
+    margin-block-end: 3rem;
+
+    .cms-block-container {
+        padding: 1.5rem !important;
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+        color: $gray-800;
+    }
+
+    p {
+        color: $gray-800;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+}
+
+.wk-benefits {
+    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-forest-benefits.jpg') no-repeat center $wood;
+    background-size: cover;
+    margin-block-end: 3rem;
+    padding-block: 3rem;
+    padding-inline: 0;
+
+
+    * {
+        color: $white;
+    }
+}
+
+.wk-services {
+    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-truck-services.jpg') no-repeat center $wood;
+    background-size: cover;
+    margin-block-end: 3rem;
+    padding-block: 3rem;
+    padding-inline: 0;
+
+
+    * {
+        color: $white;
+    }
+}
+
+.wk-catalogue {
+    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-lines.jpg') center $white;
+    background-size: 150%;
+    padding-block: 3rem;
+    padding-inline: 0;
+
+
+    @include media-breakpoint-up(md) {
+        background-size: 50%;
+    }
+}
+
+.wk-border-top {
+    border-block-start: 0.625rem solid $light;
+}
+
+.wk-offers {
+
+    .product-price-info * {
+        color: $white;
+    }
+
+    h1, .h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6, .cms-page a:not(.btn) {
+        color: $wk-offers;
+    }
+
+    .wk-footer-main, .wk-benefits {
+        border-block-start: 0.625rem solid $wk-offers !important;
+    }
+
+    .product-detail-price-box-snippet {
+        border-color: darken($wk-offers, 20%) transparent transparent transparent;
+    }
+
+    .header-promotion-box {
+        border-block-start: 0.625rem;
+        display: block;
+        line-height: 1;
+        position: relative;
+        z-index: 10;
+
+        .header-promotion-box-snippet {
+            block-size: 0;
+            border-color: darken($wk-offers, 20%) transparent transparent transparent;
+            border-style: solid;
+            border-width: 0.937rem 0.937rem 0 0;
+            inline-size: 0;
+            inset-block-start: 3.125rem;
+            inset-inline-end: 1.25rem;
+            position: absolute;
+        }
+
+        .header-promotion-marketing {
+            background-color: $wk-offers;
+            block-size: 3.125rem;
+            color: $white;
+            padding: 0.4rem;
+            text-align: center;
+
+            h1, h2, h3, h4, h5 {
+                color: $white;
+                font-size: 107rem;
+                line-height: 1.2;
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                color: $white;
+                font-size: 0.75rem;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .wk-offers {
+        .header-promotion-box {
+            display: block;
+            inset-block-start: 0.625rem;
+            inset-inline-end: 0;
+            margin-block-start: 0;
+            position: absolute;
+            z-index: 10;
+        }
+    }
+}

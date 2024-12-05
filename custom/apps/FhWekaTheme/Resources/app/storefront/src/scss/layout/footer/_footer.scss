@@ -1,0 +1,97 @@
+.footer-plus-icon *, .footer-minus-icon * {
+    color: $white;
+    transition: $animation;
+}
+
+.footer-bottom {
+    background: none !important;
+}
+
+.footer-column {
+    border-block-end: 0.0625rem solid darken($wood, 10%);
+}
+
+.footer-main {
+    border-block-start: 0.312rem solid $border-color;
+    color: $sw-text-color;
+
+    .footerPageBenefits {
+        line-height: 1.2;
+    }
+
+    .footer-columns {
+        color: $gray-300;
+    }
+
+    .footer-table-contact {
+        color: $gray-300;
+    }
+
+    .footer-bottom {
+        color: $gray-300;
+    }
+}
+
+.footer-column-headline {
+    color: $white;
+    font-family: $headings-font-family;
+    font-size: $h5-font-size;
+    font-weight: $headings-font-weight;
+}
+
+.footer-link {
+    color: lighten($wood, 30%);
+
+    &:hover {
+        color: $primary;
+        text-decoration: underline;
+    }
+}
+
+.footer-contact-hotline a {
+    @extend .footer-link;
+    display: block;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-block-end: $spacer-sm;
+    margin-block-start: $spacer;
+    margin-inline: 0;
+}
+
+.footer-service-menu-item {
+    &::after {
+        block-size: 0.625rem;
+        border-inline-start: 0.0625rem solid $gray-500;
+        content: "";
+        display: inline-block;
+        inline-size: 0.0625rem;
+        margin-block: 0;
+        margin-inline: $spacer-sm;
+    }
+
+    &:last-child::after {
+        content: none;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .footer-columns {
+        border: 0;
+    }
+
+    .footer-column {
+        border: 0;
+    }
+
+    .footer-link-item {
+        padding-block: 0.125rem;
+        padding-inline: 0;
+    }
+}
+
+.footer-copyright {
+    background-color: darken($wood, 25%);
+    color: $wood;
+    padding-block: 0.5rem;
+    padding-inline: 0;
+}

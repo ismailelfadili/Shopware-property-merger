@@ -1,115 +1,109 @@
-/*
-Navigation flyout
-==============================================
-Custom skin styling for navigation flyout which opens on hover over the main navigation.
-*/
-
 .navigation-flyouts {
-    display  : none;
-    position : absolute;
-    z-index  : $menu-flyout-zindex;
-    height   : 0;
-    width    : 100%;
-    left     : 0;
-    right    : 0;
-    bottom   : 0;
+    block-size: 0;
+    display: none;
+    inline-size: 100%;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    inset-inline-start: 0;
+    position: absolute;
+    z-index: $menu-flyout-zindex;
 
     * {
-        line-height : 1.1;
+        line-height: 1.1;
     }
 }
 
 .navigation-flyout {
-    font-weight : $font-weight-normal;
-    background  : transparent;
-    box-shadow  : none;
-    transition  : $animation;
+    background: transparent;
+    box-shadow: none;
+    font-weight: $font-weight-normal;
+    transition: $animation;
 
     .navigation-flyout-wrapper {
-        background : $white;
-        border     : 1px solid $border-color;
-        box-shadow : 0 15px 10px -15px rgba(0, 0, 0, 0.35);
-        padding    : .5rem 0;
+        background: $white;
+        border: 0.0625rem solid $border-color;
+        box-shadow: 0 0.9375rem 0.625rem -0.937rem rgba(0, 0, 0, 0.35);
+        padding: 0.5rem 0;
     }
 
     .navigation-flyout-categories {
         &:not(.is-level-0) {
-            margin-left : 20px;
+            margin-inline-start: 1.25rem;
         }
 
         &.is-level-0 {
             .navigation-flyout-col {
-                position : relative;
+                position: relative;
             }
         }
 
         &.is-level-1 {
-            margin-bottom : $spacer-sm;
+            margin-block-end: $spacer-sm;
         }
     }
 
     .navigation-flyout-content {
-        padding : 1rem 0;
+        padding: 1rem 0;
     }
 
     .navigation-flyout-link {
         @include transition(padding 0.25s cubic-bezier(0, 0.77, 0.33, 1));
-        margin     : 0 $spacer-xs;
-        padding    : $spacer-xs 0;
-        font-size  : $font-size-base;
-        display    : inline-block;
-        color      : $sw-text-color;
-        transition : $animation;
+        color: $sw-text-color;
+        display: inline-block;
+        font-size: $font-size-base;
+        margin: 0 $spacer-xs;
+        padding: $spacer-xs 0;
+        transition: $animation;
 
         &:hover {
-            transition : $animation;
+            transition: $animation;
         }
 
         &.active {
-            color       : $sw-color-brand-primary;
-            font-weight : $font-weight-bold;
+            color: $sw-color-brand-primary;
+            font-weight: $font-weight-bold;
         }
 
         &.is-level-0 {
-            color       : $secondary;
-            font-size   : $font-size-base;
-            font-weight : $font-weight-bold;
+            color: $secondary;
+            font-size: $font-size-base;
+            font-weight: $font-weight-bold;
 
             &.active {
-                color : $sw-color-brand-primary;
+                color: $sw-color-brand-primary;
 
                 &:hover {
-                    color        : darken($sw-color-brand-primary, 10%);
-                    padding-left : 2px;
+                    color: darken($sw-color-brand-primary, 10%);
+                    padding-inline-start: 0.125rem;
                 }
             }
         }
 
         &.is-level-1 {
-            font-family : 'Roboto', serif;
-            font-size   : $font-size-base;
+            font-family: 'Roboto', serif;
+            font-size: $font-size-base;
         }
 
         &.is-level-2 {
-            font-family : 'Roboto', serif;
-            font-size   : $font-size-base;
+            font-family: 'Roboto', serif;
+            font-size: $font-size-base;
         }
 
         &:hover {
-            color        : darken($sw-color-brand-primary, 10%);
-            padding-left : 2px;
+            color: darken($sw-color-brand-primary, 10%);
+            padding-inline-start: 0.125rem;
         }
     }
 
     .navigation-flyout-bar {
-        align-items : center;
-        padding     : 20px 0;
+        align-items: center;
+        padding: 1.25rem 0;
     }
 
     .navigation-flyout-category-link {
-        padding-left: 1.5rem;
-        font-size   : $font-size-lg;
-        font-weight : $font-weight-normal;
-        color       : $sw-color-brand-primary;
+        color: $sw-color-brand-primary;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-normal;
+        padding-inline-start: 1.5rem;
     }
 }

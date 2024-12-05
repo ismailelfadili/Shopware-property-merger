@@ -1,0 +1,23 @@
+.product-wishlist-action, .product-wishlist-action-circle {
+    color: $sw-color-brand-primary;
+}
+
+.product-wishlist-btn-content {
+    color: $link-color;
+    text-decoration: none;
+    transition: $animation;
+
+    &:hover {
+        color: $link-hover-color;
+        text-decoration: underline;
+    }
+}
+
+.product-wishlist-action-circle {
+    background: $white;
+    padding: 0.312rem;
+}
+
+.product-wishlist-btn-remove {
+    background: $white;
+}

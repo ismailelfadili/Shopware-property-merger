@@ -1,0 +1,30 @@
+/* Sticky header */
+@include media-breakpoint-up(md) {
+    body {
+        margin-block-start: 5.625rem;
+    }
+
+    .wk-header {
+        border-radius: 0;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        inset-inline-start: 0;
+        position: fixed;
+        z-index: 1020;
+    }
+    .is-act-cartpage .checkout .checkout-aside-container {
+        inset-block-start: 7.5rem;
+    }
+}
+
+*:focus {
+    outline: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+.container-main {
+    padding: 0;
+}

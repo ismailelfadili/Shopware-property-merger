@@ -1,3 +1,126 @@
 {
-
+    "account": {
+        "greetingsDay": "Guten Tag, ",
+        "greetingsEvening": "Guten Abend, ",
+        "greetingsMorning": "Guten Morgen, ",
+        "greetingsPhrase": "Schön, dass Sie hier sind.",
+        "loginPersonalHeader": "Einloggen",
+        "registrationTitle": "Mein Account"
+    },
+    "checkout": {
+        "addressHeaderInformation": "Wenn Sie schon einen Account besitzen, können Sie sich hier direkt anmelden. Falls nicht, können Sie ein Konto anlegen. ",
+        "finishHeaderText": "Wir haben Ihre Bestellung erhalten und beginnen mit der Bearbeitung.",
+        "warningPaymentLimits": "Bitte achten Sie auf die Limitierungen Ihres PayPal Kontos, Kreditkarte oder Bankkontos! Ein neu angelegtes PayPal Konto ist i.d.R. auf 2.500,-€ limitiert."
+    },
+    "detail": {
+        "dataColumnAssemblingInstructions": "Montageanleitung",
+        "dataColumnAssemblyPrice": "Montagepreis",
+        "dataColumnAvailability": "Produktverfügbarkeit",
+        "dataColumnBenefits": "Produktvorteile",
+        "dataColumnBuyOnline": "Online kaufen",
+        "dataColumnConstruction": "Konstruktionsdetails",
+        "dataColumnDatasheet": "Produktdatenblatt",
+        "dataColumnDetails": "Produktdetails",
+        "dataColumnPrintConfig": "Produktdaten drucken",
+        "dataColumnSecuritySheet": "Sicherheitsdatenblatt mit Inhaltsstoffen",
+        "deliveryAvailable": "Artikel bestellbar",
+        "deliveryFewAvailable": "Nur noch wenige verfügbar",
+        "information": "Hinweis: ",
+        "inquiry": {
+            "label": "Angebot anfordern"
+        },
+        "productDimensions": "Maße und Aufbau",
+        "productIsConfigurable": "In mehreren Varianten erhältlich.",
+        "productIsNotCombinable": " Wählbar, jedoch nicht kombinierbar.",
+        "productLook": "Details und Optik",
+        "productPictureExample": "Abb. zeigt Gestaltungsbeispiel: Dekoration und Zubehör nicht im Lieferumfang enthalten.",
+        "productRange": "ab",
+        "productRrp": "UVP"
+    },
+    "errorMaintenance": {
+        "pageTitle": "Unsere Webseite wird momentan gewartet",
+        "pageDescription": "Um Ihnen die neuesten Produkte und Inhalte präsentieren zu können, aktualisieren wir in regelmäßigen Abständen unsere Webseite. Trotzdem sind wir wie gewohnt für Sie da und freuen uns auf Ihren Anruf oder E-Mail!",
+        "customerService": "Sie erreichen unser Kundendienstcenter Montag bis Freitag von 8.30 bis 18.00 Uhr oder Samstag von 9.00 bis 17.00 Uhr unter Tel. 0395/42908-0 oder",
+        "customerServiceEmail": "info@weka-holzbau.com",
+        "specialOffersService": "Bei Fragen zu unseren Auslaufmodellen, Mustern oder Zweite-Wahl-Artikeln erreichen Sie unsere Fachberater Montag bis Freitag von 8.30 bis 17.30 Uhr unter Tel. 0395/42908-740 oder",
+        "specialOffersEmail": "shop@weka-holzbau.com",
+        "thankYou": "Vielen Dank für Ihr Verständnis!"
+    },
+    "fh": {
+        "newsletterBox": {
+            "birthdayHelp": "(Monat / Tag)"
+        }
+    },
+    "fh_shopconnector": {
+        "detail": {
+            "bundleBadge": "Bundle",
+            "buyButtonText": "Kaufe Bundle und spare %bundleDiscount%",
+            "tabText": "Bundle"
+        }
+    },
+    "flashbags": {
+        "helpInfo": "<h2>Probleme im Shop?</h2><p>Bitte zögern Sie nicht und treten mit uns in Kontakt!<br>Wir freuen uns über Ihren Anruf und Ihr Feedback.</p>"
+    },
+    "footer": {
+        "incVat": "* Alle Preise inkl. MwSt. zzgl. Versandkosten innerhalb des EU-Festlands.",
+        "newsLetterBtn": "Newsletter anfordern",
+        "newsLetterText": "Bleiben Sie up-to-date und freuen Sie sich über tolle Neuigkeiten direkt vom Hersteller exklusiver Garten und Freizeitartikel aus Holz.",
+        "serviceInspiration": "Social Media",
+        "serviceNewsletter": "Newsletter",
+        "serviceNewsletterText": "Abonnieren Sie unseren Newsletter und erhalten in regelmäßigen Abständen Neuigkeiten von WEKA. Die Abmeldung ist jederzeit möglich.",
+        "serviceOfferContactLink": "oder über unser <a href=\"/angebote/kontakt\">Kontaktformular.</a>",
+        "servicePhone": "+49 395 42908 0",
+        "servicePhoneOffer": "0395 42908 740",
+        "servicePhoneOfferText": "Für Fragen und Unterstützung zu unseren Angeboten. Unseren Support erreichen Sie ",
+        "servicePhoneText": "Für allgemeine Fragen und Unterstützung zu unseren Produkten. Unseren Support erreichen Sie",
+        "serviceQuality": "Nachhaltigkeit & Qualität",
+        "websiteTlsHeadline": "TLS-Verschlüsselung",
+        "websiteTlsSubline": "Gesicherte Verbindung"
+    },
+    "general": {
+        "backToOverview": "zurück zur Übersicht"
+    },
+    "header": {
+        "help": "Hilfe benötigt?",
+        "offer": {
+            "bar": "Ab sofort haben wir einen <strong><a href=\"https://www.weka-holzbau.com/weka-garten-q-415/41515151\">DEAL DER WOCHE</a></strong> mit super Preis und kostenloser Lieferung für Sie! Schauen Sie rein. ",
+            "bar.shop1": "Order your desired product now with free shipping using the code: FREESHIP24 – valid until 30.09.24!"
+        },
+        "searchHeadline": "Produktsuche"
+    },
+    "listing": {
+        "boxLabelCustomNew": "Neuheit",
+        "boxLabelCustomPriceHit": "Preistreffer",
+        "boxLabelSavingsSet": "Sparset",
+        "boxLabelSet": "Set",
+        "filterPanelClose": "Filter anwenden"
+    },
+    "metaInformation": {
+        "author": "WEKA Holzbau GmbH",
+        "copyrightYear": "2023",
+        "revisit": "15 Tage"
+    },
+    "pseudo": {
+        "modalSettings": "Hinweis"
+    },
+    "service": {
+        "businessDaysFr": "Fr.",
+        "businessDaysOfferWd": "Mo.–Fr.",
+        "businessDaysOfferWe": " ",
+        "businessDaysWd": "Mo.–Fr.",
+        "businessDaysWe": " ",
+        "businessHoursFr": "8.30 am – 3.15 pm",
+        "businessHoursOfferFr": "",
+        "businessHoursOfferWe": " ",
+        "businessHoursOfferWd": "8.30–18.00 Uhr",
+        "businessHoursWd": "8.30–18.00 Uhr",
+        "businessHoursWe": " "
+    },
+    "SwagCustomNotification": {
+        "newsletterPopup": {
+            "heading": "Abonnieren Sie jetzt den WEKA Newsletter! Als Dankeschön erhalten Sie 5 % Rabatt auf Ihre nächste Bestellung!",
+            "labelSubmit": "Jetzt anmelden",
+            "text": "Verpassen Sie nichts mehr und bleiben Sie stets auf dem Laufenden."
+        }
+    }
 }

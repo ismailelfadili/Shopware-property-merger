@@ -20,9 +20,9 @@
                                     <i class="bi bi-lock-fill bi-xs text-primary"></i>
                                 </div>
                                 <div class="col-auto ps-2">
-                                    <span class="website-tls-headline">TLS-Verschlüsselung</span>
+                                    <span class="website-tls-headline">{{ 'footer.websiteTlsHeadline'|trans }}</span>
                                     <br />
-                                    <small class="website-tls-subline">Gesicherte Verbindung</small>
+                                    <small class="website-tls-subline"> {{ 'footer.websiteTlsSubline'|trans }}</small>
                                 </div>
                             </div>
                         </div>
@@ -213,9 +213,9 @@
                                  class="footer-column-content collapse js-footer-column-content footer-newsletter"
                                  aria-labelledby="headingOne">
                                 <p class="footer-newsletter-newslettertext">
-                                    Bleiben Sie up-to-date und freuen Sie sich über tolle Neuigkeiten direkt vom Hersteller exklusiver Garten und Freizeitartikel aus Holz.
+                                    {{ 'footer.newsLetterText'|trans }}
                                 </p>
-                                <a href="/ueber-weka/newsletter" class="btn btn-primary mb-3">Newsletter anfordern</a>
+                                <a href="/ueber-weka/newsletter" class="btn btn-primary mb-3">{{ 'footer.newsLetterBtn'|trans }}</a>
                             </div>
                         {% endblock %}
 
@@ -255,13 +255,6 @@
                                             <a href="https://www.tuvsud.com/de-de" target="_blank"><img src="{{ asset('/assets/icon/weka-tuev-sued.png', 'theme') }}" class="img-fluid" alt="TÜV Süd"></a>
                                         </div>
                                     </div>
-                                    {#
-                                    <div class="row pb-2">
-                                        <div class="col-9 pb-3">
-                                            <a href="https://climatepartner.com/18237-2211-1001" target="_blank"><img src="{{ asset('/assets/icon/weka-klimaneutral.png', 'theme') }}" style="padding-left: 5px" class="img-fluid" alt="Klimaneutral"></a>
-                                        </div>
-                                    </div>
-                                    #}
                                 </div>
                             </div>
                         {% endblock %}
@@ -340,7 +333,7 @@
                          width="20" height="20" class="wk-copyright-logo" />
                 {% endblock %}
             </picture>
-            {{ "meta.author"|trans|striptags }}. Alle Rechte vorbehalten.
+            {{ "meta.author"|trans|striptags }}{{ 'footer.copyRight'|trans }}
         </div>
     {% endblock %}
 

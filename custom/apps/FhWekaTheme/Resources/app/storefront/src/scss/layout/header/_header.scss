@@ -1,0 +1,147 @@
+.header-logo-main {
+    block-size: auto;
+    position: relative;
+    text-align: left;
+}
+
+.wk-header {
+    box-shadow: 0 -0.5rem 0.25rem 1rem rgba(0, 0, 0, 0.25);
+
+    position: relative;
+
+    z-index: 500;
+
+    .header-main {
+        background: url('#{$app-css-relative-asset-path}/pattern/header-weka-wood.jpg') repeat bottom center $wood;
+        block-size: 5.625rem;
+    }
+}
+
+/* Search container */
+
+.searchbox {
+    .container {
+        position: relative;
+
+        .header-search-close-box {
+            inset-inline-end: 0;
+            position: absolute;
+        }
+    }
+}
+
+.loader {
+    block-size: 1.35rem;
+    inline-size: 1.35rem;
+}
+
+.header-search-input {
+    border: 0;
+    border-block-end: 0.125rem solid $secondary !important;
+}
+
+.search-suggest-container {
+    p {
+        margin: 0;
+    }
+
+    .search-suggest-product-image-container {
+        block-size: auto;
+        inline-size: 4.375rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    .search-suggest-product-link {
+        color: $sw-text-color;
+        padding-block: 0.5rem;
+        padding-inline: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .search-suggest-product-name {
+        white-space: normal;
+    }
+
+    .search-suggest-product-image, .icon-placeholder {
+        block-size: auto;
+        border: 0.0625rem solid $border-color;
+        inline-size: 100%;
+        max-block-size: none;
+        max-inline-size: none;
+        object-fit: cover;
+        padding: 0.0625rem;
+    }
+
+    .search-suggest-total {
+        padding: 0;
+
+        .search-suggest-total-count {
+            font-style: italic;
+            padding-block: 0.5rem;
+            padding-inline: 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .wk-header {
+        .search-suggest-container {
+            inline-size: 50vi;
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .wk-header {
+        .search-suggest-container {
+            inline-size: 25vi;
+        }
+    }
+}
+
+/* Account menu */
+.list-group-item {
+    &.is-active {
+        color: $primary;
+    }
+}
+
+.account-menu-dropdown {
+    padding: 0;
+
+    .offcanvas-content-container {
+        margin: 0 !important;
+    }
+
+    .list-group-item {
+        border: 0;
+
+        &.is-active {
+            color: $primary;
+        }
+    }
+
+    .account-menu-login {
+        background: $light;
+        border: 0;
+        margin-block: 0.5rem;
+        margin-inline: 0;
+        padding: 1.5rem;
+    }
+}
+
+.account-menu-dropdown .account-aside-item,
+.account-menu-header,
+.account-menu-login,
+.account-menu-offcanvas .account-aside-item,
+.account-menu-dropdown .account-aside-item {
+    padding: 0.75rem;
+}
+
+.account-menu-login {
+    margin: 0;
+}

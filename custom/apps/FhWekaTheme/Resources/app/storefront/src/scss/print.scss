@@ -1,9 +1,6 @@
 /******************************** Custom print styles and print optimization ********************************/
 
 @media print {
-
-    /**** Hide unnecessary containers *****/
-
     header,
     footer,
     .scroll-up-container,
@@ -22,112 +19,112 @@
     .wk-legend-text,
     .svg-inline--fa,
     .spacer {
-        display : none !important;
+        display: none !important;
     }
 
     body {
-        width     : 180mm !important;
-        max-width : 180mm !important;
-        min-width : 180mm !important;
-        border    : 1px solid transparent;
-        font-size : .8rem !important;
+        border: 0.0625rem solid transparent;
+        font-size: 0.8rem !important;
+        inline-size: 180mm !important;
+        max-inline-size: 180mm !important;
+        min-inline-size: 180mm !important;
     }
 
     h1, h2, h3, h4, h5, h6 {
-        margin      : 0 !important;
-        padding-top : 25px !important;
-        font-size   : 1.5rem !important;
+        font-size: 1.5rem !important;
+        margin: 0 !important;
+        padding-block-start: 1.562rem !important;
     }
 
     * {
-        box-sizing      : border-box !important;
-        -moz-box-sizing : border-box !important;
-        position        : relative !important;
-        color           : #333 !important;
-        font-family     : Arial, Verdana, sans-serif !important;
-        line-height     : 1.2 !important;
-        margin          : 0 !important;
-        padding         : 0 !important;
-        border          : 0 !important;
-        background      : none !important;
+        background: none !important;
+        border: 0 !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        color: #333 !important;
+        font-family: Arial, Verdana, sans-serif !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
     }
 
     .row {
-        display : block;
+        display: block;
     }
 
     .col {
-        max-width : 100%;
-        width     : 100%;
+        inline-size: 100%;
+        max-inline-size: 100%;
     }
 
     .lead {
-        font-size : 100% !important;
+        font-size: 100% !important;
     }
 
     .container {
-        width     : 100% !important;
-        min-width : 100% !important;
-        max-width : 100% !important;
+        inline-size: 100% !important;
+        max-inline-size: 100% !important;
+        min-inline-size: 100% !important;
     }
 
     #print-configuration-cover {
-        display : none !important;
+        display: none !important;
     }
 
     .product-detail-configurator-columns {
         * {
-            border : 0 !important;
+            border: 0 !important;
         }
 
         .col {
-            width     : 100% !important;
-            flex      : unset;
-            max-width : unset;
+            flex: unset;
+            inline-size: 100% !important;
+            max-inline-size: unset;
         }
     }
 
     .product-detail-configurator-color-options {
-        display               : block;
-        grid-template-columns : none;
+        display: block;
+        grid-template-columns: none;
 
         .product-detail-configurator-option-custom-label span {
-            height : 20px;
+            block-size: 1.25rem;
         }
     }
 
     .product-detail-configurator-option {
-        display : block;
+        display: block;
     }
 
     .product-detail-configurator-group {
         * {
-            font-size : $font-size-base !important;
+            font-size: $font-size-base !important;
         }
 
         label {
-            line-height : 1.2;
+            line-height: 1.2;
         }
     }
 
     .product-detail-content {
-        page-break-inside : avoid;
-        padding           : 0 !important;
-        background        : none !important;
+        background: none !important;
+        padding: 0 !important;
+        page-break-inside: avoid;
 
         * {
-            background : none !important;
+            background: none !important;
         }
 
         .dropdown {
 
             button {
-                background  : transparent;
-                padding     : 0;
-                line-height : 1.2 !important;
+                background: transparent;
+                line-height: 1.2 !important;
+                padding: 0;
 
                 &.dropdown-toggle::after {
-                    display : none !important;
+                    display: none !important;
                 }
             }
         }
@@ -135,7 +132,7 @@
         .product-detail-configurator-select-options {
             .product-detail-configurator-option-info {
                 &::before {
-                    display : none;
+                    display: none;
                 }
             }
         }
@@ -143,20 +140,20 @@
         .product-detail-configurator-option {
 
             .fa-check {
-                color : $gray-800;
+                color: $gray-800;
             }
         }
     }
 
     .custom-product-information ul {
-        list-style : inherit;
+        list-style: inherit;
     }
 
     .product-detail-properties-container {
         .col-lg-6 {
-            width     : 100% !important;
-            max-width : unset !important;
-            flex      : inherit;
+            flex: inherit;
+            inline-size: 100% !important;
+            max-inline-size: unset !important;
         }
     }
 }

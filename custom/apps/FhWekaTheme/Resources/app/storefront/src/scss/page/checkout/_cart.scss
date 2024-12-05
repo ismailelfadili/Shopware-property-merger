@@ -1,0 +1,53 @@
+.quantity-selector-group .btn {
+    border-color: $input-border-color !important;
+}
+
+.quickview-minimal-product-manufacturer-logo {
+    inline-size: 25%;
+}
+
+.header-cart .header-cart-badge, .header-wishlist .header-wishlist-badge {
+    font-size: 0.75rem;
+    font-weight: $font-weight-bold;
+    inset-block-start: 20%;
+    padding: 0.25rem;
+}
+
+.is-offcanvas .line-item-unit-price, .line-item-details-characteristics {
+    font-size: $font-size-base;
+}
+
+.is-offcanvas .line-item-quantity-label {
+    text-align: right;
+}
+
+/* SW6 override fix for offcanvas */
+.is-offcanvas .line-item-details {
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    inline-size: 100%;
+    margin-block-start: var(--bs-gutter-y);
+    max-inline-size: 100%;
+    padding-inline-end: calc(var(--bs-gutter-x) * 0.5);
+    padding-inline-start: calc(var(--bs-gutter-x) * 0.5);
+}
+
+@media (min-width: map-get($grid-breakpoints, "sm")) {
+    .is-offcanvas .line-item-details {
+        flex: 0 0 auto;
+        inline-size: 58.33333333%;
+    }
+}
+
+@media (min-width: map-get($grid-breakpoints, "md")) {
+    .is-offcanvas .line-item-details {
+        flex: 0 0 auto;
+        inline-size: 66.66666667%;
+    }
+}
+
+/* SW6 override fix for line-item padding */
+.checkout .line-item {
+    padding-block: 1rem !important;
+    padding-inline: 0 !important;
+}

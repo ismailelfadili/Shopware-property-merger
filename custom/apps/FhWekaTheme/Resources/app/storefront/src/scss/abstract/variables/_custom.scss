@@ -9,59 +9,59 @@ https://getbootstrap.com/docs/5.2/customize/sass/#variable-defaults
 */
 
 // Color system
-$body-bg                       : #fff;
-$body-color                    : $sw-text-color;
+$body-bg: #fff;
+$body-color: $sw-text-color;
 
-$primary                       : $sw-color-brand-primary;
-$secondary                     : $sw-color-brand-secondary;
+$primary: $sw-color-brand-primary;
+$secondary: $sw-color-brand-secondary;
 
-$gray-base                     : darken($secondary, 20%);
+$gray-base: darken($secondary, 20%);
 
-$gray-100                      : lighten($gray-base, 84%);
-$gray-200                      : lighten($gray-base, 79%);
-$gray-300                      : lighten($gray-base, 70%);
-$gray-400                      : lighten($gray-base, 65%);
-$gray-500                      : lighten($gray-base, 55%);
-$gray-600                      : lighten($gray-base, 45%);
-$gray-700                      : lighten($gray-base, 35%);
-$gray-800                      : lighten($gray-base, 25%);
-$gray-900                      : lighten($gray-base, 23%);
+$gray-100: lighten($gray-base, 84%);
+$gray-200: lighten($gray-base, 79%);
+$gray-300: lighten($gray-base, 70%);
+$gray-400: lighten($gray-base, 65%);
+$gray-500: lighten($gray-base, 55%);
+$gray-600: lighten($gray-base, 45%);
+$gray-700: lighten($gray-base, 35%);
+$gray-800: lighten($gray-base, 25%);
+$gray-900: lighten($gray-base, 23%);
 
-$light                         : $gray-100;
-$dark                          : $gray-800;
-$black                         : #000;
-$white                         : #fff;
-$text                          : $sw-text-color;
+$light: $gray-100;
+$dark: $gray-800;
+$black: #000;
+$white: #fff;
+$text: $sw-text-color;
 
 // Link colors
-$link-color                    : $primary;
-$link-hover-color              : darken($primary, 10%);
+$link-color: $primary;
+$link-hover-color: darken($primary, 10%);
 
 // Custom colors
-$wk-offers                     : #ce0019;
-$wk-price-hit                  : #f0ce00;
-$wood                          : #84817f;
-$custom-colors                 : (
+$wk-offers: #ce0019;
+$wk-price-hit: #f0ce00;
+$wood: #84817f;
+$custom-colors: (
     "white": $white,
     "black": $black,
     "wk-offers": $wk-offers,
     "wood": $wood
 );
-$sw-color-success              : #b4d259;
-$sw-color-info                 : #89cffb;
-$sw-color-warning              : #ffd486;
-$sw-color-danger               : #ff8b8a;
+$sw-color-success: #b4d259;
+$sw-color-info: #89cffb;
+$sw-color-warning: #ffd486;
+$sw-color-danger: #ff8b8a;
 
 // Spacers
-$spacer                        : 1.5rem;
-$spacer-xs                     : ($spacer * 0.25);
-$spacer-sm                     : ($spacer * 0.5);
-$spacer-md                     : $spacer;
-$spacer-lg                     : ($spacer * 2);
-$spacer-xl                     : ($spacer * 3);
+$spacer: 1.5rem;
+$spacer-xs: ($spacer * 0.25);
+$spacer-sm: ($spacer * 0.5);
+$spacer-md: $spacer;
+$spacer-lg: ($spacer * 2);
+$spacer-xl: ($spacer * 3);
 
 // Grid breakpoints
-$grid-breakpoints              : (
+$grid-breakpoints: (
     xs: 0,
     sm: 576px,
     md: 768px,
@@ -71,7 +71,7 @@ $grid-breakpoints              : (
 );
 
 // Grid containers
-$container-max-widths          : (
+$container-max-widths: (
     sm: 540px,
     md: 720px,
     lg: 960px,
@@ -80,172 +80,175 @@ $container-max-widths          : (
 );
 
 // Grid columns
-$grid-columns                  : 12;
-$grid-gutter-width             : 32px;
+$grid-columns: 12;
+$grid-gutter-width: 2rem;
 
 // Border
-$border-color                  : $gray-300;
-$border-width                  : 1px;
-$border-radius                 : 0;
-$border-radius-xs              : $border-radius;
-$border-radius-sm              : $border-radius;
-$border-radius-md              : $border-radius;
-$border-radius-lg              : $border-radius;
-$border-radius-xl              : $border-radius;
+$border-color: $gray-300;
+$border-width: 0.0625rem;
+$border-radius: 0;
+$border-radius-xs: $border-radius;
+$border-radius-sm: $border-radius;
+$border-radius-md: $border-radius;
+$border-radius-lg: $border-radius;
+$border-radius-xl: $border-radius;
 
 // Components
-$enable-transitions            : true;
-$enable-rounded                : false;
+$enable-transitions: true;
+$enable-rounded: false;
 
 // Pagination
-$pagination-bg                 : $white;
-$pagination-border-width       : 1px;
-$pagination-border-color       : $border-color;
+$pagination-bg: $white;
+$pagination-border-width: 0.0625rem;
+$pagination-border-color: $border-color;
 
 // Print styles
-$enable-print-styles           : true;
-$print-page-size               : a4;
-$print-body-min-width          : map-get($grid-breakpoints, "md");
+$enable-print-styles: true;
+$print-page-size: a4;
+$print-body-min-width: map-get($grid-breakpoints, "md");
 
 // Typography
-$enable-responsive-font-sizes  : true;
+$enable-responsive-font-sizes: true;
 
-$font-family-base              : $sw-font-family-base;
-$font-family-headline          : $sw-font-family-headline;
+$font-family-base: $sw-font-family-base;
+$font-family-headline: $sw-font-family-headline;
 
-$font-size-small               : 0.750rem;
-$font-size-base                : 0.875rem;
+$font-size-small: 0.750rem;
+$font-size-base: 0.875rem;
 
-$font-size-xs                  : 0.95rem;
-$font-size-sm                  : 1.0rem;
-$font-size-md                  : 1.1rem;
-$font-size-lg                  : 1.2rem;
-$font-size-xl                  : 1.3rem;
-$font-size-xxl                 : 1.4rem;
+$font-size-xs: 0.95rem;
+$font-size-sm: 1.0rem;
+$font-size-md: 1.1rem;
+$font-size-lg: 1.2rem;
+$font-size-xl: 1.3rem;
+$font-size-xxl: 1.4rem;
 
-$font-weight-thin              : 100;
-$font-weight-extralight        : 100;
-$font-weight-light             : 300;
-$font-weight-normal            : 400;
-$font-weight-medium            : 500;
-$font-weight-semibold          : 500;
-$font-weight-bold              : 700;
-$font-weight-extrabold         : 700;
-$font-weight-black             : 900;
+$font-weight-thin: 100;
+$font-weight-extralight: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 500;
+$font-weight-bold: 700;
+$font-weight-extrabold: 700;
+$font-weight-black: 900;
 
-$h1-font-size                  : 2.50rem;
-$h2-font-size                  : 2.00rem;
-$h3-font-size                  : 1.55rem;
-$h4-font-size                  : 1.25rem;
-$h5-font-size                  : 1.15rem;
-$h6-font-size                  : 1.00rem;
+$h1-font-size: 2.50rem;
+$h2-font-size: 2.00rem;
+$h3-font-size: 1.55rem;
+$h4-font-size: 1.25rem;
+$h5-font-size: 1.15rem;
+$h6-font-size: 1.00rem;
 
-$headings-font-family          : $font-family-headline;
-$headings-font-style           : normal;
-$headings-font-weight          : $font-weight-normal;
-$headings-line-height          : 1.5;
-$headings-color                : $sw-headline-color;
+$headings-font-family: $font-family-headline;
+$headings-font-style: normal;
+$headings-font-weight: $font-weight-normal;
+$headings-line-height: 1.5;
+$headings-color: $sw-headline-color;
 
-$line-height-base              : 1.5;
+$line-height-base: 1.5;
 
-$lead-font-size                : $font-size-base * 1.15;
-$lead-font-weight              : $font-weight-normal;
+$lead-font-size: $font-size-base * 1.15;
+$lead-font-weight: $font-weight-normal;
 
-$nav-link-font-size            : $font-size-sm;
+$nav-link-font-size: $font-size-sm;
 
 // $bootstrap-icons-font-dir: #{$app-css-relative-asset-path};
 
 // Buttons
-$btn-line-height               : 2.25rem;
+$btn-line-height: 2.25rem;
 
 // Input / Button
-$input-btn-padding-y           : .59rem;
-$input-btn-padding-x           : .75rem;
-$input-btn-font-size           : $font-size-base;
-$input-btn-line-height         : $line-height-base;
+$input-btn-padding-y: 0.59rem;
+$input-btn-padding-x: 0.75rem;
+$input-btn-font-size: $font-size-base;
+$input-btn-line-height: $line-height-base;
 
-$input-btn-focus-width         : 1px;
-$input-btn-focus-color-opacity : 0;
-$input-btn-focus-blur          : 0;
+$input-btn-focus-width: 0.0625rem;
+$input-btn-focus-color-opacity: 0;
+$input-btn-focus-blur: 0;
 
-$input-btn-padding-y-sm        : .25rem;
-$input-btn-padding-x-sm        : .5rem;
-$input-btn-font-size-sm        : $font-size-sm;
+$input-btn-padding-y-sm: 0.25rem;
+$input-btn-padding-x-sm: 0.5rem;
+$input-btn-font-size-sm: $font-size-sm;
 
-$input-btn-padding-y-lg        : .5rem;
-$input-btn-padding-x-lg        : 1rem;
-$input-btn-font-size-lg        : $font-size-lg;
+$input-btn-padding-y-lg: 0.5rem;
+$input-btn-padding-x-lg: 1rem;
+$input-btn-font-size-lg: $font-size-lg;
 
 // Form
-$enable-validation-icons       : true;
+$enable-validation-icons: true;
 
-$form-label-font-size          : $font-size-base;
-$form-text-font-size           : $font-size-base;
-$form-text-font-weight         : $font-weight-normal;
-$form-text-color               : $dark;
+$form-label-font-size: $font-size-base;
+$form-text-font-size: $font-size-base;
+$form-text-font-weight: $font-weight-normal;
+$form-text-color: $dark;
 
 // Input
-$input-border-color            : $gray-300;
+$input-border-color: $gray-300;
 
 // Badges
-$badge-font-size               : $font-size-base;
-$badge-font-weight             : $font-weight-normal;
-$badge-color                   : $white;
-$badge-padding-y               : .35em;
-$badge-padding-x               : .65em;
-$badge-border-radius           : $border-radius;
+$badge-font-size: $font-size-base;
+$badge-font-weight: $font-weight-normal;
+$badge-color: $white;
+$badge-padding-y: 0.35em;
+$badge-padding-x: 0.65em;
+$badge-border-radius: $border-radius;
 
 // Spinners
-$spinner-width                 : 1.5rem;
-$spinner-border-width          : .15rem;
+$spinner-width: 1.5rem;
+$spinner-border-width: 0.15rem;
 
 // Modals
-$modal-header-padding-y        : 2rem;
-$modal-header-padding-x        : 2rem;
+$modal-header-padding-y: 2rem;
+$modal-header-padding-x: 2rem;
 
 // Breadcrumb
-$breadcrumb-bg                 : transparent;
-$breadcrumb-border-radius      : 0;
+$breadcrumb-bg: transparent;
+$breadcrumb-border-radius: 0;
 
 // Cards
-$card-spacer-x                 : $spacer;
-$card-spacer-y                 : $spacer;
-$card-bg                       : $white;
-$card-border-color             : $border-color;
-$card-border-width             : $border-width;
+$card-spacer-x: $spacer;
+$card-spacer-y: $spacer;
+$card-bg: $white;
+$card-border-color: $border-color;
+$card-border-width: $border-width;
 
 // Tables
-$table-accent-bg               : $light;
-$table-striped-bg              : $light;
+$table-accent-bg: $light;
+$table-striped-bg: $light;
 
 // Tabs
-$nav-tabs-border-color         : $border-color;
+$nav-tabs-border-color: $border-color;
 
 // Custom
-$buy-btn-bg                    : $sw-color-buy-button;
-$buy-btn-color                 : $sw-color-buy-button-text;
+$buy-btn-bg: $sw-color-buy-button;
+$buy-btn-color: $sw-color-buy-button-text;
 
-$search-suggest-zindex         : 1000;
-$offcanvas-zindex              : 1050;
-$cookie-msg-zindex             : 1100;
-$menu-flyout-zindex            : 750;
-$icon-base-size                : 1rem;
-$icon-base-color               : $sw-text-color;
+$search-suggest-zindex: 1000;
+$cookie-msg-zindex: 1100;
+$menu-flyout-zindex: 750;
+$icon-base-size: 1rem;
+$icon-base-color: $sw-text-color;
 
-$breadcrumb-margin-bottom      : 0;
-$breadcrumb-padding-x          : 1rem;
-$breadcrumb-padding-y          : 0.25rem;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-padding-x: 1rem;
+$breadcrumb-padding-y: 0.25rem;
 
-$animation                     : all linear 100ms;
+$animation: all linear 100ms;
 
 // Alerts
-$alert-padding-y               : $spacer-md;
-$alert-padding-x               : $spacer-md;
-$alert-margin-bottom           : 1rem;
-$alert-border-radius           : $border-radius;
-$alert-link-font-weight        : $font-weight-bold;
-$alert-border-width            : $border-width;
-$alert-bg-scale                : -80%;
-$alert-border-scale            : -70%;
-$alert-color-scale             : 40%;
-$alert-dismissible-padding-r   : $alert-padding-x * 3; // 3x covers width of x plus default padding on either side
+$alert-padding-y: $spacer-md;
+$alert-padding-x: $spacer-md;
+$alert-margin-bottom: 1rem;
+$alert-border-radius: $border-radius;
+$alert-link-font-weight: $font-weight-bold;
+$alert-border-width: $border-width;
+$alert-bg-scale: -80%;
+$alert-border-scale: -70%;
+$alert-color-scale: 40%;
+$alert-dismissible-padding-r: $alert-padding-x * 3;
+
+//OffCanvas
+$offcanvas-zindex: 1050;
+$offcanvas-horizontal-width: 25rem;

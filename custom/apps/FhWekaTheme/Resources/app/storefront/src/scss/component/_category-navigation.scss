@@ -1,17 +1,11 @@
-/*
-Sidebar category navigation
-==============================================
-Styling for category navigation component.
-*/
-
 .category-navigation {
     * {
-        font-size : $font-size-base;
+        font-size: $font-size-base;
     }
 
     &.level-0 {
         .category-navigation-entry {
-            border : 0;
+            border: 0;
         }
     }
 }

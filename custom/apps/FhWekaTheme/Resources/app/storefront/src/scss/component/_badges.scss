@@ -1,0 +1,28 @@
+.wk-offers-badge {
+    align-items: center;
+    background-color: #ce0019;
+    block-size: 5rem;
+    border: 0.25rem dotted #fff;
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    font-size: 3rem;
+    font-weight: 400;
+    inline-size: 5rem;
+    inset-block-start: 12rem;
+    justify-content: center;
+    line-height: 1;
+    margin-inline-start: 0;
+    opacity: 0.05;
+    position: absolute;
+    text-align: center;
+}
+
+@include media-breakpoint-up(lg) {
+    .wk-offers-badge {
+        block-size: 8rem;
+        border: 0.5rem dotted #fff;
+        font-size: 5rem;
+        inline-size: 8rem;
+    }
+}

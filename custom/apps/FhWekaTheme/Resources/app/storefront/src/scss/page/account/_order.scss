@@ -1,0 +1,71 @@
+.order-table {
+    background: $light;
+    margin-block-end: 2rem;
+    padding: 1.25rem;
+
+    &:last-child {
+        margin-block-end: 0;
+    }
+}
+
+.order-item-actions {
+    margin-block-end: 1.25rem;
+}
+
+.order-table {
+    .order-detail-content {
+        border: 0.0625rem solid $border-color;
+        margin: 0;
+        padding: 1.5rem;
+    }
+
+    .order-item-detail {
+        background: $white;
+    }
+}
+
+.order-item-img {
+    block-size: auto;
+    inline-size: 100%;
+}
+
+.order-item-detail-list-item {
+    margin: 0;
+}
+
+.order-item-detail-list-item-divider {
+    margin-block: 1.25rem;
+    margin-inline: 0;
+}
+
+.order-detail-content-header, .order-detail-content-row {
+    margin: 0;
+    padding-block-end: 0.5rem;
+    padding-block-start: 0;
+}
+
+.order-item-detail-footer {
+    padding: 0;
+}
+
+.order-item-product-image {
+    border: 0.0625rem solid $border-color;
+}
+
+.order-detail-content-header-cell {
+    font-weight: $font-weight-bold;
+}
+
+#customerComment {
+    inline-size: 100%;
+    margin-block-start: 0.625rem;
+    min-block-size: 13.75rem;
+}
+
+.confirm-payment {
+    margin: 0;
+}
+
+.confirm-main-header, .confirm-tos, .confirm-address, .confirm-payment-shipping, .confirm-payment, .confirm-product {
+    margin: 0;
+}

@@ -1,3 +1,126 @@
 {
-
+    "account": {
+        "greetingsDay": "Hello ",
+        "greetingsEvening": "Good evening ",
+        "greetingsMorning": "Good morning ",
+        "greetingsPhrase": "Good to see you.",
+        "loginPersonalHeader": "Login",
+        "registrationTitle": "My Account"
+    },
+    "checkout": {
+        "addressHeaderInformation": "If you already have an account, you can register here. If not, you can create an account.",
+        "finishHeaderText": "We have received your order and are starting to process it.",
+        "warningPaymentLimits": "Please pay attention to the limitations of your PayPal account, credit card or bank account! A newly created PayPal account is usually limited to €2,500."
+    },
+    "detail": {
+        "dataColumnAssemblingInstructions": "Assembling Instructions",
+        "dataColumnAssemblyPrice": "Assembly price",
+        "dataColumnAvailability": "Product availability",
+        "dataColumnBenefits": "Product Benefits",
+        "dataColumnBuyOnline": "Buy online",
+        "dataColumnConstruction": "Construction details",
+        "dataColumnDatasheet": "Product Datasheet",
+        "dataColumnDetails": "Product Details",
+        "dataColumnPrintConfig": "Print Product Data",
+        "dataColumnSecuritySheet": "Safety data sheet with ingredients",
+        "deliveryAvailable": "Item can be ordered",
+        "deliveryFewAvailable": "Only a few available",
+        "information": "Notice: ",
+        "inquiry": {
+            "label": "Ask for a Quotation"
+        },
+        "productDimensions": "Dimensions and details",
+        "productIsConfigurable": "Multiple variations available.",
+        "productIsNotCombinable": " Can be selected, but not combined.",
+        "productLook": "Detail and look",
+        "productPictureExample": "Fig. shows design example: Decoration and accessories not included.",
+        "productRange": "from",
+        "productRrp": "RRP"
+    },
+    "errorMaintenance": {
+        "pageTitle": "Our website is currently under maintenance",
+        "pageDescription": "To present you with the latest products and content, we regularly update our website. Nevertheless, we are still available for you and look forward to your call or email!",
+        "customerService": "You can reach our customer service center Monday to Friday from 8:30 AM to 6:00 PM or Saturday from 9:00 AM to 5:00 PM at Tel. 0395/42908-0 or",
+        "customerServiceEmail": "info@weka-holzbau.com",
+        "specialOffersService": "For questions about our discontinued models, samples, or second-choice items, you can reach our specialists Monday to Friday from 8:30 AM to 5:30 PM at Tel. 0395/42908-740 or",
+        "specialOffersEmail": "shop@weka-holzbau.com",
+        "thankYou": "Thank you for your understanding!"
+    },
+    "fh": {
+        "newsletterBox": {
+            "birthdayHelp": "(mm / d)"
+        }
+    },
+    "fh_shopconnector": {
+        "detail": {
+            "bundleBadge": "Bundle",
+            "buyButtonText": "Buy bundle and save %bundleDiscount%",
+            "tabText": "Bundle"
+        }
+    },
+    "flashbags": {
+        "helpInfo": "<h2>Trouble with our shop?</h2><p>Please don't wait to contact us!<br>We are happy to hearing from you and getting feedback!</p>"
+    },
+    "footer": {
+        "incVat": "* All prices incl. VAT plus delivery costs within EU mainland.",
+        "newsLetterBtn": "Request Newsletter",
+        "newsLetterText": "tay up-to-date and enjoy great news directly from the manufacturer of exclusive garden and leisure products made of wood",
+        "serviceInspiration": "Social Media",
+        "serviceNewsletter": "Newsletter",
+        "serviceNewsletterText": "Subscribe to our newsletter and receive news from WEKA. The opt-out is possible at any time.",
+        "serviceOfferContactLink": "or via our <a href=\"/offers/contact\">contact form.</a>",
+        "servicePhone": "0049 395 42908 0",
+        "servicePhoneOffer": "0049 395 42908 740",
+        "servicePhoneOfferText": "For questions to offers and support for our products. Businesshours ",
+        "servicePhoneText": "For general questions and support for our products. Businesshours",
+        "serviceQuality": "Sustainability & Quality",
+        "websiteTlsHeadline": "TLS Encryption",
+        "websiteTlsSubline": "Secure Connection"
+    },
+    "general": {
+        "backToOverview": "back to overview"
+    },
+    "header": {
+        "help": "Need help?",
+        "offer": {
+            "bar": "We now have a <strong><a href=\"https://www.weka-holzbau.com/weka-garten-q-415/41515151\">DEAL OF THE WEEK</a></strong> with a great price and free delivery for you! Check it out.",
+            "bar.shop1": "Bestellen Sie jetzt Ihr Wunschprodukt kostenfrei mit dem Code: VERSANDFREI24 – gültig bis 30.09.24!"
+        },
+        "searchHeadline": "Product Search"
+    },
+    "listing": {
+        "boxLabelCustomNew": "New",
+        "boxLabelCustomPriceHit": "Price hit",
+        "boxLabelSavingsSet": "Savings Set",
+        "boxLabelSet": "Set",
+        "filterPanelClose": "Use filter"
+    },
+    "metaInformation": {
+        "author": "WEKA Holzbau GmbH",
+        "copyrightYear": "2023",
+        "revisit": "15 days"
+    },
+    "pseudo": {
+        "modalSettings": "Notice"
+    },
+    "service": {
+        "businessDaysFr": "Fr.",
+        "businessDaysOfferWd": "Mo.–Fr.",
+        "businessDaysOfferWe": " ",
+        "businessDaysWd": "Mo.–Fr.",
+        "businessDaysWe": " ",
+        "businessHoursFr": "8.30 am – 3.15 pm",
+        "businessHoursOfferFr": "8.30 am – 2.30 pm (CET)",
+        "businessHoursOfferWe": " ",
+        "businessHoursOfferWd": "8.30 am – 6.00 pm (CET)",
+        "businessHoursWd": "8.30 am – 6.00 pm (CET)",
+        "businessHoursWe": " "
+    },
+    "SwagCustomNotification": {
+        "newsletterPopup": {
+            "heading": "Subscribe to the WEKA newsletter now! As a thank you, you will receive a 5 % discount on your next order!",
+            "labelSubmit": "Subscribe now",
+            "text": "Don't miss out on anything and stay up to date."
+        }
+    }
 }

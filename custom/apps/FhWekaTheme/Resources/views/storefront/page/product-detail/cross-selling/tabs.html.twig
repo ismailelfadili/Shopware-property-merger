@@ -28,10 +28,13 @@
                                        role="tab"
                                        aria-controls="cs-{{ id }}-tab-pane"
                                        aria-selected="true">
-                                        <span class="lead">{{ item.crossSelling.translated.name }}</span>
+
+                                        <span class="lead">
+                                            {{ item.crossSelling.translated.name }}
+                                        </span>
                                         <span class="product-detail-tab-navigation-icon">
-                                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
-                                    </span>
+                                            {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                                        </span>
                                     </a>
                                 </li>
                             {% endfor %}

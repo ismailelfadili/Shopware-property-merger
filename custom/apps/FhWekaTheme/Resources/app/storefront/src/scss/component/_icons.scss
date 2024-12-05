@@ -1,0 +1,56 @@
+/******************************** Bootstrap icon sizes ********************************/
+
+.bi {
+    &-xs {
+        font-size: calc(#{$font-size-xs} * 2);
+    }
+
+    &-sm {
+        font-size: calc(#{$font-size-sm} * 2);
+    }
+
+    &-md {
+        font-size: calc(#{$font-size-md} * 2);
+    }
+
+    &-lg {
+        font-size: calc(#{$font-size-lg} * 2);
+    }
+
+    &-xl {
+        font-size: calc(#{$font-size-xl} * 2);
+    }
+
+    &-xxl {
+        font-size: calc(#{$font-size-xxl} * 3);
+    }
+}
+
+/******************************** SW6 important icon fix ********************************/
+
+.icon {
+    svg {
+        block-size: inherit;
+        inline-size: inherit;
+        inset-block-start: 0;
+    }
+}
+
+.icon {
+    color: inherit;
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+
+    svg {
+        inset-block-start: -0.0625rem !important;
+        line-height: 0;
+        overflow: visible !important; /* remove Pixelbug */
+    }
+}
+
+.product-wishlist .icon-wishlist {
+    block-size: auto;
+    inline-size: $font-size-base;
+}

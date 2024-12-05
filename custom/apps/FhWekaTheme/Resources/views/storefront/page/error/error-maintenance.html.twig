@@ -32,13 +32,13 @@
                 <div class="row">
                     <div class="col-12 col-lg-7 m-auto container-maintenance__text">
                         <div class="border p-3 text-left">
-                            <h1 class="h2">Unsere Webseite wird momentan gewartet</h1>
-                            <h2 class="lead">Um Ihnen die neuesten Produkte und Inhalte präsentieren zu können, aktualisieren wir in regelmäßigen Abständen unsere Webseite. Trotzdem sind wir wie gewohnt für Sie da und freuen uns auf Ihren Anruf oder E-Mail!</h2>
-                            <p>Sie erreichen unser Kundendienstcenter Montag bis Freitag von 8.30 bis 18.00 Uhr oder Samstag von 9.00 bis 17.00 Uhr unter Tel. 0395/42908-0 oder
-                                <a href="mailto:info@weka-holzbau.com">info@weka-holzbau.com.</a></p>
-                            <p>Bei Fragen zu unseren Auslaufmodellen, Mustern oder Zweite-Wahl-Artikeln erreichen Sie unsere Fachberater Montag bis Freitag von 8.30 bis 17.30 Uhr unter Tel. 0395/42908-740 oder
-                                <a href="mailto:shop@weka-holzbau.com">shop@weka-holzbau.com.</a></p>
-                            <p class="h4">Vielen Dank für Ihr Verständnis!</p>
+                            <h1 class="h2">{{ "errorMaintenance.pageTitle"|trans|striptags }}</h1>
+                            <h2 class="lead">{{ "errorMaintenance.pageDescription"|trans|striptags }}</h2>
+                            <p>{{ "errorMaintenance.customerService"|trans|raw }}
+                                <a href="mailto:info@weka-holzbau.com">{{ "errorMaintenance.customerServiceEmail"|trans }}</a></p>
+                            <p>{{ "errorMaintenance.specialOffersService"|trans|raw }}
+                                <a href="mailto:shop@weka-holzbau.com">{{ "errorMaintenance.specialOffersEmail"|trans }}</a></p>
+                            <p class="h4">{{ "errorMaintenance.thankYou"|trans }}</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,43 @@
+.card {
+    block-size: auto;
+    margin-block-end: 2rem;
+
+    .card-col {
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-block: 0;
+        padding-inline-end: 0;
+        padding-inline-start: 2rem;
+    }
+
+    li {
+        padding-block-end: 0.25rem;
+        padding-block-start: 0.25rem;
+        position: relative;
+    }
+
+    ul li:before {
+        color: $sw-text-color;
+        content: "\F138";
+        font-family: bootstrap-icons !important;
+        margin-inline-start: -1.8rem;
+        padding-inline-end: 0.75rem;
+        position: absolute;
+        vertical-align: top;
+    }
+}
+
+.product-detail-review-login .login-card .card-body {
+    padding: 1.25rem;
+}
+
+.card-title, h1.card-title, h2.card-title, h3.card-title, h4.card-title, h5.card-title {
+    color: $sw-text-color;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    padding-block-end: 1rem;
+}

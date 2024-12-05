@@ -41,17 +41,6 @@
 
                 {{ block('component_product_box_variant_characteristics') }}
 
-                {#
-                {% block component_product_box_manufacturer %}
-                    <div class="product-wishlist-info-item product-wishlist-info-manufacturer">
-                        {% if product.manufacturer %}
-                            {{ "wishlist.manufacturerDisplayName"|trans|sw_sanitize }}:
-                            <span class="product-wishlist-info-text">{{ product.manufacturer.translated.name }}</span>
-                        {% endif %}
-                    </div>
-                {% endblock %}
-                #}
-
                 {% block page_product_delivery_informations %}
                     <div class="product-detail-delivery-information">
                         {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
