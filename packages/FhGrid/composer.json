@@ -1,0 +1,32 @@
+{
+    "name": "fullhaus/grid",
+    "description": "Bootstrap Grids",
+    "version": "2.0.2",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FULLHAUS GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "^6.5"
+    },
+    "extra": {
+        "shopware-plugin-class": "FULLHAUS\\Grid\\FhGrid",
+        "copyright": "Copyright (c) by FULLHAUS GmbH",
+        "label": {
+            "de-DE": "Shopware 6 Bootstrap Grids",
+            "en-GB": "Shopware 6 Bootstrap Grids"
+        },
+        "description": {
+            "de-DE": "Individuelle Bootstrap Grids für Erlebniswelten",
+            "en-GB": "Individual Bootstrap Grids for Shopping Experiences"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "FULLHAUS\\Grid\\": "src/"
+        }
+    }
+}

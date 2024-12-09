@@ -43,6 +43,7 @@
 		"frosh/platform-html-minify": "2.0.3",
 		"fullhaus/cms-items": "@dev",
 		"fullhaus/cms-layout-blocks": "@dev",
+		"fullhaus/grid": "@dev",
 		"fullhaus/merchant-finder": "@dev",
 		"fullhaus/productvideo": "@dev",
 		"fullhaus/shopconnector": "@dev",

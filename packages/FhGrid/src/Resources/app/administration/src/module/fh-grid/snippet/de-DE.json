@@ -1,0 +1,29 @@
+{
+  "sw-cms": {
+    "section": {
+      "fhGrid": "Raster"
+    },
+    "sidebar": {
+      "contentMenu": {
+        "fhGrid": {
+          "advanced": "Erweitert",
+          "column": "Spalte",
+          "columnConfig": "Spaltenkonfiguration",
+          "columnWidth": "Spaltenbreite {count}",
+          "cssClasses": "CSS-Klassen",
+          "globalConfig": "Globale Konfiguration",
+          "grid": "Raster",
+          "hide": "immer",
+          "hideOn": "Spalte ausblenden:",
+          "hideOnHelpText": "Das Ausblenden von Spalten ist eine erweiterte Funktion und wird nicht in der Admin-Vorschau angezeigt. Alle Spalten bleiben im Admin-Editor sichtbar.",
+          "infoText": "Der Raster-Bereich verwendet das Bootstrap-Gitter. Das bedeutet, dass Sie 12 Spalten zur Verfügung haben, die Sie nach Belieben füllen können.<br />Wählen Sie die Anzahl der Spalten, die Sie oben wünschen (zwischen 1 und 12 Spalten) und wählen Sie die Breite jeder Spalte unten. (Auch hier gilt, dass eine Spalte maximal '12' breit sein kann, also die volle Breite hat). Nur die oberste Zeile muss ausgefüllt werden. Sie können die anderen Zeilen ausfüllen, um ein vollständig responsives Raster zu erstellen.",
+          "isSidebar": "Sidebar",
+          "noGutters": "Keine Abstände",
+          "numberOfColumns": "Anzahl der Spalten",
+          "openGridSettings": "Rastereinstellungen öffnen",
+          "title": "Rastereinstellungen"
+        }
+      }
+    }
+  }
+}

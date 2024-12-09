@@ -1,0 +1,56 @@
+{% block sw_cms_sidebar_section_settings_content %}
+    {% parent %}
+
+    {% block sw_cms_sidebar_section_settings_fh_grid %}
+        <sw-sidebar-collapse :expand-on-loading="true" v-if="selectedSection.type == 'fh-grid'">
+
+            {% block sw_cms_sidebar_section_settings_fh_grid_header %}
+                <span slot="header">
+                {{ $tc('sw-cms.sidebar.contentMenu.fhGrid.title') }}
+            </span>
+            {% endblock %}
+
+            {% block sw_cms_sidebar_section_settings_fh_grid_form %}
+                <fh-grid-section-config
+                    slot="content"
+                    :section="selectedSection"
+                />
+            {% endblock %}
+        </sw-sidebar-collapse>
+    {% endblock %}
+{% endblock %}
+
+{% block sw_cms_sidebar_navigator_main_elements %}
+    <template v-if="section.type != 'fh-grid'">
+        {% parent %}
+    </template>
+    <template v-else>
+        <template v-for="columnNo in section.customFields.fhGridColumns">
+            <div class="sw-cms-sidebar__navigator-section-spacer"></div>
+            <template v-if="getColumnContentBlocks(section.blocks, columnNo).length > 0">
+                <template v-for="block in getColumnContentBlocks(section.blocks, columnNo)">
+                    <sw-cms-sidebar-nav-element
+                        :key="block.id"
+                        v-draggable="getColumnDragData(block, sectionIndex, columnNo)"
+                        v-droppable="getColumnDropData(block, sectionIndex, columnNo)"
+                        :block="block"
+                        class="sw-cms-sidebar__navigator-block"
+                        :removable="blockIsRemovable(block)"
+                        :class="{ 'is--dragging': block.isDragging }"
+                        @block-delete="onBlockDelete($event, section)"
+                        @block-duplicate="onBlockDuplicate($event, section)"
+                    />
+                </template>
+            </template>
+            <template v-else>
+                <div
+                    :key="section.id + '_column_' + columnNo"
+                    v-droppable="getColumnDropData({ position: 0, sectionPosition: 'sidebar' }, sectionIndex, columnNo)"
+                    class="sw-cms-sidebar__navigator-empty-element"
+                >
+                    {{ $tc('sw-cms.detail.label.addBlocks') }}
+                </div>
+            </template>
+        </template>
+    </template>
+{% endblock %}

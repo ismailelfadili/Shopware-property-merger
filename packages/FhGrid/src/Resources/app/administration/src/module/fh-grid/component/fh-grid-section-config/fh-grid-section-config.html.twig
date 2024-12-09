@@ -1,0 +1,16 @@
+{% block fh_grid_section_config %}
+    <div class="fh-grid-section-config">
+        {% block fh_grid_section_config_button %}
+            <sw-button class="sw-cms-section__btn-square" @click="showConfigModal = true"
+                       v-text="$tc('sw-cms.sidebar.contentMenu.fhGrid.openGridSettings')">
+                <sw-icon name="regular-dashboard" size="20" />
+            </sw-button>
+        {% endblock %}
+
+        {% block fh_grid_section_config_modal %}
+            <fh-grid-config-modal v-if="showConfigModal"
+                                  @modal-close="showConfigModal = false"
+                                  :section="section"></fh-grid-config-modal>
+        {% endblock %}
+    </div>
+{% endblock %}

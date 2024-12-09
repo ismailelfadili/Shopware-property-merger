@@ -1,0 +1,19 @@
+{% block sw_cms_section_action_select %}
+    {% parent %}
+
+    <template v-if="this.section.type == 'fh-grid'">
+        {% block sw_cms_section_action_fh_grid %}
+
+            {% block sw_cms_section_action_fh_grid_button %}
+                <div class="sw-cms-section__action sw-cms-section-select" @click="showConfigModal = true">
+                    <sw-icon name="regular-cog" size="20" />
+                </div>
+            {% endblock %}
+
+            {% block sw_cms_section_action_fh_grid_modal %}
+                <fh-grid-config-modal v-if="showConfigModal" @modal-close="showConfigModal = false" :section="this.section"></fh-grid-config-modal>
+            {% endblock %}
+        {% endblock %}
+    </template>
+
+{% endblock %}

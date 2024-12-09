@@ -1,0 +1,138 @@
+{% block fh_grid_config_modal %}
+    <sw-modal :title="$tc('sw-cms.sidebar.contentMenu.fhGrid.title')" @modal-close="$emit('modal-close')" variant="large" class="fh-grid-config-modal">
+        <template #default>
+
+            <div>
+                <sw-tabs defaultItem="grid">
+                    <template slot-scope="{ active }">
+                        <sw-tabs-item name="grid"
+                                      :activeTab="active">
+                            {{ $tc('sw-cms.sidebar.contentMenu.fhGrid.grid') }}
+                        </sw-tabs-item>
+
+                        <sw-tabs-item name="advanced"
+                                      :activeTab="active">
+                            {{ $tc('sw-cms.sidebar.contentMenu.fhGrid.advanced') }}
+                        </sw-tabs-item>
+                    </template>
+
+                    <template slot="content" slot-scope="{ active }">
+                        <template v-if="active === 'grid'">
+                            {% block fh_grid_config_modal_info %}
+                                <sw-alert variant="info">
+                                    <div v-html="$tc('sw-cms.sidebar.contentMenu.fhGrid.infoText')"></div>
+                                </sw-alert>
+                            {% endblock %}
+
+                            {% block fh_grid_config_modal_number_of_columns %}
+                                <sw-number-field :label="$tc('sw-cms.sidebar.contentMenu.fhGrid.numberOfColumns')"
+                                                 :value="gridColumns"
+                                                 @change="onNumberOfColumnsChange"
+                                                 class="mb-16px"
+                                                 :max="12"
+                                                 :min="1"></sw-number-field>
+                            {% endblock %}
+
+                            {% block fh_grid_config_modal_table_header %}
+                                <sw-container :columns="formColumns"
+                                              gap="16px"
+                                              class="mb-16px">
+                                    {% block fh_grid_config_modal_table_header_breakpoint %}
+                                        <div class="text-center">
+
+                                        </div>
+                                    {% endblock %}
+                                    {% block fh_grid_config_modal_table_header_value %}
+                                        <div v-for="(n, columnIndex) in gridColumns" :key="columnIndex"
+                                             class="text-center">
+                                            {{ columnIndex+1 }}
+                                        </div>
+                                    {% endblock %}
+                                </sw-container>
+                            {% endblock %}
+
+                            {% block fh_grid_config_modal_table_body %}
+                                <sw-container :columns="formColumns"
+                                              gap="16px"
+                                              class="mb-16px"
+                                              v-for="breakpoint in breakpoints"
+                                              :key="breakpoint.key">
+                                    {% block fh_grid_config_modal_table_body_breakpoint %}
+                                        <div class="text-center">
+                                            {{ breakpoint.label }}
+                                        </div>
+                                    {% endblock %}
+                                    {% block fh_grid_config_modal_table_body_values %}
+                                        <div v-for="(n, columnIndex) in gridColumns" :key="columnIndex">
+                                            {% block fh_grid_config_modal_table_body_value %}
+                                                <sw-number-field
+                                                    v-model="section.customFields.fhGridColumnWidths[columnIndex][breakpoint.key]"
+                                                    :max="12"
+                                                    :min="1"></sw-number-field>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                </sw-container>
+                            {% endblock %}
+                        </template>
+
+                        <template v-if="active === 'advanced'">
+                            <strong>{{ $tc('sw-cms.sidebar.contentMenu.fhGrid.globalConfig') }}</strong>
+                            <sw-switch-field
+                                :label="$tc('sw-cms.sidebar.contentMenu.fhGrid.noGutters')"
+                                v-model="section.customFields.fhGridConfig.noGutters"
+                                :noMarginTop="true"></sw-switch-field>
+
+                            <br />
+                            <strong>{{ $tc('sw-cms.sidebar.contentMenu.fhGrid.columnConfig') }}</strong><br />
+                            <br />
+                            <div v-for="(n, columnIndex) in gridColumns" :key="columnIndex" class="column-advanced">
+                                <strong>{{ $tc('sw-cms.sidebar.contentMenu.fhGrid.column') }} {{ columnIndex+1 }}</strong><br/>
+
+                                <sw-container columns="180px auto" gap="32px">
+                                    <sw-switch-field
+                                        :label="$tc('sw-cms.sidebar.contentMenu.fhGrid.isSidebar')"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].isSidebar"
+                                        :noMarginTop="true"></sw-switch-field>
+
+                                    <sw-text-field :label="$tc('sw-cms.sidebar.contentMenu.fhGrid.cssClasses')"
+                                                   v-model="section.customFields.fhGridColumnWidths[columnIndex].cssClasses"></sw-text-field>
+                                </sw-container>
+
+                                <sw-container columns="180px 1fr 1fr 1fr 1fr 1fr" gap="32px">
+                                    <div>{{ $tc('sw-cms.sidebar.contentMenu.fhGrid.hideOn') }}</div>
+                                    <sw-switch-field
+                                        :label="$tc('sw-cms.sidebar.contentMenu.fhGrid.hide')"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].hideOn.default"
+                                        :noMarginTop="true"></sw-switch-field>
+                                    <sw-switch-field
+                                        label="sm"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].hideOn.sm"
+                                        :noMarginTop="true"></sw-switch-field>
+                                    <sw-switch-field
+                                        label="md"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].hideOn.md"
+                                        :noMarginTop="true"></sw-switch-field>
+                                    <sw-switch-field
+                                        label="lg"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].hideOn.lg"
+                                        :noMarginTop="true"></sw-switch-field>
+                                    <sw-switch-field
+                                        label="xl"
+                                        v-model="section.customFields.fhGridColumnWidths[columnIndex].hideOn.xl"
+                                        :noMarginTop="true"></sw-switch-field>
+                                </sw-container>
+
+                            </div>
+
+                            <sw-alert variant="info">
+                                <div v-html="$tc('sw-cms.sidebar.contentMenu.fhGrid.hideOnHelpText')"></div>
+                            </sw-alert>
+                        </template>
+                    </template>
+                </sw-tabs>
+            </div>
+
+        </template>
+    </sw-modal>
+{% endblock %}

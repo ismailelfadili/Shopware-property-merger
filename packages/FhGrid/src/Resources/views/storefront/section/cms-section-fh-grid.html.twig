@@ -1,0 +1,42 @@
+{% block page_content_section_fh_grid %}
+    {% set columns = section.customFields.fhGridColumns %}
+    {% set noGutters = section.customFields.fhGridConfig.noGutters %}
+
+    {% set layout = section.sizingMode ? section.sizingMode|replace({"_": "-"}) : "container" %}
+    {% block page_content_section_fh_grid_layout %}
+        <div class="cms-section-fh-grid {{ layout }}">
+            <div class="row {% if noGutters %}no-gutters{% endif %}">
+                {% block page_content_section_fh_grid_row %}
+                    {% for i in range(0, columns - 1) %}
+                        {% set activeColumn = section.customFields.fhGridColumnWidths[i] %}
+                        {% block page_content_section_fh_grid_column %}
+                            <div class="col-{{ activeColumn.col }}
+                                {% if activeColumn.sm %}col-sm-{{ activeColumn.sm }} {% endif %}
+                                {% if activeColumn.md %}col-md-{{ activeColumn.md }} {% endif %}
+                                {% if activeColumn.lg %}col-lg-{{ activeColumn.lg }} {% endif %}
+                                {% if activeColumn.xl %}col-xl-{{ activeColumn.xl }} {% endif %}
+                                {% if activeColumn.hideOn.default %}d-none {% else %}d-block {% endif %}
+                                {% if activeColumn.hideOn.sm %}d-sm-none {% else %}d-sm-block {% endif %}
+                                {% if activeColumn.hideOn.md %}d-md-none {% else %}d-md-block {% endif %}
+                                {% if activeColumn.hideOn.lg %}d-lg-none {% else %}d-lg-block {% endif %}
+                                {% if activeColumn.hideOn.xl %}d-xl-none {% else %}d-xl-block {% endif %}
+                                {{ activeColumn.cssClasses }}">
+                                {% block page_content_section_fh_grid_column_blocks %}
+                                    {% for block in section.blocks|filter(b => b.customFields.fhGridColumn == i) %}
+                                        {% if activeColumn.isSidebar %}
+                                            {{ block.setSectionPosition('sidebar') ~ '' }}
+                                        {% endif %}
+
+                                        {% block page_content_section_fh_grid_column_block %}
+                                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" %}
+                                        {% endblock %}
+                                    {% endfor %}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{
+  "sw-cms": {
+    "section": {
+      "fhGrid": "Grid"
+    },
+    "sidebar": {
+      "contentMenu": {
+        "fhGrid": {
+          "advanced": "Advanced",
+          "column": "Column",
+          "columnConfig": "Column config",
+          "columnWidth": "Column width {count}",
+          "cssClasses": "CSS Classes",
+          "globalConfig": "Global config",
+          "grid": "Grid",
+          "hide": "always",
+          "hideOn": "Hide column:",
+          "hideOnHelpText": "Hiding columns is an advanced feature and is not reflected in the admin preview. All columns will stay visible in the admin editor.",
+          "infoText": "The Grid Section uses Bootstrap grid. This means that you have 12 available columns that you can fill as you wish.<br />Choose the number of columns you want above (between 1 and 12 columns) and choose the width of each column below. (Again, a column can have a max of '12' width, which means full width). Only the top row is required to fill in. You can fill in the other rows to create a fully responsive grid.",
+          "isSidebar": "Is sidebar",
+          "noGutters": "No gutters",
+          "numberOfColumns": "Number of columns",
+          "openGridSettings": "Open grid settings",
+          "title": "Grid settings"
+        }
+      }
+    }
+  }
+}
