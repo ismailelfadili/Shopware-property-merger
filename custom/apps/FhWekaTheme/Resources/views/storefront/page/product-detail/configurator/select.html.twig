@@ -4,37 +4,33 @@
     {% block page_product_detail_configurator_group_select_title %}
         <label class="product-detail-configurator-group-title d-block" for="{{ group.id }}">
             {% block page_product_detail_configurator_group_title_text %}
-                {{ group.translated.name }}
+                {% for option in page.product.properties %}
+                    {% if option.groupId == group.id %}
+                        {{ group.translated.name }}
+                    {% endif %}
+                {% endfor %}
             {% endblock %}
         </label>
-        {% block page_product_detail_configurator_select %}
 
-            {# Check if length is just 1 value #}
+        {% block page_product_detail_configurator_select %}
             {% if group.options|length == 1 %}
-                {% for option in group.options %}
-                    <p class="m-0">{{ option.translated.name }}</p>
+                {% for option in page.product.properties %}
+                    {% if option.groupId == group.id %}
+                        <p class="m-0">{{ option.translated.name }}</p>
+                    {% endif %}
                 {% endfor %}
             {% else %}
-                {# if group.description == 'custom_socket_measurement' #}
-                    {% if group.description == 'custom_external_measurement' %}
-
+                {% if group.description == 'custom_external_measurement' %}
                     {% for option in group.options %}
                         {% if option.id in page.product.optionIds %}
                             {{ option.translated.name }}
                         {% endif %}
                     {% endfor %}
-
                 {% else %}
                     <select name="{{ group.id }}" id="{{ group.id }}" class="form-control form-select product-detail-configurator-select-input">
                         {% for option in group.options %}
-                            {% set selected = false %}
-
-                            {% if option.id in page.product.optionIds %}
-                                {% set selected = true %}
-                            {% endif %}
-
                             {% block page_product_detail_configurator_select_option %}
-                                <option value="{{ option.id }}"{% if selected %} selected{% endif %}>
+                                <option value="{{ option.id }}" {% if option.id in page.product.optionIds %}selected{% endif %}>
                                     {{ option.translated.name }}
                                 </option>
                             {% endblock %}
@@ -42,7 +38,6 @@
                     </select>
                 {% endif %}
             {% endif %}
-
         {% endblock %}
     {% endblock %}
 {% endblock %}
