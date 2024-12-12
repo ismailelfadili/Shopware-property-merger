@@ -8,7 +8,7 @@
 }
 
 .footer-column {
-    border-block-end: 0.0625rem solid darken($wood, 10%);
+    border-block-end: 0.0625rem solid darken($wk-color-wood, 10%);
 }
 
 .footer-main {
@@ -40,7 +40,7 @@
 }
 
 .footer-link {
-    color: lighten($wood, 30%);
+    color: lighten($wk-color-wood, 30%);
 
     &:hover {
         color: $primary;
@@ -90,8 +90,8 @@
 }
 
 .footer-copyright {
-    background-color: darken($wood, 25%);
-    color: $wood;
+    background-color: darken($wk-color-wood, 25%);
+    color: $wk-color-wood;
     padding-block: 0.5rem;
     padding-inline: 0;
 }

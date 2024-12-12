@@ -49,13 +49,11 @@
 
         .main-navigation-link {
             align-items: center;
-            color: lighten($wood, 35%);
+            color: lighten($wk-color-wood, 35%);
             display: flex;
             margin-inline-end: 1.25rem;
             padding: 0;
-
             position: relative;
-
             transition: $animation;
 
             &:first-child {
@@ -75,8 +73,6 @@
                 inset-block-end: 0.625rem;
                 inset-inline-start: 0;
                 position: absolute;
-                -moz-transform: translateY(0.625rem);
-                -webkit-transform: translateY(0.625rem);
                 transform: translateY(0.625rem);
                 transition: $animation;
             }
@@ -86,9 +82,7 @@
             &.is-open::after {
                 block-size: 0.312rem;
                 inset-block-end: 0;
-                -moz-transform: translateY(0rem);
-                -webkit-transform: translateY(0rem);
-                transform: translateY(0rem);
+                transform: translateY(0);
             }
 
             &:hover,
@@ -103,9 +97,7 @@
                 &::after {
                     block-size: 0.937rem;
                     inset-block-end: 0;
-                    -moz-transform: translateY(0rem);
-                    -webkit-transform: translateY(0rem);
-                    transform: translateY(0rem);
+                    transform: translateY(0);
                 }
             }
         }
@@ -120,7 +112,7 @@
         position: relative;
 
         .icon, .header-cart-total {
-            color: lighten($wood, 35%);
+            color: lighten($wk-color-wood, 35%);
             font-size: $font-size-base;
             transition: $animation;
             vertical-align: middle;
@@ -143,8 +135,6 @@
             inset-block-end: 0.625rem;
             inset-inline-start: 0;
             position: absolute;
-            -moz-transform: translateY(0.625rem);
-            -webkit-transform: translateY(0.625rem);
             transform: translateY(0.625rem);
             transition: $animation;
         }
@@ -154,9 +144,7 @@
         &.is-open::after {
             block-size: 0.312rem;
             inset-block-end: 0;
-            -moz-transform: translateY(0rem);
-            -webkit-transform: translateY(0rem);
-            transform: translateY(0rem);
+            transform: translateY(0);
         }
 
         &.active {
@@ -166,9 +154,7 @@
             &::after {
                 block-size: 0.312rem;
                 inset-block-end: 0;
-                -moz-transform: translateY(0rem);
-                -webkit-transform: translateY(0rem);
-                transform: translateY(0rem);
+                transform: translateY(0);
             }
         }
     }
@@ -190,7 +176,7 @@
         padding: 0 .65rem;
 
         span {
-            background: lighten($wood, 35%);
+            background: lighten($wk-color-wood, 35%);
             block-size: 0.125rem;
             display: block;
             inline-size: 1.562rem;

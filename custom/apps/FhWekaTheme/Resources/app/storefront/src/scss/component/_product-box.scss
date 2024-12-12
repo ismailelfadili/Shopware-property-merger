@@ -74,11 +74,11 @@
     }
 
     .product-description {
-        block-size: 7.5rem;
         -webkit-box-orient: vertical;
+        -webkit-line-clamp: none;
+        block-size: 7.5rem;
         display: -webkit-box;
         font-size: $font-size-base;
-        -webkit-line-clamp: none;
         line-height: $line-height-base;
         margin-block-start: 0;
         overflow: hidden;
@@ -163,23 +163,31 @@
 }
 
 .badge-discount {
-    background-color: $wk-offers;
+    background-color: $wk-color-offers ;
 }
 
 .badge-topseller {
-    background-color: $sw-color-info;
+    background-color: $wk-color-top-seller;
 }
 
 .badge-new {
-    background-color: $wk-offers;
+    background-color: $wk-color-new;
 }
 
 .badge-savings-set {
-    background-color: $sw-color-success;
+    background-color: $wk-color-saving-set;
 }
 
 .badge-price-hit {
-    background-color: $wk-price-hit;
+    background-color: $wk-color-price-hit;
+}
+
+.badge-set {
+    background-color: $wk-color-set;
+}
+
+.badge-action {
+    background-color : $wk-color-action;
 }
 
 .list-price-badge {

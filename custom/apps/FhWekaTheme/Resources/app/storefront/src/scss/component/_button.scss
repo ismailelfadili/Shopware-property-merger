@@ -32,24 +32,24 @@
 }
 
 .bg-wood {
-    background-color: darken($wood, 15%);
-    color: lighten($wood, 25%);
+    background-color: darken($wk-color-wood, 15%);
+    color: lighten($wk-color-wood, 25%);
 }
 
 .text-wood {
-    color: $wood !important;
+    color: $wk-color-wood !important;
 }
 
 .text-wood-light {
-    color: lighten($wood, 30%) !important;
+    color: lighten($wk-color-wood, 30%) !important;
 }
 
 .bg-offer {
-    background-color: $wk-offers;
+    background-color: $wk-color-offers;
 }
 
 .text-white-50 {
-    color: lighten($wood, 30%) !important;
+    color: lighten($wk-color-wood, 30%) !important;
 }
 
 .text {

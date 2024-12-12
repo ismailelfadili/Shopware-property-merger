@@ -116,5 +116,24 @@
             {% endif %}
         {% endblock %}
 
+        {% block component_product_badges_custom_set %}
+            {% if product.customFields.custom_productinformation_set || page.product.customFields.custom_productinformation_set %}
+                <div class="badge-container">
+                    <div class="badge badge-set">
+                        {{ "listing.boxLabelSet"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_badges_custom_action %}
+            {% if product.customFields.custom_productbadges_action || page.product.customFields.custom_productbadges_action %}
+                <div class="badge-container">
+                    <div class="badge badge-action">
+                        {{ "listing.boxLabelAction"|trans }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
     </div>
 {% endblock %}

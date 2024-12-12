@@ -20,7 +20,7 @@
 }
 
 .wk-benefits {
-    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-forest-benefits.jpg') no-repeat center $wood;
+    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-wood-forest-benefits.jpg') no-repeat center $wk-color-wood;
     background-size: cover;
     margin-block-end: 3rem;
     padding-block: 3rem;
@@ -33,7 +33,7 @@
 }
 
 .wk-services {
-    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-truck-services.jpg') no-repeat center $wood;
+    background: url('#{$app-css-relative-asset-path}/backgrounds/weka-truck-services.jpg') no-repeat center $wk-color-wood;
     background-size: cover;
     margin-block-end: 3rem;
     padding-block: 3rem;
@@ -68,15 +68,15 @@
     }
 
     h1, .h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6, .cms-page a:not(.btn) {
-        color: $wk-offers;
+        color: $wk-color-offers;
     }
 
     .wk-footer-main, .wk-benefits {
-        border-block-start: 0.625rem solid $wk-offers !important;
+        border-block-start: 0.625rem solid $wk-color-offers !important;
     }
 
     .product-detail-price-box-snippet {
-        border-color: darken($wk-offers, 20%) transparent transparent transparent;
+        border-color: darken($wk-color-offers, 20%) transparent transparent transparent;
     }
 
     .header-promotion-box {
@@ -88,7 +88,7 @@
 
         .header-promotion-box-snippet {
             block-size: 0;
-            border-color: darken($wk-offers, 20%) transparent transparent transparent;
+            border-color: darken($wk-color-offers, 20%) transparent transparent transparent;
             border-style: solid;
             border-width: 0.937rem 0.937rem 0 0;
             inline-size: 0;
@@ -98,7 +98,7 @@
         }
 
         .header-promotion-marketing {
-            background-color: $wk-offers;
+            background-color: $wk-color-offers;
             block-size: 3.125rem;
             color: $white;
             padding: 0.4rem;

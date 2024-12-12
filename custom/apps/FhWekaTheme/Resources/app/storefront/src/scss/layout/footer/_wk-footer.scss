@@ -1,8 +1,8 @@
 .wk-footer-main {
-    background: url('#{$app-css-relative-asset-path}/pattern/content-weka-wood.jpg') repeat top center $wood;
+    background: url('#{$app-css-relative-asset-path}/pattern/content-weka-wood.jpg') repeat top center $wk-color-wood;
     background-size: 100%;
     border-block-start: 0.625rem solid $primary;
-    color: lighten($wood, 30%);
+    color: lighten($wk-color-wood, 30%);
 
     a {
         transition: $animation;

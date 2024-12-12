@@ -38,14 +38,19 @@ $link-color: $primary;
 $link-hover-color: darken($primary, 10%);
 
 // Custom colors
-$wk-offers: #ce0019;
-$wk-price-hit: #f0ce00;
-$wood: #84817f;
+$wk-color-action: #8442b3;
+$wk-color-offers: #cc001e;
+$wk-color-price-hit: #f0ce00;
+$wk-color-set: #ff9000;
+$wk-color-top-seller: #8ad0fa;
+$wk-color-saving-set: #cc001e;
+$wk-color-new: #86ac29;
+$wk-color-wood: #84817f;
 $custom-colors: (
     "white": $white,
     "black": $black,
-    "wk-offers": $wk-offers,
-    "wood": $wood
+    "wk-offers": $wk-color-offers,
+    "wood": $wk-color-wood
 );
 $sw-color-success: #b4d259;
 $sw-color-info: #89cffb;

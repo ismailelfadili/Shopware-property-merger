@@ -6,13 +6,11 @@
 
 .wk-header {
     box-shadow: 0 -0.5rem 0.25rem 1rem rgba(0, 0, 0, 0.25);
-
     position: relative;
-
     z-index: 500;
 
     .header-main {
-        background: url('#{$app-css-relative-asset-path}/pattern/header-weka-wood.jpg') repeat bottom center $wood;
+        background: url('#{$app-css-relative-asset-path}/pattern/header-weka-wood.jpg') repeat bottom center $wk-color-wood;
         block-size: 5.625rem;
     }
 }
