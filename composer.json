@@ -34,6 +34,10 @@
 		"local": {
 			"type": "path",
 			"url": "./packages/*"
+		},
+		"webwirkung-property-merger": {
+			"type": "vcs",
+			"url":  "git@github.com:Webwirkung/webwirkung-property-merger.git"
 		}
 	},
 	"require": {
@@ -46,26 +50,28 @@
 		"fullhaus/grid": "@dev",
 		"fullhaus/merchant-finder": "@dev",
 		"fullhaus/productvideo": "@dev",
+		"fullhaus/property-merger": "^2.0",
 		"fullhaus/shopconnector": "@dev",
 		"shopware/administration": "~6.5.5.2",
 		"shopware/core": "~6.5.5.2",
 		"shopware/elasticsearch": "~6.5.5.2",
 		"shopware/storefront": "~6.5.5.2",
+		"store.shopware.com/cogiappointmentflyout": "~1.0.0",
+		"store.shopware.com/cogietracker": "~1.3.0",
+		"store.shopware.com/comanconsentmanager": "~1.1.4",
+		"store.shopware.com/froshtools": "~1.2.4",
+		"store.shopware.com/nenoheroslider": "~1.4.4",
+		"store.shopware.com/newslettersendinblue": "~4.1.7",
+		"store.shopware.com/swagcmsextensions": "~3.2.0",
+		"store.shopware.com/swagcustomnotification": "~2.1.0",
+		"store.shopware.com/swagmigrationassistant": "~8.0.0",
+		"store.shopware.com/swagpaypal": "~8.6.1",
+		"store.shopware.com/swagplatformsecurity": "~2.0.10",
+		"store.shopware.com/trustedshopseasyintegrations6": "~1.3.1",
+		"store.shopware.com/zealofreegiftproduct": "~1.0.2",
 		"symfony/flex": "~2",
 		"symfony/runtime": "~6.2",
-		"store.shopware.com/zealofreegiftproduct": "~1.0.2",
-		"store.shopware.com/trustedshopseasyintegrations6": "~1.3.1",
-		"store.shopware.com/swagcustomnotification": "~2.1.0",
-		"store.shopware.com/froshtools": "~1.2.4",
-		"store.shopware.com/newslettersendinblue": "~4.1.7",
-		"store.shopware.com/cogietracker": "~1.3.0",
-		"store.shopware.com/swagplatformsecurity": "~2.0.10",
-		"store.shopware.com/swagcmsextensions": "~3.2.0",
-		"store.shopware.com/swagmigrationassistant": "~8.0.0",
-		"store.shopware.com/cogiappointmentflyout": "~1.0.0",
-		"store.shopware.com/nenoheroslider": "~1.4.4",
-		"store.shopware.com/comanconsentmanager": "~1.1.4",
-		"store.shopware.com/swagpaypal": "~8.6.1"
+		"webwirkung/property-merger": "^2.0"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.20",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5835c1d7c4039b1ac1b93ff023bd4fe3",
+    "content-hash": "a2861e2fdee3e85dce05e0e0d230385a",
     "packages": [
         {
             "name": "async-aws/core",
@@ -2488,6 +2488,48 @@
             }
         },
         {
+            "name": "fullhaus/grid",
+            "version": "2.0.2",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhGrid",
+                "reference": "d38f4d883be01ab303a787504d7c31493c700b12"
+            },
+            "require": {
+                "shopware/core": "^6.5"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\Grid\\FhGrid",
+                "copyright": "Copyright (c) by FULLHAUS GmbH",
+                "label": {
+                    "de-DE": "Shopware 6 Bootstrap Grids",
+                    "en-GB": "Shopware 6 Bootstrap Grids"
+                },
+                "description": {
+                    "de-DE": "Individuelle Bootstrap Grids für Erlebniswelten",
+                    "en-GB": "Individual Bootstrap Grids for Shopping Experiences"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\Grid\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FULLHAUS GmbH"
+                }
+            ],
+            "description": "Bootstrap Grids",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "fullhaus/merchant-finder",
             "version": "v4.0.5",
             "dist": {
@@ -2569,6 +2611,42 @@
                 }
             ],
             "description": "Add videos to product galleries in Shopware 6 easily",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "fullhaus/property-merger",
+            "version": "2.0.0",
+            "dist": {
+                "type": "path",
+                "url": "./packages/FhPropertyMerger",
+                "reference": "a79b54ff694da7a38ddabc1c854603f694fcc88e"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "FULLHAUS\\PropertyMerger\\FhPropertyMerger",
+                "label": {
+                    "de-DE": "FULLHAUS property merger",
+                    "en-GB": "FULLHAUS property merger"
+                },
+                "require": {
+                    "shopware/core": "6.5.*"
+                },
+                "description": {
+                    "de-DE": "Führen Sie Ihre Eigenschaftsfelder einfach zusammen.",
+                    "en-GB": "Merge your properties fields easily."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FULLHAUS\\PropertyMerger\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Property Merger",
             "transport-options": {
                 "relative": true
             }
@@ -13203,6 +13281,55 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
+            "name": "webwirkung/property-merger",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Webwirkung/webwirkung-property-merger.git",
+                "reference": "433343c1c7a85a83dd5205f131c5e74cf9784e06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Webwirkung/webwirkung-property-merger/zipball/433343c1c7a85a83dd5205f131c5e74cf9784e06",
+                "reference": "433343c1c7a85a83dd5205f131c5e74cf9784e06",
+                "shasum": ""
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "shopware-plugin-class": "WebwirkungPropertyMerger\\WebwirkungPropertyMerger",
+                "label": {
+                    "de-DE": "Webwirkung property merger",
+                    "en-GB": "Webwirkung property merger"
+                },
+                "require": {
+                    "shopware/core": "^v6.6"
+                },
+                "description": {
+                    "de-DE": "Führen Sie Ihre Eigenschaftsfelder einfach zusammen.",
+                    "en-GB": "Merge your properties fields easily."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WebwirkungPropertyMerger\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Webwirkung GmbH"
+                }
+            ],
+            "description": "WebwirkungPropertyMerger",
+            "support": {
+                "source": "https://github.com/Webwirkung/webwirkung-property-merger/tree/v2.0.0",
+                "issues": "https://github.com/Webwirkung/webwirkung-property-merger/issues"
+            },
+            "time": "2024-11-27T07:05:23+00:00"
+        },
+        {
             "name": "zircote/swagger-php",
             "version": "4.11.1",
             "source": {
@@ -13545,6 +13672,7 @@
     "stability-flags": {
         "fullhaus/cms-items": 20,
         "fullhaus/cms-layout-blocks": 20,
+        "fullhaus/grid": 20,
         "fullhaus/merchant-finder": 20,
         "fullhaus/productvideo": 20,
         "fullhaus/shopconnector": 20
